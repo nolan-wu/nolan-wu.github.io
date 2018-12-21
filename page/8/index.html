@@ -335,7 +335,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/利用JMeter的beanshell进行接口的加密处理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/JMeter压力测试-用户注册/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nolan Wu">
@@ -354,7 +354,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/20/利用JMeter的beanshell进行接口的加密处理/" itemprop="url">利用JMeter的beanshell进行接口的加密处理</a></h1>
+                <a class="post-title-link" href="/2017/12/20/JMeter压力测试-用户注册/" itemprop="url">JMeter压力测试-用户注册</a></h1>
         
 
         <div class="post-meta">
@@ -389,8 +389,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">学习随笔</span>
+                  <a href="/categories/实际运用/" itemprop="url" rel="index">
+                    <span itemprop="name">实际运用</span>
                   </a>
                 </span>
 
@@ -428,163 +428,12 @@
       
         
           
-          最近项目中在做http协议的接口测试，其中接口请求报文数据有个字段值需要用到加密后的签名，即出于网络传输过程中，对数据安全的考虑，要对请求的数据进行特定的处理（加密），再进行请求。   
-jmeter中的BeanShell，可以用来调用我们的工具类对数据进行处理，然后再进行相关的请求。自己刚好以前工
+          需求：对用户注册行为进行压力测试，500w用户基础上，并发或连续时间进行测试，观察Linux服务器的负载情况和相应能力，测试完成后输出结果和报告。  
+1.下载JMeter下载版本3.1，新版本3.3过新的原因无法调用监控linux的插件，会报错地址：http://jmeter.apache.org
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/20/利用JMeter的beanshell进行接口的加密处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nolan Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NolanWu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/" itemprop="url">JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T00:00:00+08:00">
-                2017-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">学习随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在压力测试的时候，经常要将几个流程串联起来才能将程序测试通过。如：我现在用户首先要登录，获得我登录的凭证（tokenId），之后我的请求其他的资源的时候需要带上这个凭证。才能识别你是否是合法的用户。   
-创建一个线程租  
-创建一个获取凭证的请求
-创建后置处理器JMeter GUI视图中右击该采样
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/#more" rel="contents">
+            <a class="btn" href="/2017/12/20/JMeter压力测试-用户注册/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -739,155 +588,6 @@ a、开始菜单 -&gt; 控制面板 -&gt; 网络共享中心 -&gt; 更
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/19/JMeter设置IP欺骗/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/Token,Cookie,Session的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nolan Wu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="NolanWu's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/19/Token,Cookie,Session的区别/" itemprop="url">Token/Cookie/Session的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T00:00:00+08:00">
-                2017-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">学习随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Cookiecookie 是一个非常具体的东西，指的就是浏览器里面能永久存储的一种数据，仅仅是浏览器实现的一种数据存储功能。   
-cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/19/Token,Cookie,Session的区别/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1384,6 +1084,157 @@ Mysql可以在一个sql语句中同时删除多表记录，也可以根据多个
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/" itemprop="url">JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T00:00:00+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在压力测试的时候，经常要将几个流程串联起来才能将程序测试通过。如：我现在用户首先要登录，获得我登录的凭证（tokenId），之后我的请求其他的资源的时候需要带上这个凭证。才能识别你是否是合法的用户。   
+创建一个线程租  
+创建一个获取凭证的请求
+创建后置处理器JMeter GUI视图中右击该采样
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/19/JMeter如何将上一个请求的结果作为下一个请求的参数（使用正则提取器）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/JMeter的参数化方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1485,6 +1336,155 @@ ${__Random(,,)}第一个参数为随机数的下限，第二个参数为随机�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/19/JMeter的参数化方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/Token,Cookie,Session的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/19/Token,Cookie,Session的区别/" itemprop="url">Token/Cookie/Session的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T00:00:00+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Cookiecookie 是一个非常具体的东西，指的就是浏览器里面能永久存储的一种数据，仅仅是浏览器实现的一种数据存储功能。   
+cookie由服务器生成，发送给浏览器，浏览器把cookie以kv形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/19/Token,Cookie,Session的区别/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1995,7 +1995,7 @@ a + b 输出结果 30
 
 -->
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_uv">
   本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
 </span>
