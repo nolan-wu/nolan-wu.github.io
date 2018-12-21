@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JMeter," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="新特性简介JMeter3.0提供一个用于生成HTML页面格式图形化报告的扩展模块   该模块支持通过两种方式生成多维度图形化测试报告：   1.在JMeter性能测试结束时，自动生成本次测试的HTML图形化报告2.使用一个已有的结果文件(如CSV文件)来生成该次结果的HTML图形化报告 默认提供的度量维度1.APDEX">
+<meta name="keywords" content="JMeter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter多维度的HTML图形化报告">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/JMeter多维度的HTML图形化报告/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="新特性简介JMeter3.0提供一个用于生成HTML页面格式图形化报告的扩展模块   该模块支持通过两种方式生成多维度图形化测试报告：   1.在JMeter性能测试结束时，自动生成本次测试的HTML图形化报告2.使用一个已有的结果文件(如CSV文件)来生成该次结果的HTML图形化报告 默认提供的度量维度1.APDEX(Application Performance Index)指数2.聚合报告：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/WI9qDAH.jpg">
+<meta property="og:image" content="https://i.imgur.com/SOV6f3x.jpg">
+<meta property="og:image" content="https://i.imgur.com/n6ZaPyO.jpg">
+<meta property="og:image" content="https://i.imgur.com/CoZXvN2.jpg">
+<meta property="og:updated_time" content="2017-12-20T06:25:42.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMeter多维度的HTML图形化报告">
+<meta name="twitter:description" content="新特性简介JMeter3.0提供一个用于生成HTML页面格式图形化报告的扩展模块   该模块支持通过两种方式生成多维度图形化测试报告：   1.在JMeter性能测试结束时，自动生成本次测试的HTML图形化报告2.使用一个已有的结果文件(如CSV文件)来生成该次结果的HTML图形化报告 默认提供的度量维度1.APDEX(Application Performance Index)指数2.聚合报告：">
+<meta name="twitter:image" content="https://i.imgur.com/WI9qDAH.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/JMeter多维度的HTML图形化报告/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>JMeter多维度的HTML图形化报告 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/JMeter多维度的HTML图形化报告/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JMeter多维度的HTML图形化报告</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T00:00:00+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="新特性简介"><a href="#新特性简介" class="headerlink" title="新特性简介"></a>新特性简介</h1><p><br><br>JMeter3.0提供一个用于生成HTML页面格式图形化报告的扩展模块  </p>
+<p>该模块支持通过两种方式生成多维度图形化测试报告：  </p>
+<p>1.在JMeter性能测试结束时，自动生成本次测试的HTML图形化报告<br>2.使用一个已有的结果文件(如CSV文件)来生成该次结果的HTML图形化报告</p>
+<h1 id="默认提供的度量维度"><a href="#默认提供的度量维度" class="headerlink" title="默认提供的度量维度"></a>默认提供的度量维度</h1><p><br><br>1.APDEX(Application Performance Index)指数<br>2.聚合报告：类似于UI上的Aggregate Report<br>3.Errors报告：展示不同错误类型的数量以及百分比<br>4.响应时间变化曲线：展示平均响应时间随时间变化情况<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Response Times Over Time<br>5.数据吞吐量时间曲线：展示每秒数据吞吐量随时间变化的情况<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Bytes Throughput Over Time<br>6.Latency time变化曲线：展示Latency time随时间变化的情况<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Response Latencies Over Time<br>7.每秒点击数曲线：类似于JMeter Plugins在UI上的jp@gc - Hits per Second<br>8.HTTP状态码时间分布曲线：展示响应状态码随时间的分布情况<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Response Codes per Second<br>9.事务吞吐量时间曲线(TPS)：展示每秒处理的事务数随时间变化情况<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Transactions per Second<br>10.平均响应时间与每秒请求数的关系图：展示平均响应时间与每秒请求数(可以理解为QPS)的关系<br>11.Latency time与每秒请求数的关系图：展示Latency time与每秒请求数的关系<br>12.响应时间百分位图<br>13.响应时间的百分位分布图<br>14.活动线程数变化曲线：展示测试过程中活动线程数随时间变化情况<br>15.平均响应时间与线程数的关系图：展示平均响应时间与线程数的关系<br>-&gt; 类似于JMeter Plugins在UI上的jp@gc - Response Times vs Threads<br>16.柱状响应时间分布图：展示落在各个平均响应时间区间的请求数情况   </p>
+<p><strong>注：</strong><br>-Latency time = 接收到响应的第一个字节的时间点 - 请求开始发送的时间点<br>-响应时间(JMeter术语中的Elapsed time) = 接收完所有响应内容的时间点 - 请求开始发送的时间点<br>-Apdex 标准从用户的角度出发，将对应用响应时间的表现，转为用户对于应用性能的可量化为范围为 0-1 的满意度评价  </p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><p><br><br>1.确认基本配置<br>在jmeter.properties或者user.properties确认如下配置项：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">jmeter.save.saveservice.bytes = true   </span><br><span class="line">jmeter.save.saveservice.label = true  </span><br><span class="line">jmeter.save.saveservice.latency = true  </span><br><span class="line">jmeter.save.saveservice.response_code = true  </span><br><span class="line">jmeter.save.saveservice.response_message = true  </span><br><span class="line">jmeter.save.saveservice.successful = true  </span><br><span class="line">jmeter.save.saveservice.thread_counts = true  </span><br><span class="line">jmeter.save.saveservice.thread_name = true  </span><br><span class="line">jmeter.save.saveservice.time = true  </span><br><span class="line"># the timestamp format must include the time and should include the date.  </span><br><span class="line"># For example the default, which is milliseconds since the epoch:  </span><br><span class="line">jmeter.save.saveservice.timestamp_format = ms  </span><br><span class="line"># Or the following would also be suitable   </span><br><span class="line">jmeter.save.saveservice.timestamp_format = yyyy/MM/dd HH:mm:ss</span><br></pre></td></tr></table></figure>
+<p>如果希望在Errors报告中展示更详细数据，需要确保如下配置<br>jmeter.save.saveservice.assertion_results_failure_message = true<br>如果使用了事务控制器(Transaction Controller)，确认Generate parent sample为未勾选状态     </p>
+<h1 id="生成报告"><a href="#生成报告" class="headerlink" title="生成报告"></a>生成报告</h1><p><br><br>a. 在压力测试结束时报告  </p>
+<p>基本命令格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t &lt;test JMX file&gt; -l &lt;test log file&gt; -e -o &lt;Path to output folder&gt;</span><br></pre></td></tr></table></figure></p>
+<p>样例：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t F:\PerformanceTest\TestCase\script\getToken.jmx -l testLogFile -e -o ./output</span><br></pre></td></tr></table></figure>
+<p>b. 使用已有的压力测试CSV日志文件生成报告</p>
+<p>基本命令格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -g &lt;log file&gt; -o &lt;Path to output folder&gt;</span><br></pre></td></tr></table></figure></p>
+<p>样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -g D:\apache-jmeter-3.0\bin\testLogFile -o ./output</span><br></pre></td></tr></table></figure></p>
+<p>两个样例都会在\apache-jmeter-3.0\bin\output目录下产生如下文件(夹):  </p>
+<p><img src="https://i.imgur.com/WI9qDAH.jpg" alt=""></p>
+<p>用浏览器打开index.html文件，即可查看各种图形化报告：  </p>
+<p><img src="https://i.imgur.com/SOV6f3x.jpg" alt=""></p>
+<p><img src="https://i.imgur.com/n6ZaPyO.jpg" alt="">  </p>
+<p>注：在3.0版本，由于源码中字符编码的问题，可能会遇到生成的报告中，中文标签展示为乱码的问题   </p>
+<p>解决办法：<a href="http://www.jianshu.com/p/034dd33554c0" target="_blank" rel="noopener">http://www.jianshu.com/p/034dd33554c0</a>  </p>
+<h1 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h1><p><br><br>JMeter3.0在bin目录新增了reportgenerator.properties文件保存了所有关于图形化HTML报告生成模块的默认配置，要变更配置，建议不要直接编辑该文件，而是推荐在user.properties中去配置和覆盖。  </p>
+<p><strong>1.总体配置 </strong><br>总体配置都是以jmeter.reportgenerator.为前缀，如：<br>jmeter.reportgenerator.overall_granularity=60000  </p>
+<p><font color="blue">overall_granularity：</font> 定义采样点粒度，默认为60000ms，通常在稳定性以外的测试中，我们可能需要定义更细的粒度，比如1000ms，我们可以在user.properties文件末尾添加如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Change this parameter if you want to change the granularity of </span><br><span class="line">over time graphs.jmeter.reportgenerator.overall_granularity=6000</span><br></pre></td></tr></table></figure></p>
+<p><font color="blue">report_title：</font> 定义报告的标题，我们可能需要将标题定义为实际测试项名称</p>
+<p><font color="blue">apdex_satisfied_threshold：</font> 定义Apdex评估中满意的阈值(单位ms)</p>
+<p><font color="blue">apdex_tolerated_threshold：</font> 定义Apdex评估中可容忍的阈值<br>Apdext = (Satisfied Count + Tolerating Count / 2) / Total Samples  </p>
+<p>另外，在jmeter.properties中，有关于集合报告中的三个百分位的默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aggregate_rpt_pct1 : Defaults to 90  </span><br><span class="line">aggregate_rpt_pct2 : Defaults to 95  </span><br><span class="line">aggregate_rpt_pct3 : Defaults to 99</span><br></pre></td></tr></table></figure></p>
+<p>可以在user.properties中对其进行覆盖，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aggregate_rpt_pct1 = 70</span><br></pre></td></tr></table></figure></p>
+<p>效果如下：<br><img src="https://i.imgur.com/CoZXvN2.jpg" alt=""></p>
+<p><strong>2.图表配置</strong><br>每个图表配置都是以jmeter.reportgenerator.graph.&lt;图表名称&gt;.为前缀。  </p>
+<p><font color="blue">classname</font> 图表的实现类，如果有自己定制的实现，将该配置的值写为自定义实现类的类名  </p>
+<p><font color="blue">title</font> 图标标题，比如要汉化的时候，在这里配置中文标题  </p>
+<p><font color="blue">property.set_granularity</font> 设置图标的采样点粒度，不配置时默认使用总体配置中的粒度设置  </p>
+<p><strong>3.输出配置</strong><br>输出配置都以jmeter.reportgenerator.exporter为前缀。   </p>
+<p><font color="blue">property.output_dir</font> 配置默认的报告输出路径。在命令行可以用-o选项来设置特定的路径覆盖该配置。</p>
+<p><font color="blue">html.series_filter</font> 用于过滤展示内容。如在user.properties添加如下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter.reportgenerator.exporter.html.series_filter=(^Login)(-success|-failure)?</span><br></pre></td></tr></table></figure></p>
+<p>则最后的报告只展示名为Login这个取样器的数据。该配置包含两部分，(-success|-failure)?是Transactions per second图表所依赖的配置。前面部分接受一个正则表达式用来过滤  </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JMeter/" rel="tag"><i class="fa fa-tag"></i> JMeter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/RobotFramework-Android自动化测试方案/" rel="next" title="RobotFramework-Android自动化测试方案">
+                <i class="fa fa-chevron-left"></i> RobotFramework-Android自动化测试方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/JMeter压力测试-用户注册/" rel="prev" title="JMeter压力测试-用户注册">
+                JMeter压力测试-用户注册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新特性简介"><span class="nav-number">1.</span> <span class="nav-text">新特性简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#默认提供的度量维度"><span class="nav-number">2.</span> <span class="nav-text">默认提供的度量维度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速入门"><span class="nav-number">3.</span> <span class="nav-text">快速入门</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成报告"><span class="nav-number">4.</span> <span class="nav-text">生成报告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义配置"><span class="nav-number">5.</span> <span class="nav-text">自定义配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

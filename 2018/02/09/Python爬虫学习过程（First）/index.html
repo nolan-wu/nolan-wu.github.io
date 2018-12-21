@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习计划：四个阶段学习爬虫      如下开始学习视频教程，对应自己觉得需要做笔记的部分，进行记录整体不做编排，就随便记录，最后学习完成以自己设定的一个项目需求做Ending，另起项目日志    整体规划有四个阶段的学习课程，分别起日志进行学习     学习材料：https://pan.baidu.com/s/1mje">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬虫学习过程（First）">
+<meta property="og:url" content="http://yoursite.com/2018/02/09/Python爬虫学习过程（First）/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="学习计划：四个阶段学习爬虫      如下开始学习视频教程，对应自己觉得需要做笔记的部分，进行记录整体不做编排，就随便记录，最后学习完成以自己设定的一个项目需求做Ending，另起项目日志    整体规划有四个阶段的学习课程，分别起日志进行学习     学习材料：https://pan.baidu.com/s/1mje66BQ       FIRST 的知识点  首先要了解HTML网页的基本元素组">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/qGtilyb.png">
+<meta property="og:image" content="https://i.imgur.com/Cj1DyRr.png">
+<meta property="og:image" content="https://i.imgur.com/wNyT2BB.png">
+<meta property="og:image" content="https://i.imgur.com/FRbHdjY.png">
+<meta property="og:updated_time" content="2018-03-05T10:21:13.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python爬虫学习过程（First）">
+<meta name="twitter:description" content="学习计划：四个阶段学习爬虫      如下开始学习视频教程，对应自己觉得需要做笔记的部分，进行记录整体不做编排，就随便记录，最后学习完成以自己设定的一个项目需求做Ending，另起项目日志    整体规划有四个阶段的学习课程，分别起日志进行学习     学习材料：https://pan.baidu.com/s/1mje66BQ       FIRST 的知识点  首先要了解HTML网页的基本元素组">
+<meta name="twitter:image" content="https://i.imgur.com/qGtilyb.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/09/Python爬虫学习过程（First）/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if('7'){
+			if (prompt('请输入访问密码','') !== '7'){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Python爬虫学习过程（First） | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/09/Python爬虫学习过程（First）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python爬虫学习过程（First）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-09T00:00:00+08:00">
+                2018-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>学习计划：</strong>四个阶段学习爬虫     </p>
+<p>如下开始学习视频教程，对应自己觉得需要做笔记的部分，进行记录<br>整体不做编排，就随便记录，最后学习完成以自己设定的一个项目需求做Ending，另起项目日志   </p>
+<p>整体规划有四个阶段的学习课程，分别起日志进行学习    </p>
+<p>学习材料：<a href="https://pan.baidu.com/s/1mje66BQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1mje66BQ</a>     </p>
+<hr>
+<font size="+3" color="blue"><strong>FIRST 的知识点</strong></font>
+
+<p>首先要了解HTML网页的基本元素组成，不列明</p>
+<p>学习：涉及到的所有的解析库的简要方法，如下作列明  </p>
+<font size="+2" color="orange"><strong>BeautifulSoup库</strong></font>  
+
+<p>Beautiful Soup提供一些简单的、python式的函数用来处理导航、搜索、修改分析树等功能。它是一个工具箱，通过解析文档为用户提供需要抓取的数据,Beautiful Soup自动将输入文档转换为Unicode编码，输出文档转换为utf-8编码。你不需要考虑编码方式。   </p>
+<p>BeautifulSoup3目前已经停止开发，所以现在的项目中使用BeautifulSoup4，对应的安装方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install beautifulsoup4</span><br></pre></td></tr></table></figure>
+<p>BeautifulSoup不仅支持HTML解析器,还支持一些第三方的解析器，如：lxml，XML，html5lib 但是需要安装相应的库。   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ pip install lxml</span><br><span class="line">$ pip install html5lib</span><br></pre></td></tr></table></figure>
+<font size="+2" color="orange"><strong>Requests库</strong></font>   
+
+<p>安装方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="从本地网站通过BeautifulSoup解析网页"><a href="#从本地网站通过BeautifulSoup解析网页" class="headerlink" title="从本地网站通过BeautifulSoup解析网页"></a><font color="red">从本地网站通过BeautifulSoup解析网页</font></h1><p><strong>爬取网页步骤：</strong>   </p>
+<ul>
+<li>第1步：使用BeautifulSoup解析网页<br>Soup = BeautifulSoup(html,’lxml’)</li>
+<li>第2步：描述要爬取的东西在哪<br>？？ = Soup.select(‘???’)  </li>
+<li>第3步：从标签中获得你需要的信息<br>去掉没用的结构，将信息按照一定的格式装在容器中，方便查询</li>
+</ul>
+<p>Soup = BeautifulSoup(html,’lxml’)  </p>
+<p>解析网页有五种库：    </p>
+<ul>
+<li>html.parser</li>
+<li>lxml HTML</li>
+<li>lxml XML</li>
+<li>html5lib</li>
+<li>lxml （解析速度快，所以以这种为例）  </li>
+</ul>
+<p>查找图片描述的具体位置，不是说查看图片的可视化位置。具体方法：<br>右击查找元素Copy -&gt; <strong>Copy selector</strong>  （根据元素样式来查找）<br>可以看出具体的描述位置为：<br>body &gt; div.main-content &gt; ul &gt; li:nth-child(1) &gt; img<br>注：选择lxml解析库就只用使用Copy selector</p>
+<p><img src="https://i.imgur.com/qGtilyb.png" alt=""></p>
+<p>另外一种查找元素形式：Copy -&gt; Copy Xpath<br>Xpath：元素的绝对路径，对应如上的图片的描述位置为：<br>/html/body/div[2]/ul/li[1]/img  </p>
+<p><img src="https://i.imgur.com/Cj1DyRr.png" alt=""></p>
+<p>具体的学习代码如下（跟教程有差异，因为使用的是Python2.7）：   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'E:\\Python\\Learn\\reptile\\web\\new_index.html'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> data_need:</span><br><span class="line">    Soup = BeautifulSoup(data_need, <span class="string">'lxml'</span>)</span><br><span class="line">    images = Soup.select(<span class="string">'body &gt; div.main-content &gt; ul &gt; li &gt; img'</span>)</span><br><span class="line">    titles = Soup.select(<span class="string">'body &gt; div.main-content &gt; ul &gt; li &gt; div.article-info &gt; h3 &gt; a'</span>)</span><br><span class="line">    descs = Soup.select(<span class="string">'body &gt; div.main-content &gt; ul &gt; li &gt; div.article-info &gt; p.description'</span>)</span><br><span class="line">    rates = Soup.select(<span class="string">'body &gt; div.main-content &gt; ul &gt; li &gt; div.rate &gt; span'</span>)</span><br><span class="line">    cates = Soup.select(<span class="string">'body &gt; div.main-content &gt; ul &gt; li &gt; div.article-info &gt; p.meta-info'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print images, titles, descs, rates, cates</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选所需信息</span></span><br><span class="line"><span class="comment"># for title in titles:</span></span><br><span class="line">    <span class="comment"># 使用get_text()的方法释放信息</span></span><br><span class="line">    <span class="comment"># print title.get_text()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为了方便查询，将结果放进字典中，建立统一数据结构</span></span><br><span class="line"><span class="comment"># 进行字典构造，将其放进zip，进行一次性循环</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> title, image, desc, rate, cate <span class="keyword">in</span> zip(titles, images, descs, rates, cates):</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">'title'</span>: title.get_text(),</span><br><span class="line">        <span class="string">'desc'</span>: desc.get_text(),</span><br><span class="line">        <span class="string">'rate'</span>: rate.get_text(),</span><br><span class="line">        <span class="string">'cate'</span>: list(cate.stripped_strings),</span><br><span class="line">        <span class="string">'image'</span>: image.get(<span class="string">'src'</span>)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># print data</span></span><br><span class="line">    info = []</span><br><span class="line">    info.append(data)</span><br><span class="line">    <span class="comment"># print info</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 做初步分析，如筛选出大于3分的文章</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> info:</span><br><span class="line">        <span class="keyword">if</span> float(i[<span class="string">'rate'</span>]) &gt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">print</span> i[<span class="string">'title'</span>], i[<span class="string">'cate'</span>]</span><br></pre></td></tr></table></figure>
+<p><strong>解释代码中的引用： </strong> </p>
+<p><strong>zip方法：</strong> 就是把几组数组糅在一起<br>x=[‘bob’,’tom’,’kitty’]<br>y=[80,90,95]<br>zip(x, y)就得到了[(‘bob’, 80), (‘tom’, 90), (‘kitty’, 95)]<br>d=dict(zip(x,y))<br>则d[‘bob’]返回80   </p>
+<p><strong>.get_text()：</strong> 获取所有文字内容   </p>
+<p><strong>.select()：</strong> 返回类型是list，上面是使用元素样式来查找“Copy selector”   </p>
+<p><strong>.stripped_strings：</strong> 输出的字符串中可能包含了很多空格或空行，使用<code>.stripped_strings</code>可以去除多余空白内容</p>
+<p><strong>.get()：</strong> 获取链接href属性src内容   </p>
+<p>运行对应代码后，对应图片的链接并非实际链接，因官网做了反爬机制，通过JS控制了图片的显示，后面再针对图片实际链接的爬取进行学习记录    </p>
+<hr>
+<h1 id="爬取线上商品当页信息"><a href="#爬取线上商品当页信息" class="headerlink" title="爬取线上商品当页信息"></a><font color="red">爬取线上商品当页信息</font></h1><p>本次学习的是通过用Resquests + Beautifulsoup爬取Tripadvisor网站   </p>
+<p><strong>爬取网站的步骤：</strong></p>
+<p>第1步：了解服务器与本地的交换机制<br>第2步：了解解析真是网页，获取数据的方法   </p>
+<p>requests的content和text属性的区别     </p>
+<ul>
+<li>.text返回的是Unicode型的数据。</li>
+<li>.content返回的是bytes型也就是二进制的数据。</li>
+</ul>
+<p>也就是说，如果你想取文本，可以通过r.text<br>如果想取图片，文件，则可以通过r.content<br>（resp.json()返回的是json格式数据）   </p>
+<p>通过标签加方括号[]再加特定属性的方法可以更好的定位到元素   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Request向服务器请求获取网页内容</span></span><br><span class="line">url = <span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-New_York_City_New_York.html'</span></span><br><span class="line"><span class="comment"># 返回response</span></span><br><span class="line">wb_data = requests.get(url)</span><br><span class="line"><span class="comment"># 开始解析网页</span></span><br><span class="line">soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line"><span class="comment"># print soup</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 描述要爬取的元素位置</span></span><br><span class="line">titles = soup.select(<span class="string">'div.listing_title &gt; a[target="_blank"]'</span>)</span><br><span class="line">imgs = soup.select(<span class="string">'img[width="180"]'</span>)</span><br><span class="line">cates = soup.select(<span class="string">'div.p13n_reasoning_v2'</span>)</span><br><span class="line"><span class="comment"># print titles</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 整理并筛选所需信息</span></span><br><span class="line"><span class="keyword">for</span> title, img, cate <span class="keyword">in</span> zip(titles, imgs, cates):</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">'title'</span>: title.get_text(),</span><br><span class="line">        <span class="string">'img'</span>: img.get(<span class="string">"src"</span>),</span><br><span class="line">        <span class="string">'cate'</span>: list(cate.stripped_strings)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">print</span> data</span><br></pre></td></tr></table></figure>
+<p>如上只能爬取静态的在线信息，如果是动态的信息，则需要用Selenium库来模拟正常浏览网页的行为，Selenium这个另起日志   </p>
+<p>上方脚本运用了requests库，该库的介绍另起日志，本篇文章以教程的流程往下   </p>
+<hr>
+<h1 id="构造向服务器提交的参数Headers"><a href="#构造向服务器提交的参数Headers" class="headerlink" title="构造向服务器提交的参数Headers"></a><font color="red">构造向服务器提交的参数Headers</font></h1><p>向服务器提交伪造的Cookie信息，以登录态去访问收藏列表<br>从谷歌浏览器的编辑器中选择Network-Headers-Cookie以及User-Agent   </p>
+<p><img src="https://i.imgur.com/wNyT2BB.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过伪造cookie来进行模拟登陆状态，获取收藏信息</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'TASSK=enc%3AAKnvomrzvpa1pcMrrZGZx2mJ5LMx3xACS0sJTQDd0xJCN8FFV%2BxL%2FFpeunWYoHnSs1G%2BWE2s4HdEEBJ23pBrpQVqXDMSTln7C9hjYNUGJ6SY9TpQ5ZUl1MNK0JnVeZuNPA%3D%3D; TAUnique=%1%enc%3AEm4bmPTyg9%2BB0EzI89z20RoTyY1RGWVPiEM0RoyhaOg1jFGw1G8Jhw%3D%3D; _ym_uid=1516344828955196641; _ga=GA1.2.1631474809.1516344828; __gads=ID=e3a3c21db9ff08b3:T=1516348723:S=ALNI_MajjFplu_qiT5EmVr2Ca8rshE5ypw; ki_r=; ServerPool=A; TATravelInfo=V2*A.2*MG.-1*HP.2*FL.3*RS.1; _gid=GA1.2.80105617.1517799398; _ym_isad=2; SecureLogin2=3.4%3AAIthDqydTK1umzywAYkDh7zjolTHquc0Q3lGSs8Lc2H%2BQska%2B4qqNakmXMSys0SZXHE5H6prxRdwj9NPe8INu%2FdUuWP1BPRjla%2BnxP0L8SPQm%2FqaJGyCwgqQNW06IiLTmKbpZkyxAh4%2Bf2YReKTOnUUIOuqLjgsrjpit85Rm1YBeCxyCT6gfJ%2F4SQ%2FY1RdAsMl8REbQUu%2BPGvk4BQuyr%2BiQ%3D; TAAuth3=3%3Afd3d4f587ddedb114eae88cdabe9c2a1%3AACdlAHneIiWDqNOFtkaEb8b028Wf6dhbHTBfRQLYQfI3WeQ03iEYqwWuCtl7vRTd3Vuoe%2BsVErgbLwIweH%2FzzXjTNoS8xXNg0TDSpmDlGjk%2Fjho4bDs3UbDnrfdixGeb4Q7ED4kTR73mEVKkvvtGpI%2B1deW9P3jNZ8dfbbgqyK1m%2BO6XChK9GY%2BWB69NCaaeGQ%3D%3D; CommercePopunder=SuppressAll*1517813765065; _smt_uid=5a7815de.20f5ee33; CM=%1%HanaPersist%2C%2C-1%7CPremiumMobSess%2C%2C-1%7Ct4b-pc%2C%2C-1%7CSPHRSess%2C%2C-1%7CHanaSession%2C%2C-1%7CRestAds%2FRPers%2C%2C-1%7CRCPers%2C%2C-1%7CWShadeSeen%2C%2C-1%7CFtrPers%2C%2C-1%7CTheForkMCCPers%2C%2C-1%7CHomeASess%2C2%2C-1%7CPremiumSURPers%2C%2C-1%7CPremiumMCSess%2C%2C-1%7CRestPartSess%2C%2C-1%7CRestPremRSess%2C%2C-1%7CCCSess%2C%2C-1%7CPremRetPers%2C%2C-1%7CViatorMCPers%2C%2C-1%7Csesssticker%2C%2C-1%7Ct4b-sc%2C%2C-1%7CRestAdsPers%2C%2C-1%7CMC_IB_UPSELL_IB_LOGOS2%2C%2C-1%7Cb2bmcpers%2C%2C-1%7CMC_IB_UPSELL_IB_LOGOS%2C%2C-1%7CPremMCBtmSess%2C%2C-1%7CPremiumSURSess%2C%2C-1%7CLaFourchette+Banners%2C%2C-1%7Csess_rev%2C%2C-1%7Csessamex%2C%2C-1%7CPremiumRRSess%2C%2C-1%7CSaveFtrPers%2C%2C-1%7CSPMCSess%2C%2C-1%7CTheForkORSess%2C%2C-1%7CTheForkRRSess%2C%2C-1%7Cpers_rev%2C%2C-1%7CMetaFtrSess%2C%2C-1%7CRBAPers%2C%2C-1%7CWAR_RESTAURANT_FOOTER_PERSISTANT%2C%2C-1%7CFtrSess%2C%2C-1%7CRestAds%2FRSess%2C%2C-1%7CHomeAPers%2C%2C-1%7CPremiumMobPers%2C%2C-1%7CSPHRPers%2C%2C-1%7CRCSess%2C%2C-1%7CLaFourchette+MC+Banners%2C%2C-1%7CRestAdsCCSess%2C%2C-1%7CRestPartPers%2C%2C-1%7CRestPremRPers%2C%2C-1%7Csh%2C%2C-1%7Cpssamex%2C%2C-1%7CTheForkMCCSess%2C%2C-1%7CCCPers%2C%2C-1%7CWAR_RESTAURANT_FOOTER_SESSION%2C%2C-1%7Cb2bmcsess%2C%2C-1%7CSPMCPers%2C%2C-1%7CPremRetSess%2C%2C-1%7CViatorMCSess%2C%2C-1%7CPremiumMCPers%2C%2C-1%7CPremiumRRPers%2C%2C-1%7CRestAdsCCPers%2C%2C-1%7CTheForkORPers%2C%2C-1%7CPremMCBtmPers%2C%2C-1%7CTheForkRRPers%2C%2C-1%7CSaveFtrSess%2C%2C-1%7CRestAdsSess%2C%2C-1%7CRBASess%2C%2C-1%7CSPORPers%2C%2C-1%7Cperssticker%2C%2C-1%7CMetaFtrPers%2C%2C-1%7C; TAReturnTo=%1%%2FAttractions-g60763-Activities-oa90-New_York_City_New_York.html; roybatty=TNI1625!ABUISmXLvavgjDs%2B8%2FbgTjkEwc60YXi8Jg5ZhxgSfC4IJjC%2B3CrBDbJmV4Y9isInER%2BnWiy9tEfg8en6p6IZ4RKm58vvSXJinJTIUZBgp2IqoMD3fyhE%2Feubq6k%2BAYKfyLULTlvhSRDbnY3PtLQFwi%2Byq2oN3en58IPHKSY47QmW%2C1; TASession=%1%V2ID.0F771B0FF50FE5DD1C33D38805C2F51B*SQ.225*LP.%2FAttractions-g60763-Activities-New_York_City_New_York%5C.html*PR.427%7C*LS.DemandLoadAjax*GR.75*TCPAR.18*TBR.58*EXEX.50*ABTR.3*PHTB.56*FS.6*CPU.74*HS.recommended*ES.popularity*AS.popularity*DS.5*SAS.popularity*FPS.oldFirst*TS.27243C71B324634939C7A9F271099EF8*LF.zhCN*FA.1*DF.0*MS.-1*RMS.-1*FLO.60763*TRA.true*LD.60763; TAUD=LA-1517799398076-1*RDD-1-2018_02_05*LG-26835493-2.1.F.*LD-26835494-.....; ki_t=1516862538617%3B1517799401394%3B1517826233522%3B2%3B44'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">urs_saves = <span class="string">'https://www.tripadvisor.cn/MemberProfile-ccbc-a_uid.27243C71B324634939C7A9F271099EF8'</span></span><br><span class="line">wb_data = requests.get(urs_saves, headers=headers)</span><br><span class="line">soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选所需要的信息</span></span><br><span class="line">data = soup.select(<span class="string">'div.badgeText'</span>)</span><br><span class="line"><span class="keyword">print</span> data</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="爬取图片的实际地址"><a href="#爬取图片的实际地址" class="headerlink" title="爬取图片的实际地址"></a><font color="red">爬取图片的实际地址</font></h1><p>有些网站难爬取，优先看移动端，通过模拟手机页面获得反爬取信息<br>通过模拟设备User-Agent来实现，实际在爬取过程中，遇到复合型的CSS样式，如果是唯一的类型开头，定位首标识也是可以，如missing lazyMiss hidden这个class样式，定义missing也达到效果  </p>
+<p>具体的实现方式如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 伪造手机设备来获取图片</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Request向服务器请求获取网页内容</span></span><br><span class="line">url = <span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-New_York_City_New_York.html'</span></span><br><span class="line">wb_data = requests.get(url, headers=headers)</span><br><span class="line">soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 描述要爬取的元素位置</span></span><br><span class="line">imgs = soup.select(<span class="string">'div.missing '</span>)</span><br><span class="line"><span class="comment"># print imgs</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> imgs:</span><br><span class="line">    <span class="keyword">print</span> i.get(<span class="string">'data-thumburl'</span>)</span><br></pre></td></tr></table></figure>
+<p>通过字典(Dictionary).get()函数返回指定键的值，获得的结果就是想要的图片实际链接了  </p>
+<hr>
+<h1 id="爬取多个页面的内容信息"><a href="#爬取多个页面的内容信息" class="headerlink" title="爬取多个页面的内容信息"></a><font color="red">爬取多个页面的内容信息</font></h1><p>爬取多个列表页面的内容，通过观察各个页面链接之间的关系，构造函数，调用函数进行爬取  </p>
+<p>通过观察链接，然后构造一次性抓取的机制<br>找到规律后，通过列表解析式的方式，完成列表集合的构建  </p>
+<p>具体的实现方式如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-New_York_City_New_York.html'</span></span><br><span class="line">urls = [<span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-oa&#123;&#125;-New_York_City_New_York.html#FILTERED_LIST'</span> .format(str(i)) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>, <span class="number">1140</span>, <span class="number">30</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_attractions</span><span class="params">(url, data=None)</span>:</span></span><br><span class="line">    wb_data = requests.get(url)</span><br><span class="line">    <span class="comment"># 作保护手段，避免网站去封IP或者对我们的行为进行限制，通过增加每次请求的延时</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line">    <span class="comment"># 描述要爬取的元素位置</span></span><br><span class="line">    titles = soup.select(<span class="string">'div.listing_title &gt; a[target="_blank"]'</span>)</span><br><span class="line">    imgs = soup.select(<span class="string">'img[width="180"]'</span>)</span><br><span class="line">    cates = soup.select(<span class="string">'div.p13n_reasoning_v2'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 整理并筛选所需信息</span></span><br><span class="line">	<span class="keyword">if</span> data == <span class="keyword">None</span>:</span><br><span class="line">	    <span class="keyword">for</span> title, img, cate <span class="keyword">in</span> zip(titles, imgs, cates):</span><br><span class="line">	        data = &#123;</span><br><span class="line">	            <span class="string">'title'</span>: title.get_text(),</span><br><span class="line">	            <span class="string">'img'</span>: img.get(<span class="string">"src"</span>),</span><br><span class="line">	            <span class="string">'cate'</span>: list(cate.stripped_strings)</span><br><span class="line">	        &#125;</span><br><span class="line">	        <span class="keyword">print</span> data</span><br><span class="line"></span><br><span class="line">get_attractions(url)</span><br><span class="line"><span class="keyword">for</span> single_url <span class="keyword">in</span> urls:</span><br><span class="line">    get_attractions(single_url)</span><br></pre></td></tr></table></figure>
+<p><strong>解释代码中的引用： </strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urls = [<span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-oa&#123;&#125;-New_York_City_New_York.html#FILTERED_LIST'</span> .format(str(i)) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>, <span class="number">1140</span>, <span class="number">30</span>)]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>列表解析式：</strong> .format(str(i)) for i in range(30, 1140, 30)<br>另起文章进行学习</li>
+<li><strong>字符串格式化：</strong> {} .format(str(i))<br>这里用的格式化是format函数，花括号声明{}、用于渲染前的参数引用声明，format参数引入变量；<br>这里也可以使用最简单的‘%’来做映射，方法如下：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urls = [<span class="string">'https://www.tripadvisor.cn/Attractions-g60763-Activities-oa%d-New_York_City_New_York.html#FILTERED_LIST'</span> % i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>, <span class="number">1140</span>, <span class="number">30</span>)]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="抓取网站异步加载数据"><a href="#抓取网站异步加载数据" class="headerlink" title="抓取网站异步加载数据"></a><font color="red">抓取网站异步加载数据</font></h1><p><strong>第1步：什么是异步加载？</strong>  </p>
+<p>存在一些网页不需要点击下一页，不断去加载新的内容，实际上就是异步数据，客户端向服务器发起请求，返回部分数据和主要样式，而不断加载的数据则由JS控制  </p>
+<p><strong>第2步：如何发现并抓取异步加载数据？</strong></p>
+<p>动态加载的数据应该在Network中的XHR项下进行查看  </p>
+<p><img src="https://i.imgur.com/FRbHdjY.png" alt=""></p>
+<p>方法：从监视器中找到对应的Request URL，向它发起请求，然后查看返回的response  </p>
+<p>具体实现步骤和方式如下：<br>1.向网址请求，并解析网页<br>2.描述要爬取的元素位置，观察Elements在内容加载过程的规律<br>3.筛选所需信息<br>4.爬取连续多页，构造函数  </p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向网址请求，并解析网页</span></span><br><span class="line">url = <span class="string">'https://knewone.com/discover?page='</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建函数进行多页爬取</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page</span><span class="params">(url, data = None)</span>:</span></span><br><span class="line">    wb_data = requests.get(url)</span><br><span class="line">    soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 描述要爬取的元素位置</span></span><br><span class="line">    imgs = soup.select(<span class="string">'a.cover-inner &gt; img'</span>)</span><br><span class="line">    titles = soup.select(<span class="string">'section.content &gt; h4 &gt; a'</span>)</span><br><span class="line">    links = soup.select(<span class="string">'section.content &gt; h4 &gt; a'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 筛选所需信息</span></span><br><span class="line">    <span class="keyword">if</span> data == <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">for</span> img, title, link <span class="keyword">in</span> zip(imgs, titles, links):</span><br><span class="line">            data = &#123;</span><br><span class="line">                <span class="string">'img'</span>: img.get(<span class="string">'src'</span>),</span><br><span class="line">                <span class="string">'title'</span>: title.get(<span class="string">'title'</span>),</span><br><span class="line">                <span class="string">'link'</span>: link.get(<span class="string">'href'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">print</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建可以自控页码的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_more_pages</span><span class="params">(start, end)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> one <span class="keyword">in</span> range(start, end):</span><br><span class="line">        get_page(url + str(one))</span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">get_more_pages(<span class="number">1</span>,<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<center><font size="+2" color="orange"><strong>如上为First学习的整体内容</strong></font></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/08/Python列表解析式和生成器/" rel="next" title="Python列表解析式和生成器">
+                <i class="fa fa-chevron-left"></i> Python列表解析式和生成器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/22/Python调用其他py文件的函数/" rel="prev" title="Python调用其他py文件的函数">
+                Python调用其他py文件的函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从本地网站通过BeautifulSoup解析网页"><span class="nav-number">1.</span> <span class="nav-text">从本地网站通过BeautifulSoup解析网页</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取线上商品当页信息"><span class="nav-number">2.</span> <span class="nav-text">爬取线上商品当页信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造向服务器提交的参数Headers"><span class="nav-number">3.</span> <span class="nav-text">构造向服务器提交的参数Headers</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取图片的实际地址"><span class="nav-number">4.</span> <span class="nav-text">爬取图片的实际地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取多个页面的内容信息"><span class="nav-number">5.</span> <span class="nav-text">爬取多个页面的内容信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抓取网站异步加载数据"><span class="nav-number">6.</span> <span class="nav-text">抓取网站异步加载数据</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RobotFramework,Jenkins," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="整体步骤  1、下载Jenkins2、添加节点3、安装robotframework插件4、配置job运行测试    一、下载Jenkins  下载地址：http://mirrors.jenkins-ci.org/   推荐下载war包，如果有tomcat，把war包放到webapps目录里，直接启动tomcat即可  ">
+<meta name="keywords" content="RobotFramework,Jenkins">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RobotFramework结合Jenkins">
+<meta property="og:url" content="http://yoursite.com/2017/12/22/RobotFramework结合Jenkins/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="整体步骤  1、下载Jenkins2、添加节点3、安装robotframework插件4、配置job运行测试    一、下载Jenkins  下载地址：http://mirrors.jenkins-ci.org/   推荐下载war包，如果有tomcat，把war包放到webapps目录里，直接启动tomcat即可   通常访问路径是http://localhost:8080/jenkins">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/IN5biJq.png">
+<meta property="og:image" content="https://i.imgur.com/L1d4ak3.png">
+<meta property="og:image" content="https://i.imgur.com/zVaM8Dv.png">
+<meta property="og:image" content="https://i.imgur.com/prTezn2.png">
+<meta property="og:image" content="https://i.imgur.com/V0U5OHP.png">
+<meta property="og:image" content="https://i.imgur.com/9zU6CPf.png">
+<meta property="og:image" content="https://i.imgur.com/4Jm89vJ.png">
+<meta property="og:image" content="https://i.imgur.com/mv15Opw.png">
+<meta property="og:image" content="https://i.imgur.com/PhBpXxy.png">
+<meta property="og:image" content="https://i.imgur.com/sPqiHEU.png">
+<meta property="og:image" content="https://i.imgur.com/QHQHuYH.png">
+<meta property="og:image" content="https://i.imgur.com/0rMvbSK.png">
+<meta property="og:image" content="https://i.imgur.com/IkA4vuh.png">
+<meta property="og:image" content="https://i.imgur.com/MnkeFZL.png">
+<meta property="og:image" content="https://i.imgur.com/uH7D9aB.png">
+<meta property="og:image" content="https://i.imgur.com/03PxvFa.png">
+<meta property="og:updated_time" content="2017-12-22T06:01:55.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RobotFramework结合Jenkins">
+<meta name="twitter:description" content="整体步骤  1、下载Jenkins2、添加节点3、安装robotframework插件4、配置job运行测试    一、下载Jenkins  下载地址：http://mirrors.jenkins-ci.org/   推荐下载war包，如果有tomcat，把war包放到webapps目录里，直接启动tomcat即可   通常访问路径是http://localhost:8080/jenkins">
+<meta name="twitter:image" content="https://i.imgur.com/IN5biJq.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/22/RobotFramework结合Jenkins/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>RobotFramework结合Jenkins | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/22/RobotFramework结合Jenkins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RobotFramework结合Jenkins</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-22T00:00:00+08:00">
+                2017-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font size="+2" color="red"><strong>整体步骤</strong></font>
+
+<p>1、下载Jenkins<br>2、添加节点<br>3、安装robotframework插件<br>4、配置job运行测试  </p>
+<hr>
+<font size="+2" color="red"><strong>一、下载Jenkins</strong></font>
+
+<p>下载地址：<a href="http://mirrors.jenkins-ci.org/" target="_blank" rel="noopener">http://mirrors.jenkins-ci.org/</a>  </p>
+<p>推荐下载war包，如果有tomcat，把war包放到webapps目录里，直接启动tomcat即可  </p>
+<p>通常访问路径是<a href="http://localhost:8080/jenkins" target="_blank" rel="noopener">http://localhost:8080/jenkins</a>  </p>
+<p>如果没有tomcat，jenkins的war包里内置了jetty，直接用命令行<code>java -jar jenkins.war</code>就可以启动。如下图：</p>
+<p><img src="https://i.imgur.com/IN5biJq.png" alt=""></p>
+<p>当看到一行信息：Jenkins is fully up and running，就代表Jenkins的服务已经启动了  </p>
+<p>启动成功后访问本地jenkins地址：<a href="http://IP:8080" target="_blank" rel="noopener">http://IP:8080</a>  </p>
+<p><img src="https://i.imgur.com/L1d4ak3.png" alt=""></p>
+<p>安装常用的插件<br><a href="http://updates.jenkins-ci.org/download/plugins/" target="_blank" rel="noopener">http://updates.jenkins-ci.org/download/plugins/</a><br>如：ant、dashboard-view、disk-usage、subversion等  </p>
+<font size="+2" color="red"><strong>二、添加节点</strong></font>
+
+<p>我们启动Jenkins服务的这台机器在Jenkins里叫做master，而其他的连到master上的机器（物理机、虚拟机都可以）都是slave，也叫节点  </p>
+<p>1、点击系统管理，然后点击管理节点，就看到如下界面：  </p>
+<p><img src="https://i.imgur.com/zVaM8Dv.png" alt=""></p>
+<p>2、点击新建节点  </p>
+<p><img src="https://i.imgur.com/prTezn2.png" alt=""> </p>
+<p>3、输入slave的名字，点确定  </p>
+<p><img src="https://i.imgur.com/V0U5OHP.png" alt="">  </p>
+<p><strong>注：</strong>  </p>
+<ul>
+<li>executors：表示在slave上可以并行执行几个线程，也可以点后面的问号看说明。对于RF来说，建议设置为1</li>
+<li>远程工作目录：在slave上创建jenkins工作目录的路径，我一般设置为D:\JK</li>
+<li>标签：可以给slave加上一个或多个标签，通过标签选择slave</li>
+<li>启动方法：启动slave的方法，推荐选第二个Launch slave agents via Java Web Start</li>
+<li>如果是用来执行RF自动化测试案例的slave，严禁选择windows service的方式</li>
+</ul>
+<p>设置好之后点保存。如图：</p>
+<p><img src="https://i.imgur.com/9zU6CPf.png" alt=""></p>
+<p>图中可以看到有多种方式来启动slave，推荐2来启动  </p>
+<font size="+2" color="red"><strong>三、安装robotframework插件</strong></font>  
+
+<p>1、进入系统管理，点击管理插件，选择“高级”的上传插件</p>
+<p><img src="https://i.imgur.com/4Jm89vJ.png" alt=""></p>
+<p>等提示安装完成，然后重启Jenkins就可以完成安装了  </p>
+<p>RF的插件下载路径：<a href="http://mirrors.jenkins-ci.org/plugins/robot/" target="_blank" rel="noopener">http://mirrors.jenkins-ci.org/plugins/robot/</a></p>
+<font size="+2" color="red"><strong>四、配置Job运行测试</strong></font>  
+
+
+<p><strong>1、在首页点左边的新建任务</strong></p>
+<p><img src="https://i.imgur.com/mv15Opw.png" alt="">  </p>
+<p>对于RF的Job来说，自由风格就可以了  </p>
+<p><strong>2、配置参数</strong></p>
+<p>必须设置的几个地方：</p>
+<p>a、Restrict where this project can be run: 前面的标签就在这里用上了。用来指定这个Job在哪个标签的slave上执行  </p>
+<p><img src="https://i.imgur.com/PhBpXxy.png" alt=""> </p>
+<p>b、源码管理：RF的案例推荐使用SVN    </p>
+<p>c、构建：增加构建步骤-Execute Windows batch command，在命令行输入pybot.bat命令   </p>
+<p><img src="https://i.imgur.com/sPqiHEU.png" alt=""> </p>
+<p>d、构建后操作：增加构建后步骤-Publishes Robot Framework test results，第一个output默认可以为空，如果前面的pybot.bat指定了输出目录，那么这里也要对应进行设置，否则他找不到output.xml就没法解析结果</p>
+<p><img src="https://i.imgur.com/QHQHuYH.png" alt=""></p>
+<p><strong>3、执行该JOB，查看控制台</strong></p>
+<p><img src="https://i.imgur.com/0rMvbSK.png" alt=""></p>
+<p><strong>4、RF插件的作用</strong></p>
+<p>a、在Jenkins的首页显示Job最新的构建结果，见最后那列Robot Results  </p>
+<p><img src="https://i.imgur.com/IkA4vuh.png" alt="">  </p>
+<p>b、在Job的首页会显示运行结果的趋势图  </p>
+<p><img src="https://i.imgur.com/MnkeFZL.png" alt=""> </p>
+<font size="+2" color="red"><strong>五、其他有用的Job配置</strong></font>  
+
+<p><strong>1、丢弃旧的构建</strong>  </p>
+<p><img src="https://i.imgur.com/uH7D9aB.png" alt="">  </p>
+<p><strong>2、构建触发器 </strong> </p>
+<p><img src="https://i.imgur.com/03PxvFa.png" alt=""></p>
+<ul>
+<li><p>build whenever a snapshot dependency is built<br>当job依赖的快照版本被build时，执行本job</p>
+</li>
+<li><p>build after other projects are built<br>当本job依赖的job被build时，执行本job</p>
+</li>
+<li><p>build periodically<br>隔一段时间build一次，不管版本库代码是否发生变化<br>第一个参数代表的是分钟 minute，取值 0~59<br>第二个参数代表的是小时 hour，取值 0~23<br>第三个参数代表的是天 day，取值 1~31<br>第四个参数代表的是月 month，取值 1~12<br>最后一个参数代表的是星期 week，取值 0~7，0 和 7 都是表示星期天<br>例如：<br>0 <em> </em> <em> </em> 表示的是每个小时的第 0 分钟执行一次构建<br>5 10-23 <em> </em> * 表示的是每天10-23区间的05分执行一次构建</p>
+</li>
+<li><p>poll scm<br>隔一段时间比较一次源代码如果发生变更，那么就build。否则，不进行build</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RobotFramework/" rel="tag"><i class="fa fa-tag"></i> RobotFramework</a>
+          
+            <a href="/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/22/Python+Pillow实现图片处理（对比,裁剪...）/" rel="next" title="Python+Pillow实现图片处理（对比/裁剪/...）">
+                <i class="fa fa-chevron-left"></i> Python+Pillow实现图片处理（对比/裁剪/...）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/22/Jenkins配置基于角色的项目权限管理/" rel="prev" title="Jenkins配置基于角色的项目权限管理">
+                Jenkins配置基于角色的项目权限管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

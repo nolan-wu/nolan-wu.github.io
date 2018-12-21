@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="需求：想通过requests库直接请求用户注册接口，完成注册的一系列操作，自动生成号码，直接返回我已经注册成功的手机号，用于直接登录，这个过程其实是为了后面跟之前的那块赋予用户哪些授权做铺垫，将两个模块一块挂钩起来，即后面实现点击注册，选择具有哪些权限后，自动运行脚本成功返回我一个账号，该账号具备该能力    扩展库r">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python通过HTTP接口模拟用户注册">
+<meta property="og:url" content="http://yoursite.com/2018/03/08/Python&HTTP模拟用户注册/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="需求：想通过requests库直接请求用户注册接口，完成注册的一系列操作，自动生成号码，直接返回我已经注册成功的手机号，用于直接登录，这个过程其实是为了后面跟之前的那块赋予用户哪些授权做铺垫，将两个模块一块挂钩起来，即后面实现点击注册，选择具有哪些权限后，自动运行脚本成功返回我一个账号，该账号具备该能力    扩展库requests  接口测试一般基于HTTP和HTTPS的网络请求，Python中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-08T08:35:19.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python通过HTTP接口模拟用户注册">
+<meta name="twitter:description" content="需求：想通过requests库直接请求用户注册接口，完成注册的一系列操作，自动生成号码，直接返回我已经注册成功的手机号，用于直接登录，这个过程其实是为了后面跟之前的那块赋予用户哪些授权做铺垫，将两个模块一块挂钩起来，即后面实现点击注册，选择具有哪些权限后，自动运行脚本成功返回我一个账号，该账号具备该能力    扩展库requests  接口测试一般基于HTTP和HTTPS的网络请求，Python中">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/08/Python&HTTP模拟用户注册/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if('7'){
+			if (prompt('请输入访问密码','') !== '7'){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Python通过HTTP接口模拟用户注册 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/08/Python&HTTP模拟用户注册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python通过HTTP接口模拟用户注册</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T00:00:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实际运用/" itemprop="url" rel="index">
+                    <span itemprop="name">实际运用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>需求：</strong>想通过requests库直接请求用户注册接口，完成注册的一系列操作，自动生成号码，直接返回我已经注册成功的手机号，用于直接登录，这个过程其实是为了后面跟之前的那块赋予用户哪些授权做铺垫，将两个模块一块挂钩起来，即后面实现点击注册，选择具有哪些权限后，自动运行脚本成功返回我一个账号，该账号具备该能力   </p>
+<font size="+1" color="blue"><strong>扩展库requests</strong></font>
+
+<p>接口测试一般基于HTTP和HTTPS的网络请求，Python中有很多自带原生库和扩展库均可以实现。Python模拟HTTP请求有两种方式，一种是使用httplib模块，一种是使用requests模块，而我本次实现用的是requests库</p>
+<p>超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信，它的工作方式是客户机与服务器之间的请求-应答协议<br>它有两种请求方式：GET和POST  </p>
+<ul>
+<li>GET：从服务器上获取数据，也就是所谓的查，仅仅是获取服务器资源，不进行修改   </li>
+<li>POST：向服务器提交数据，这就涉及到了数据的更新，也就是更改服务器的数据   </li>
+</ul>
+<p><strong>GET请求方式模拟：</strong>   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests      <span class="comment">#调用requests库</span></span><br><span class="line">test_url = <span class="string">'http://xxx:8080.com'</span>      <span class="comment">#访问接口的url地址</span></span><br><span class="line">response = requests.get(test_url)       <span class="comment">#发起一个请求，使用get方法</span></span><br><span class="line">result = response.text          <span class="comment">#读取请求返回的结果</span></span><br><span class="line">print(result)     <span class="comment">#打印返回的结果</span></span><br></pre></td></tr></table></figure>
+<p><strong>POST请求方式模拟：</strong>   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests      <span class="comment">#调用requests库</span></span><br><span class="line">username = <span class="string">'ningxw'</span>    <span class="comment">#定义参数username</span></span><br><span class="line">password = <span class="string">'123456'</span>   <span class="comment">#定义参数password</span></span><br><span class="line">test_url = <span class="string">'http://xxx:8080.com'</span>      <span class="comment">#访问登录接口的url地址</span></span><br><span class="line">datalist = &#123;<span class="string">'uname'</span>: username, <span class="string">'pwd'</span>: password&#125;    <span class="comment">#将参数添加到需求post的data中</span></span><br><span class="line">head = &#123;<span class="string">"Content-Type"</span>: <span class="string">"application/Json"</span>&#125;   <span class="comment">#定义头部</span></span><br><span class="line">response = requests.post(test_url, datas=datalist， headers=head)   <span class="comment">#发起一个请求，使用post方法</span></span><br><span class="line">result = response.text          <span class="comment">#读取请求返回的结果</span></span><br><span class="line">print(result)   <span class="comment">#打印返回的结果</span></span><br></pre></td></tr></table></figure>
+<hr>
+<font size="+1" color="blue"><strong>用户注册的实现代码</strong></font>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接请求url</span></span><br><span class="line">host = <span class="string">'http://jenkins.lend51.com:8072'</span></span><br><span class="line"><span class="comment"># 通过requests.Session对象，完成请求在上下文传递过程中的Cookie保持一致</span></span><br><span class="line">requests = requests.session()</span><br><span class="line"><span class="comment"># 构建headers头部</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Accept-Language'</span>: <span class="string">'zh-cn'</span>,</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json; charset=UTF-8; '</span>,</span><br><span class="line">    <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>,</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/javascript, */*; q=0.01'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'iPhone;Apple;iPhone9,2;iOS 11.1;640x1136;breeze 2.1.1;'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_register</span><span class="params">(phone)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ------------------------------  填写验证码页面  -------------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求注册号码接口</span></span><br><span class="line">    url1 = host + <span class="string">'/JieWebApp/app/security/validatePhone/&#123;&#125;'</span> .format(phone)</span><br><span class="line">    <span class="comment"># 初始化url请求对象</span></span><br><span class="line">    response1 = requests.get(url1, headers=headers)</span><br><span class="line">    <span class="comment"># print response1.text</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求短信验证码接口</span></span><br><span class="line">    payload2_dict = &#123;<span class="string">'userName'</span>: phone&#125;</span><br><span class="line">    payload2 = json.dumps(payload2_dict)</span><br><span class="line">    url2 = host + <span class="string">'/JieWebApp/app/common/getSendAuthCodeImageCode'</span></span><br><span class="line">    response2 = requests.post(url2, data=payload2, headers=headers)</span><br><span class="line">    <span class="comment"># print response2.text</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求短信验证码接口</span></span><br><span class="line">    url3 = host + <span class="string">'/JieWebApp/app/common/sendAuthCode/new/&#123;&#125;/1/1234'</span> .format(phone)</span><br><span class="line">    response3 = requests.post(url3, headers=headers)</span><br><span class="line">    <span class="comment"># print response3.text</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ----------------------------  提交验证码（注册过程）  --------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求PublicKey</span></span><br><span class="line">    url4 = host + <span class="string">'/JieWebApp/app/security/getPublicKey/'</span></span><br><span class="line">    response4 = requests.post(url4, headers=headers)</span><br><span class="line">    <span class="comment"># 转换获得的result为字典，取result对应值</span></span><br><span class="line">    result4_str = <span class="string">'&#123;'</span> + str(response4.text).split(<span class="string">','</span>)[<span class="number">4</span>] + <span class="string">'&#125;'</span></span><br><span class="line">    result4_eval = eval(result4_str)[<span class="string">'result'</span>]</span><br><span class="line">    result4 = str(result4_eval)</span><br><span class="line">    <span class="comment"># print result4</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求RSA加密接口</span></span><br><span class="line">    url5 = host + <span class="string">'/JieWebApp/app/common/encryptByPublicKey'</span></span><br><span class="line">    payload5_dict = dict(&#123;<span class="string">'publicKey'</span>: result4, <span class="string">'txt'</span>: <span class="string">'111111'</span>&#125;)</span><br><span class="line">    <span class="comment"># 字典转为json</span></span><br><span class="line">    payload5 = json.dumps(payload5_dict)</span><br><span class="line">    response5 = requests.post(url5, data=payload5, headers=headers)</span><br><span class="line">    <span class="comment"># print response5.text</span></span><br><span class="line">    result5_str = <span class="string">'&#123;'</span> + str(response5.text).split(<span class="string">','</span>)[<span class="number">4</span>] + <span class="string">'&#125;'</span></span><br><span class="line">    result5_eval = eval(result5_str)[<span class="string">'result'</span>]</span><br><span class="line">    result5 = str(result5_eval)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 请求注册接口</span></span><br><span class="line">    url6 = host + <span class="string">'/JieWebApp/app/security/register'</span></span><br><span class="line">    payload6_dict = dict(&#123;<span class="string">'userName'</span>: phone, <span class="string">'password'</span>: result5, <span class="string">'authCode'</span>: <span class="string">'123456'</span>, <span class="string">'invite'</span>: <span class="string">''</span>, <span class="string">'appChannel'</span>: <span class="string">'appstore'</span>, <span class="string">'appType'</span>: <span class="string">'1'</span>&#125;)</span><br><span class="line">    payload6 = json.dumps(payload6_dict)</span><br><span class="line">    response6 = requests.post(url6, data=payload6, headers=headers)</span><br><span class="line">    <span class="comment"># print response6.text</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 判断结果是否正常</span></span><br><span class="line">    result = re.compile(<span class="string">u'null'</span>)</span><br><span class="line">    check_point = response6.text.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    check_null = result.findall(check_point)</span><br><span class="line">    outcome = check_null.count(<span class="string">'null'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> outcome == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'注册成功'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'注册失败'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义自动生成号码的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_random_phone</span><span class="params">()</span>:</span></span><br><span class="line">    phone_start = <span class="string">'1337777'</span></span><br><span class="line">    phone_end = random.randint(<span class="number">1000</span>, <span class="number">9999</span>)</span><br><span class="line">    phone = phone_start + str(phone_end)</span><br><span class="line">    <span class="comment"># print phone</span></span><br><span class="line">    <span class="keyword">return</span> phone</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    phone_num = get_random_phone()</span><br><span class="line">    <span class="keyword">print</span> phone_num</span><br><span class="line">    user_register(phone_num)</span><br></pre></td></tr></table></figure>
+<p>下面依次说明实现如上脚本中，出现的疑问和解决方法  </p>
+<p>所有的请求以及请求头，请求参数均是之前在jemter上已实现压力测试，然后直接调用之前的数据所得，后期如果要实现接口自动化，还是需要有正规的接口文档会好一点  </p>
+<p>【1】 在整个注册过程中，需要保持cookie或者session一致，python的方法是通过调用requests中的session方法来实现，在发起请求解析前  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requests = requests.session()</span><br></pre></td></tr></table></figure>
+<p>【2】 header是针对服务端有各种限制或特定需求时使用的，一般服务器会进行类似如：X-Requested-With、Content-Length、User-Agent等的验证，所以需要将其以字典的形势发送给服务器</p>
+<p>【3】 post方法如果需要带参数，则需要以json的形式传参，但是一般我们获取到的结果或者自己所写的字段，一般都是为dict字典类型，这样传过去会报错，所以这个时候需要引入json库，将字典转为json</p>
+<font color="red">dict(或对象)与json之间的互相转化</font>
+
+<ul>
+<li>loads()：将json数据转化成dict数据</li>
+<li>dumps()：将dict数据转化成json数据</li>
+<li>load()：读取json文件数据，转成dict数据</li>
+<li>dump()：将dict数据转化成json数据后写入json文件</li>
+</ul>
+<p><strong>示例：</strong>  </p>
+<p>dict字典转json数据  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">dict = &#123;<span class="string">'name'</span>: <span class="string">'many'</span>, <span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br><span class="line">j = json.dumps(dict)</span><br><span class="line"><span class="keyword">print</span> j</span><br></pre></td></tr></table></figure>
+<p>【4】 eval()方法，字符串转为字典</p>
+<p>【5】 random.randint()用于生成一个指定范围内的整数。其中参数a是下限，参数b是上限，生成的随机数n: a &lt;= n &lt;= b   </p>
+<hr>
+<p>本次实现过程参考了如下网址<br><a href="http://blog.csdn.net/foryouslgme/article/details/51822209" target="_blank" rel="noopener">Python入门：模拟登录（二）或注册之requests处理带token请求</a><br><a href="https://testerhome.com/topics/8091" target="_blank" rel="noopener">关于接口自动化的那些事</a><br><a href="http://blog.csdn.net/qq_33689414/article/details/78307018" target="_blank" rel="noopener">dict(或对象)与json之间的互相转化</a><br><a href="http://blog.csdn.net/xiaocaiju/article/details/6973175" target="_blank" rel="noopener">random模块</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/05/Python爬虫学习过程（Second）/" rel="next" title="Python爬虫学习过程（Second）">
+                <i class="fa fa-chevron-left"></i> Python爬虫学习过程（Second）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/Python字符串&元组&列表&字典互转/" rel="prev" title="Python字符串&元组&列表&字典互转">
+                Python字符串&元组&列表&字典互转 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

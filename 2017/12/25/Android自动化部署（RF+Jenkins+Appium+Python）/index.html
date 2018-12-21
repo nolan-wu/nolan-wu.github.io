@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RobotFramework,Jenkins,Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="部署整体情况   编写安卓自动化的测试方案 部署RobotFramework环境 编写脚本并调试 部署jenkins进行自动构建 配置邮件通知   编写安卓自动化的测试方案  跳转日志（另起）   部署RobotFramework环境  跳转日志（另起）    编写脚本并调试   涉及了如下的功能点：    元素定位 ">
+<meta name="keywords" content="RobotFramework,Jenkins,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android自动化部署（RF+Jenkins+Appium+Python）">
+<meta property="og:url" content="http://yoursite.com/2017/12/25/Android自动化部署（RF+Jenkins+Appium+Python）/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="部署整体情况   编写安卓自动化的测试方案 部署RobotFramework环境 编写脚本并调试 部署jenkins进行自动构建 配置邮件通知   编写安卓自动化的测试方案  跳转日志（另起）   部署RobotFramework环境  跳转日志（另起）    编写脚本并调试   涉及了如下的功能点：    元素定位 跳转日志（另起）   失败用例重跑 跳转日志（另起）   Python实现图片对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/llX8QDc.png">
+<meta property="og:image" content="https://i.imgur.com/0nniYgv.png">
+<meta property="og:image" content="https://i.imgur.com/fVy3blS.png">
+<meta property="og:image" content="https://i.imgur.com/XpK4P3h.png">
+<meta property="og:image" content="https://i.imgur.com/Xz4pVkJ.png">
+<meta property="og:image" content="https://i.imgur.com/8PrRslA.png">
+<meta property="og:image" content="https://i.imgur.com/IdGKheT.png">
+<meta property="og:image" content="https://i.imgur.com/IU20fX9.png">
+<meta property="og:image" content="https://i.imgur.com/PkLhoPg.png">
+<meta property="og:image" content="https://i.imgur.com/ZtuYPL7.png">
+<meta property="og:image" content="https://i.imgur.com/dz0ThZZ.png">
+<meta property="og:image" content="https://i.imgur.com/z2LmwuC.png">
+<meta property="og:image" content="https://i.imgur.com/zWi9yGA.png">
+<meta property="og:image" content="https://i.imgur.com/z2LmwuC.png">
+<meta property="og:image" content="https://i.imgur.com/PKnzTa6.png">
+<meta property="og:image" content="https://i.imgur.com/Ke2vt5b.png">
+<meta property="og:image" content="https://i.imgur.com/ETqJofA.png">
+<meta property="og:image" content="https://i.imgur.com/rm9mZAX.png">
+<meta property="og:image" content="https://i.imgur.com/mOMMFt0.png">
+<meta property="og:updated_time" content="2018-04-26T08:35:30.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android自动化部署（RF+Jenkins+Appium+Python）">
+<meta name="twitter:description" content="部署整体情况   编写安卓自动化的测试方案 部署RobotFramework环境 编写脚本并调试 部署jenkins进行自动构建 配置邮件通知   编写安卓自动化的测试方案  跳转日志（另起）   部署RobotFramework环境  跳转日志（另起）    编写脚本并调试   涉及了如下的功能点：    元素定位 跳转日志（另起）   失败用例重跑 跳转日志（另起）   Python实现图片对">
+<meta name="twitter:image" content="https://i.imgur.com/llX8QDc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/25/Android自动化部署（RF+Jenkins+Appium+Python）/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if('7'){
+			if (prompt('请输入访问密码','') !== '7'){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Android自动化部署（RF+Jenkins+Appium+Python） | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/25/Android自动化部署（RF+Jenkins+Appium+Python）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android自动化部署（RF+Jenkins+Appium+Python）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T00:00:00+08:00">
+                2017-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实际运用/" itemprop="url" rel="index">
+                    <span itemprop="name">实际运用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font size="+2" color="DarkGreen"><strong>部署整体情况</strong></font>
+
+<ul>
+<li>编写安卓自动化的测试方案</li>
+<li>部署RobotFramework环境</li>
+<li>编写脚本并调试</li>
+<li>部署jenkins进行自动构建</li>
+<li>配置邮件通知</li>
+</ul>
+<hr>
+<font size="+2" color="red"><strong>编写安卓自动化的测试方案</strong></font>
+
+<p><a href="https://nolan-wu.github.io/2017/12/20/RobotFramework-%E9%9A%8F%E6%89%8B%E5%80%9FAndroid%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">跳转日志（另起）</a>  </p>
+<font size="+2" color="red"><strong>部署RobotFramework环境</strong></font>
+
+<p><a href="https://nolan-wu.github.io/2017/12/21/RobotFramework%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%EF%BC%88%E4%BB%85%E9%92%88%E5%AF%B9App%EF%BC%89/" target="_blank" rel="noopener">跳转日志（另起）</a>  </p>
+<hr>
+<font size="+2" color="red"><strong>编写脚本并调试</strong></font> 
+
+<p>涉及了如下的功能点：  </p>
+<ul>
+<li>元素定位 <a href="https://nolan-wu.github.io/2017/12/21/RobotFramework,Appium%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">跳转日志（另起）</a>  </li>
+<li>失败用例重跑 <a href="https://nolan-wu.github.io/2017/12/21/%E6%89%A9%E5%B1%95RobotFramework%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%A4%B1%E8%B4%A5%E7%94%A8%E4%BE%8B%E8%87%AA%E5%8A%A8%E5%86%8D%E6%89%A7%E8%A1%8C%EF%BC%88%E5%A4%B1%E8%B4%A5%E9%87%8D%E8%B7%91%EF%BC%89/" target="_blank" rel="noopener">跳转日志（另起）</a>  </li>
+<li>Python实现图片对比 <a href="https://nolan-wu.github.io/2017/12/22/Python+Pillow%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%EF%BC%88%E5%AF%B9%E6%AF%94,%E8%A3%81%E5%89%AA...%EF%BC%89/" target="_blank" rel="noopener">跳转日志（另起）</a>  </li>
+<li>导入自定义库 <a href="https://nolan-wu.github.io/2017/12/20/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%BC%E5%85%A5RobotFramework%20%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E5%BA%93%E6%96%87%E4%BB%B6%EF%BC%89/" target="_blank" rel="noopener">跳转日志（另起）</a><br><br></li>
+</ul>
+<font color="blue" size="+1"><center><strong>如下列举本次在“社保”模块的脚本及步骤</strong></center></font>
+
+
+<blockquote>
+<p>RIDE整体结构样式（选择“<strong>测试套件</strong>”Other Information）：</p>
+</blockquote>
+<p><img src="https://i.imgur.com/llX8QDc.png" alt=""></p>
+<hr>
+<blockquote>
+<p>编写“<strong>测试用例</strong>”内容（简要，主要使用关键字）：</p>
+</blockquote>
+<p><img src="https://i.imgur.com/0nniYgv.png" alt="">  </p>
+<p>主要使用关键字，保持用例简洁，run keyword if条件后面结果均需要带关键字<br>如上测试用例中使用了“社保资料页面校验”、“社保资料页面再次校验”两种关键字<br>且<font color="blue"><strong>通过输出结果FAIL来再次调用关键字，达到失败用例重跑</strong></font>的效果</p>
+<hr>
+<blockquote>
+<p>编写“<strong>关键字</strong>”进行调用（社保资料页面校验）：  </p>
+</blockquote>
+<p><img src="https://i.imgur.com/fVy3blS.png" alt=""></p>
+<p>如上关键字“社保资料页面校验”中使用了关键字“打开随手借APP”/“登录用户-授权资料调用”和自定义库“Compare”<br>如下作这两部分的使用说明：</p>
+<hr>
+<p>关键字“<strong>打开随手借APP</strong>”：</p>
+<p><img src="https://i.imgur.com/XpK4P3h.png" alt=""></p>
+<ul>
+<li>Open Application <a href="http://localhost:4723/wd/hub//打开应用" target="_blank" rel="noopener">http://localhost:4723/wd/hub//打开应用</a>  </li>
+<li>platformName=Android //应用平台名称  </li>
+<li>platformVersion=6.0.1 //应用平台版本（运行的android设备的版本号）  </li>
+<li>deviceName=samsung-sm_7010-bda0ceea //应用名称（运行的android设备名称）  </li>
+<li>appPackage=audaque.SuiShouJie //包名  </li>
+<li>appActivity=audaque.SuiShouJie.SplashActivity  //查找Android应用界面所对应的activity名称  </li>
+<li>unicodeKeyboard=True resetKeyboard=True  //机中的文本框输入数据时，位置错乱解决方法  </li>
+</ul>
+<font color="red"><strong>注：</strong></font>   
+
+<ul>
+<li>利用UI Automator Viewer工具（SDK自带的tools工具）可以查询deviceName和appPackage  </li>
+<li>查询deviceName需多台设备连接PC，才可以检验出来，appPackage则打开App即可  </li>
+<li>查询appActivity：打开appium，进入设置页选择app包，之后会对应显示，也可查appPackage  </li>
+</ul>
+<hr>
+<p>关键字“<strong>登录用户-授权资料调用</strong>” ：</p>
+<p><img src="https://i.imgur.com/Xz4pVkJ.png" alt=""></p>
+<p>调用关键字“密码调用”：</p>
+<p><img src="https://i.imgur.com/8PrRslA.png" alt=""></p>
+<hr>
+<p>调用”<strong>Python自定义库</strong>“，使用定义关键字“Compare”</p>
+<p>1.在D:\Python27\Lib\site-packages\中建立文件夹ssjCompare；  </p>
+<p>2.在ssjCompare文件夹中建立myclass.py，编写脚本；<br>含图片截图，对比：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#author='nolan-wu'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">compare</span><span class="params">(self,i,pic1,pic2)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        :param i: 选择判定模块(0:登录，1:社保，2:公积金，3:学历，4京东，5:芝麻信用，6:运营商，7:借款)</span></span><br><span class="line"><span class="string">        :param pic1: 图片1路径</span></span><br><span class="line"><span class="string">        :param pic2: 图片2路径</span></span><br><span class="line"><span class="string">        :return: 返回对比的结果</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#各模块校验点坐标(左a、上b、右c和下d的像素坐标)</span></span><br><span class="line">        a = [<span class="string">'420'</span>,<span class="string">'691'</span>,<span class="string">'691'</span>,<span class="string">'60'</span>,<span class="string">'749'</span>,<span class="string">'749'</span>,<span class="string">'709'</span>,<span class="string">'351'</span>]</span><br><span class="line">        b = [<span class="string">'225'</span>,<span class="string">'833'</span>,<span class="string">'833'</span>,<span class="string">'982'</span>,<span class="string">'948'</span>,<span class="string">'948'</span>,<span class="string">'940'</span>,<span class="string">'347'</span>]</span><br><span class="line">        c = [<span class="string">'658'</span>,<span class="string">'906'</span>,<span class="string">'906'</span>,<span class="string">'661'</span>,<span class="string">'964'</span>,<span class="string">'964'</span>,<span class="string">'924'</span>,<span class="string">'728'</span>]</span><br><span class="line">        d = [<span class="string">'461'</span>,<span class="string">'936'</span>,<span class="string">'936'</span>,<span class="string">'1108'</span>,<span class="string">'1051'</span>,<span class="string">'1051'</span>,<span class="string">'1043'</span>,<span class="string">'826'</span>]</span><br><span class="line"></span><br><span class="line">        i = int(i)</span><br><span class="line">        a = int(a[i])</span><br><span class="line">        b = int(b[i])</span><br><span class="line">        c = int(c[i])</span><br><span class="line">        d = int(d[i])</span><br><span class="line">        box = (a,b,c,d)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载原始图片</span></span><br><span class="line">        img1 = Image.open(pic1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 剪切 标识图片</span></span><br><span class="line">        img2 = img1.crop(box)</span><br><span class="line">        img2.save(pic1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片对比</span></span><br><span class="line">        image1 = Image.open(pic1)</span><br><span class="line">        image2 = Image.open(pic2)</span><br><span class="line"></span><br><span class="line">        histogram1 = image1.histogram()</span><br><span class="line">        histogram2 = image2.histogram()</span><br><span class="line"></span><br><span class="line">        differ = math.sqrt(reduce(operator.add, list(map(<span class="keyword">lambda</span> a,b: (a-b)**<span class="number">2</span>,histogram1, histogram2)))/len(histogram1))</span><br><span class="line"><span class="comment">#        print differ</span></span><br><span class="line"></span><br><span class="line">        flag = <span class="keyword">False</span></span><br><span class="line">        result = differ</span><br><span class="line">        <span class="keyword">if</span> result != <span class="number">0</span>:</span><br><span class="line">            flag = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">print</span> <span class="string">u'正常'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">u'不正常'</span></span><br><span class="line">            <span class="keyword">print</span> unicode(<span class="string">'不正常'</span>) <span class="comment">#故意出错，达到用例执行有误的效果</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">#compare(r'E:\RobotFramework\CheckPic\login.png',r'E:\RobotFramework\ComparePic\login-demo.png')</span></span><br><span class="line">    <span class="comment">#location((80, 220, 310, 450))</span></span><br></pre></td></tr></table></figure></p>
+<p>3.在文件夹内建立init.py文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> myclass <span class="keyword">import</span> MyClass</span><br><span class="line">version = <span class="string">'1.0'</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ssjCompare</span><span class="params">(MyClass)</span>:</span></span><br><span class="line">    ROBOT_LIBRARY_SCOPE = <span class="string">'GLOBAL'</span></span><br></pre></td></tr></table></figure>
+<p>4.在Robotframework测试套件中调用这个自定义库，导入后按F5查询可以查询到该关键字 </p>
+<p>5.在用例中使用该关键字“Compare”</p>
+<hr>
+<blockquote>
+<p>编写“<strong>关键字</strong>”进行调用（社保资料页面再次校验）：</p>
+</blockquote>
+<p><img src="https://i.imgur.com/IdGKheT.png" alt=""></p>
+<p>调用关键字“密码调用”：  </p>
+<p><img src="https://i.imgur.com/IU20fX9.png" alt="">  </p>
+<font size="+1" color="yellow"><strong>至此，用例调试成功</strong></font>
+
+
+<hr>
+<font size="+2" color="red"><strong>部署jenkins进行自动构建</strong></font>
+
+<p>涉及了如下的功能点：   </p>
+<ul>
+<li>Jenkins环境构建 <a href="https://nolan-wu.github.io/2017/12/22/RobotFramework%E7%BB%93%E5%90%88Jenkins/" target="_blank" rel="noopener">跳转日志（另起）</a>   </li>
+<li>Jenkins权限配置 <a href="https://nolan-wu.github.io/2017/12/22/Jenkins%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E7%9A%84%E9%A1%B9%E7%9B%AE%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" target="_blank" rel="noopener">跳转日志（另起）</a>  </li>
+</ul>
+<font color="blue" size="+1"><center><strong>如下列举本次在Jenkins上的配置</strong></center></font>
+
+<blockquote>
+<p>配置<strong>定时触发任务</strong>“授权页面自动化检测”</p>
+</blockquote>
+<ul>
+<li>配置两层下级目录，用于构建后自动触发 </li>
+</ul>
+<p><img src="https://i.imgur.com/PkLhoPg.png" alt=""></p>
+<ul>
+<li>配置丢弃旧的构建</li>
+</ul>
+<p><img src="https://i.imgur.com/ZtuYPL7.png" alt=""></p>
+<ul>
+<li>配置构建触发器，定时进行构建</li>
+</ul>
+<p><img src="https://i.imgur.com/dz0ThZZ.png" alt=""></p>
+<hr>
+<blockquote>
+<p>配置<strong>Appium</strong>自动启动结束的机制</p>
+</blockquote>
+<ul>
+<li>配置上级目录，用于被触发</li>
+</ul>
+<p><img src="https://i.imgur.com/z2LmwuC.png" alt=""></p>
+<ul>
+<li><p>配置丢弃旧的构建</p>
+</li>
+<li><p>配置构建触发脚本，调用脚本运行并设定持续时长</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/zWi9yGA.png" alt=""></p>
+<hr>
+<blockquote>
+<p>配置<strong>RobotFramework脚本</strong>自动运行的机制</p>
+</blockquote>
+<ul>
+<li>配置上级目录，用于被触发</li>
+</ul>
+<p><img src="https://i.imgur.com/z2LmwuC.png" alt=""></p>
+<ul>
+<li><p>配置丢弃旧的构建</p>
+</li>
+<li><p>配置构建触发脚本，调用脚本运行</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/PKnzTa6.png" alt=""></p>
+<ul>
+<li>配置RobotFramework结果的输出</li>
+</ul>
+<p><img src="https://i.imgur.com/Ke2vt5b.png" alt=""></p>
+<hr>
+<font size="+2" color="red"><strong>配置邮件通知</strong></font> 
+
+
+<blockquote>
+<p>Jenkins设置管理中配置 Extended E-mail Notification默认设置</p>
+</blockquote>
+<p><img src="https://i.imgur.com/ETqJofA.png" alt=""></p>
+<blockquote>
+<p>JOB配置中增加一个构建后操作步骤Editable Email Notification</p>
+</blockquote>
+<p><img src="https://i.imgur.com/rm9mZAX.png" alt=""></p>
+<ul>
+<li>Content Type选择Both HTML and PlainText</li>
+<li>Default Subject指的是邮件的标题（$BUILD_STATUS指的是执行结果状态）</li>
+<li>Default Content则填写邮件的输出内容</li>
+</ul>
+<font color="blue" size="+1"><center><strong>邮件模板配置</strong></center></font>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;h2&gt;&lt;font color=&quot;red&quot;&gt;$&#123;ENV, var=&quot;JOB_NAME&quot;&#125;-执行情况：$BUILD_STATUS！&lt;/font&gt;&lt;/h2&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">$&#123;SCRIPT,template=&quot;email_result.groovy&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>引用了template=”email_result.groovy”自定义模板<br>引用编辑位置：C:\Users\admin.jenkins\email-templates（jenkins目录，没有该目录自行新建）   </p>
+<p>配置自定义的模板文件 <a href="https://nolan-wu.github.io/2017/12/22/%E4%BD%BF%E7%94%A8Jenkins+Email%20Extension%20Plugin%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%8A%A5%E5%91%8A/" target="_blank" rel="noopener">跳转日志（另起）</a>  </p>
+<p><strong>文件内容如下：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%</span>  </span></span><br><span class="line"><span class="tag"> <span class="attr">import</span> <span class="attr">java.text.DateFormat</span>  </span></span><br><span class="line"><span class="tag"> <span class="attr">import</span> <span class="attr">java.text.SimpleDateFormat</span>  </span></span><br><span class="line"><span class="tag"> %&gt;</span>  </span><br><span class="line">    <span class="comment">&lt;!-- Robot Framework Results --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">%</span>  </span></span><br><span class="line"><span class="tag"> <span class="attr">def</span> <span class="attr">robotResults</span> = <span class="string">false</span>  </span></span><br><span class="line"> def actions = build.actions // List&lt;hudson.model.Action&gt;  </span><br><span class="line"> actions.each() &#123; action -&gt;  </span><br><span class="line">  if( action.class.simpleName.equals("RobotBuildAction") ) &#123; // hudson.plugins.robot.RobotBuildAction  </span><br><span class="line">   robotResults = true %&gt;</span><br><span class="line">                   <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:100%;float:left"</span>&gt;</span> </span><br><span class="line">                    <span class="tag">&lt;<span class="name">table</span> <span class="attr">cellspacing</span>=<span class="string">"0"</span> <span class="attr">cellpadding</span>=<span class="string">"4"</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>  </span><br><span class="line">                        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"#F3F3F3"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span> <span class="attr">colspan</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Android自动化测试报告<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>    </span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width:90px"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>报告详情<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://10.0.5.14:8080/job/%E9%9A%8F%E6%89%8B%E5%80%9F_Android%E8%87%AA%E5%8A%A8%E5%8C%96%E6%A3%80%E6%B5%8B/"</span>&gt;</span>点击查看报告详情<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Jenkins账号<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://10.0.5.14:8080/"</span>&gt;</span>点击跳转Jenkins<span class="tag">&lt;/<span class="name">a</span>&gt;</span>，账号：ssj/000000<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"#F3F3F3"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width:90px"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>用例总数<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width:90px"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>通 过<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width:90px"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>不通过<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"width:90px"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>通过率<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>                           </span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">action.result.overallTotal</span> %&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:#66CC00"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">action.result.overallPassed</span> %&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:#FF3333"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">action.result.overallFailed</span> %&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">action.overallPassPercentage</span> %&gt;</span>%<span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"#F3F3F3"</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align:center"</span> <span class="attr">colspan</span>=<span class="string">"4"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>执行情况概要<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>    </span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"#F3F3F3"</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>校验模块<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>执行结果<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>执行耗时<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>  </span><br><span class="line">                        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span>  </span><br><span class="line">                        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">def</span> <span class="attr">suites</span> = <span class="string">action.result.allSuites</span>  </span></span><br><span class="line"><span class="tag">   <span class="attr">suites.each</span>() &#123; <span class="attr">suite</span> <span class="attr">-</span>&gt;</span>   </span><br><span class="line">    def currSuite = suite  </span><br><span class="line">    def suiteName = currSuite.displayName  </span><br><span class="line">    // ignore top 2 elements in the structure as they are placeholders  </span><br><span class="line">    while (currSuite.parent != null &amp;&amp; currSuite.parent.parent != null) &#123;  </span><br><span class="line">     currSuite = currSuite.parent  </span><br><span class="line">     suiteName = currSuite.displayName + "." + suiteName  </span><br><span class="line">    &#125; %&gt;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span>  <span class="attr">DateFormat</span> <span class="attr">format</span> = <span class="string">new</span> <span class="attr">SimpleDateFormat</span>("<span class="attr">yyyyMMdd</span> <span class="attr">HH:mm:ss</span>")</span></span><br><span class="line"><span class="tag">    <span class="attr">def</span> <span class="attr">execDateTcPairs</span> = <span class="string">[]</span></span></span><br><span class="line"><span class="tag">    <span class="attr">suite.caseResults.each</span>() &#123; <span class="attr">tc</span> <span class="attr">-</span>&gt;</span>  </span><br><span class="line">      Date execDate = format.parse(tc.starttime)</span><br><span class="line">      execDateTcPairs &lt;&lt; [execDate, tc]</span><br><span class="line">    &#125;</span><br><span class="line">    // primary sort execDate, secondary displayName</span><br><span class="line">    execDateTcPairs = execDateTcPairs.sort&#123; a,b -&gt; a[1].displayName <span class="tag">&lt;<span class="name">=</span>&gt;</span> b[1].displayName &#125;</span><br><span class="line">    execDateTcPairs = execDateTcPairs.sort&#123; a,b -&gt; a[0] <span class="tag">&lt;<span class="name">=</span>&gt;</span> b[0] &#125;</span><br><span class="line">    execDateTcPairs.each() &#123;</span><br><span class="line">      def execDate = it[0]</span><br><span class="line">      def tc = it[1]  %&gt;</span><br><span class="line"></span><br><span class="line">                            <span class="tag">&lt;<span class="name">tr</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">tc.displayName</span> %&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"color:&lt;%= tc.isPassed() ? "</span>#<span class="attr">66CC00</span>" <span class="attr">:</span> "#<span class="attr">FF3333</span>" %&gt;</span>"&gt;<span class="tag">&lt;<span class="name">%=</span> <span class="attr">tc.isPassed</span>() ? "<span class="attr">PASS</span>" <span class="attr">:</span> "<span class="attr">FAIL</span>" %&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">tc.getDuration</span>()<span class="attr">.intdiv</span>(<span class="attr">60000</span>)+"分"+(<span class="attr">tc.getDuration</span>()<span class="attr">-tc.getDuration</span>()<span class="attr">.intdiv</span>(<span class="attr">60000</span>)*<span class="attr">60000</span>)<span class="attr">.intdiv</span>(<span class="attr">1000</span>)+"秒" %&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>  </span><br><span class="line">                            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>  </span><br><span class="line">                            <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">tc.errorMsg</span> != <span class="string">null)</span> &#123;%&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">%</span></span></span><br><span class="line"><span class="tag">                             &#125;%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span>  &#125; // <span class="attr">tests</span>  </span></span><br><span class="line"><span class="tag">   &#125; // <span class="attr">suites</span> %&gt;</span>  </span><br><span class="line">                        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"color:#AE0000;clear:both"</span>&gt;</span>*这个是通过Jenkins自动构建得出的报告，仅供参考<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">                    如有疑问，请与我联系（吴泽鹏）<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">%</span>  </span></span><br><span class="line"><span class="tag">  &#125; // <span class="attr">robot</span> <span class="attr">results</span>  </span></span><br><span class="line"><span class="tag"> &#125;  </span></span><br><span class="line"><span class="tag"> <span class="attr">if</span> (!<span class="attr">robotResults</span>) &#123; %&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>No Robot Framework test results found.<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">%</span>  </span></span><br><span class="line"><span class="tag"> &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>邮件配置后对应效果如下：</p>
+<p><img src="https://i.imgur.com/mOMMFt0.png" alt=""></p>
+<hr>
+<font size="+2" color="blue">至此，<strong>全部部署完成</strong><br>根据设定的自定义构建时间，对应时刻就自动执行自动化<br>需保持手机正常连接，网络无异常</font>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RobotFramework/" rel="tag"><i class="fa fa-tag"></i> RobotFramework</a>
+          
+            <a href="/tags/Jenkins/" rel="tag"><i class="fa fa-tag"></i> Jenkins</a>
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/25/Python简介及特性/" rel="next" title="Python简介及特性">
+                <i class="fa fa-chevron-left"></i> Python简介及特性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/25/运行Python脚本报错（unindent does not match any outer indentation level ）/" rel="prev" title="运行Python脚本报错(IndentationError:unindent does not match any outer indentation level)">
+                运行Python脚本报错(IndentationError:unindent does not match any outer indentation level) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

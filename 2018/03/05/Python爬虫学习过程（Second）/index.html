@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一阶段First主要是学习爬取网站的基本内容，第二阶段的学习，主要是学会爬取大规模数据在第一阶段的基础上，学会把数据存放在MongoDB中，并进行数据的分类和查找python在开发过程中实际上可以将数据存储到不同的数据库中，但mongodb是学习成本最低且储存大量数据有优势的一种数据库      MongoDB教程h">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬虫学习过程（Second）">
+<meta property="og:url" content="http://yoursite.com/2018/03/05/Python爬虫学习过程（Second）/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="第一阶段First主要是学习爬取网站的基本内容，第二阶段的学习，主要是学会爬取大规模数据在第一阶段的基础上，学会把数据存放在MongoDB中，并进行数据的分类和查找python在开发过程中实际上可以将数据存储到不同的数据库中，但mongodb是学习成本最低且储存大量数据有优势的一种数据库      MongoDB教程http://www.runoob.com/mongodb/mongodb-tut">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/xzPTO56.png">
+<meta property="og:image" content="https://i.imgur.com/GCnAmK8.png">
+<meta property="og:image" content="https://i.imgur.com/lJPHKlM.png">
+<meta property="og:image" content="https://i.imgur.com/GAobvpq.png">
+<meta property="og:image" content="https://i.imgur.com/sgESz1H.png">
+<meta property="og:updated_time" content="2018-03-05T10:21:00.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python爬虫学习过程（Second）">
+<meta name="twitter:description" content="第一阶段First主要是学习爬取网站的基本内容，第二阶段的学习，主要是学会爬取大规模数据在第一阶段的基础上，学会把数据存放在MongoDB中，并进行数据的分类和查找python在开发过程中实际上可以将数据存储到不同的数据库中，但mongodb是学习成本最低且储存大量数据有优势的一种数据库      MongoDB教程http://www.runoob.com/mongodb/mongodb-tut">
+<meta name="twitter:image" content="https://i.imgur.com/xzPTO56.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/05/Python爬虫学习过程（Second）/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if('7'){
+			if (prompt('请输入访问密码','') !== '7'){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Python爬虫学习过程（Second） | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Python爬虫学习过程（Second）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python爬虫学习过程（Second）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T00:00:00+08:00">
+                2018-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第一阶段First主要是学习爬取网站的基本内容，第二阶段的学习，主要是学会爬取大规模数据<br>在第一阶段的基础上，学会把数据存放在MongoDB中，并进行数据的分类和查找<br>python在开发过程中实际上可以将数据存储到不同的数据库中，但mongodb是学习成本最低且储存大量数据有优势的一种数据库     </p>
+<p>MongoDB教程<br><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/mongodb/mongodb-tutorial.html</a>  </p>
+<hr>
+<h1 id="MongoDB环境准备"><a href="#MongoDB环境准备" class="headerlink" title="MongoDB环境准备"></a><font color="blue">MongoDB环境准备</font></h1><p>（步骤如下）</p>
+<font size="+1" color="orange"><strong>1. 安装MongoDB</strong></font>
+
+<p>windows7系统在安装之前需要实现安装补丁<br><a href="https://support.microsoft.com/zh-cn/help/2731284/" target="_blank" rel="noopener">https://support.microsoft.com/zh-cn/help/2731284/</a><br>MongoDB官网下载：<br><a href="https://www.mongodb.com/download-center?jmp=nav#community" target="_blank" rel="noopener">https://www.mongodb.com/download-center?jmp=nav#community</a> </p>
+<p>注：3.6版本安装过程会卡死，所以只能下载安装3.4<br><a href="http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-v3.4-latest-signed.msi?_ga=2.7045623.410933966.1512521590-461885398.1512521590" target="_blank" rel="noopener">http://downloads.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-v3.4-latest-signed.msi?_ga=2.7045623.410933966.1512521590-461885398.1512521590</a>  </p>
+<p><strong>步骤： </strong><br>1.安装文件<br>2.建立工作目录<br>  建立数据存放目录 D:\mongodb\data<br>  建立日志文件 D:\mongodb\log\mongodb.log<br>3.添加安装路径到path环境变量<br>  D:\Program Files\MongoDB\Server\3.4\bin<br>4.启动mongodb服务<br>  <code>mongod.exe --dbpath=D:\MongoDB\data</code><br>  若访问 <a href="http://localhost:27017" target="_blank" rel="noopener">http://localhost:27017</a> 会出现如下提示则表明服务已经启动  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You are trying to access MongoDB on the native driver port. For http diagnostic access, add 1000 to the port number</span><br></pre></td></tr></table></figure>
+<p>5.将mongdb作为windows服务随机启动<br>  控制台中输入：<br>  <code>mongod.exe --dbpath=D:\mongodb\data --logpath=D:\mongodb\log\mongodb.log --install</code><br>6.连接mongodb<br>  在控制台中输入 <code>net start mongodb</code>，出现 “Mongo DB 服务已经启动成功”的提示则成功</p>
+<font size="+1" color="orange"><strong>2. 安装第三方库Pymongo</strong></font>
+
+<p>Cmd终端中运行 <code>pip install pymongo</code> 进行安装</p>
+<font size="+1" color="orange"><strong>3. 安装PyCharm的MongoDB插件</strong></font>
+
+<p>进入Pycharm设置，Plugins中选择Search in repositories，再搜索mongodb插件，安装后重启Pycharm即可  </p>
+<p><img src="https://i.imgur.com/xzPTO56.png" alt=""><br><img src="https://i.imgur.com/GCnAmK8.png" alt="">  </p>
+<p><strong>配置mongo插件</strong>   </p>
+<p>在“视图（View）”中打开“工具按钮（ToolButton）”，pycharm右侧可看到扳手标识  </p>
+<p><img src="https://i.imgur.com/lJPHKlM.png" alt=""></p>
+<p>在MongoServers中配置新增后即可可视化mongodb   </p>
+<p><img src="https://i.imgur.com/GAobvpq.png" alt=""><br><img src="https://i.imgur.com/sgESz1H.png" alt="">  </p>
+<font size="+1" color="orange"><strong>如上即完成了环境的部署</strong></font>
+
+<hr>
+<h1 id="使用MongoDB（建写表-查表-筛选表）"><a href="#使用MongoDB（建写表-查表-筛选表）" class="headerlink" title="使用MongoDB（建写表/查表/筛选表）"></a><font color="blue">使用MongoDB（建写表/查表/筛选表）</font></h1><p>（依次如下）  </p>
+<font size="+1" color="orange"><strong>连接/建库建表/存写数据</strong></font>
+
+<p>Python中对MongoDB进行操作需要进行连接，所以需要导入与mongodb连接的一个库pymongo     </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 激活mongodb的本地客户端</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line"><span class="comment"># 1.给数据库命名 == 给Excel文件命名（左边是python中的对象，右边是数据库中的对象）</span></span><br><span class="line">walden = client[<span class="string">'walden'</span>]</span><br><span class="line"><span class="comment"># 2.在文件下创建表单 == 在Excel中增加sheet</span></span><br><span class="line">sheet_tab = walden[<span class="string">'sheet_tab'</span>]</span><br><span class="line"></span><br><span class="line">path = <span class="string">'E:/Python/EXE_TEST/walden.txt'</span></span><br><span class="line"><span class="keyword">with</span> open(path, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    lines = f.readlines()</span><br><span class="line">    <span class="keyword">for</span> index, line <span class="keyword">in</span> enumerate(lines):</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'index'</span>: index,</span><br><span class="line">            <span class="string">'line'</span>: line,</span><br><span class="line">            <span class="string">'words'</span>: len(line.split())</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># print data</span></span><br><span class="line">        <span class="comment"># 把查找出来的字典结构存储到数据库中</span></span><br><span class="line">        <span class="comment"># 3.往数据库写入数据 == 在Excel中填写每一行数据</span></span><br><span class="line">        sheet_tab.insert_one(data)</span><br></pre></td></tr></table></figure>
+<p><strong>脚本中使用到的函数</strong>  </p>
+<ul>
+<li>enumerate() 内置函数</li>
+</ul>
+<p>enumerate在字典上是枚举、列举的意思，作为一个索引<br>在python中enumerate的用法多用于在for循环中得到计数<br>例如如下方法：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">"这"</span>, <span class="string">"是"</span>, <span class="string">"一个"</span>, <span class="string">"测试"</span>]</span><br><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(list1):</span><br><span class="line">    <span class="keyword">print</span> index, item</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">0</span> 这</span><br><span class="line"><span class="number">1</span> 是</span><br><span class="line"><span class="number">2</span> 一个</span><br><span class="line"><span class="number">3</span> 测试</span><br></pre></td></tr></table></figure>
+<p>enumerate还可以接收第二个参数，用于指定索引起始值，如：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="string">"这"</span>, <span class="string">"是"</span>, <span class="string">"一个"</span>, <span class="string">"测试"</span>]</span><br><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(list1, <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">print</span> index, item</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">1</span> 这</span><br><span class="line"><span class="number">2</span> 是</span><br><span class="line"><span class="number">3</span> 一个</span><br><span class="line"><span class="number">4</span> 测试</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.split() 方法</li>
+</ul>
+<p>Python split()通过指定分隔符对字符串进行切片，返回分割后的字符串列表</p>
+<ul>
+<li>with open 方法</li>
+</ul>
+<p>文件的open和close函数过繁琐，用with open (path, ‘r’) as f 简化</p>
+<font size="+1" color="orange"><strong>查看数据</strong></font>
+
+<p>如上脚本执行后会对应在mongodb数据库中生成一张sheet_tab的表格，对该表格数据的查看和展示方式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line">walden = client[<span class="string">'walden'</span>]</span><br><span class="line">sheet_tab = walden[<span class="string">'sheet_tab'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> sheet_tab.find():</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure>
+<p>或者直接通过右侧的mongodb插件进行刷新查看  </p>
+<font size="+1" color="orange"><strong>操作数据</strong></font>
+
+<p>对数据库进行操作，针对数据进行提取筛选  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line">walden = client[<span class="string">'walden'</span>]</span><br><span class="line">sheet_tab = walden[<span class="string">'sheet_tab'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5.数据库的操作 对换行符的数据进行提取筛选</span></span><br><span class="line"><span class="comment"># 在table中要去查找数据，要用find方法，特定数据用字典结构</span></span><br><span class="line"><span class="comment"># for item in sheet_tab.find(&#123;'words': 0&#125;):</span></span><br><span class="line"><span class="comment">#     print item</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for item in sheet_tab.find():</span></span><br><span class="line"><span class="comment">#     print item['line']</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># $lt / $lte / $gt / $gte / $ne ，依次等价于 &lt; / &lt;= / &gt; / &gt;= /!=</span></span><br><span class="line"><span class="comment"># ( l表示less g表示greater e表示equal n表示not )</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> sheet_tab.find(&#123;<span class="string">'words'</span>: &#123;<span class="string">'$gt'</span>: <span class="number">10</span>&#125;&#125;):</span><br><span class="line">    <span class="keyword">print</span> item</span><br></pre></td></tr></table></figure>
+<p>mongodb表格内容的查询，要通过find()的方法，查询内容再通过嵌套字典的方式，如下列举简单的集中查询方法  </p>
+<p><strong>指定返回内容：</strong>  </p>
+<ul>
+<li>.find()<br>返回所有的信息</li>
+<li>.find({})<br>返回符合where条件的信息，全部列展示</li>
+<li>.find({}, {‘列名’: 1, ‘列名’： 0})<br>第一个{}放where条件，第二个{}中列表指的是如name，phone，1表示显示该列信息，0表示不显示</li>
+</ul>
+<p><strong>where条件：</strong>   </p>
+<ul>
+<li>.find({‘name’: ‘abc’})<br>简单的等于</li>
+<li>.find({‘name’: ‘abc’, ‘age’: 18})<br>and语句，同时满足</li>
+<li>.find({‘$or’: [{‘age’: 10}, {‘age’: 15}]})<br>or语句，某一条件满足</li>
+<li>.find({‘age’: {‘$gte’: 20, ‘$lte’:30}})<br>&lt;, &lt;=, &gt;, &gt;= 等同于 ($lt, $lte, $gt, $gte)</li>
+<li>.find({‘age’: {‘$in’: [10, 22, 26]}})<br>in, not in 等同于 ($in, $nin)</li>
+<li>.find({‘age’: null})<br>匹配null</li>
+</ul>
+<hr>
+<h1 id="爬取58同城租房信息并存表查表"><a href="#爬取58同城租房信息并存表查表" class="headerlink" title="爬取58同城租房信息并存表查表"></a><font color="blue">爬取58同城租房信息并存表查表</font></h1><p>作业原来设定的是：对小猪短租网进行爬取，实际如下自己以爬取58深圳租房的信息，筛选条件为单间整租和价格在1500-2000之间，将爬取到的数据进行存储，存到了新增MongoDB的renting表中，再通过表进行查询，查询筛选在1800以下的房租信息，如下是具体的实现代码：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'f=n; f=n; f=n; f=n; userid360_xml=1057868E4C3D6E39D7745D4D5F05F047; time_create=1522303572699; id58=c5/njVqP6H5S78e6AwMFAg==; 58home=sz; f=n; city=sz; 58tj_uuid=ac4d317f-6a49-49bc-bbc0-7f4fab091f4a; new_uv=1; utm_source=; spm=; init_refer=https%253A%252F%252Fwww.baidu.com%252Flink%253Furl%253DGOOPbbjEtcSJtZ5ydshMZpqQgU5IiU2BWdNWQ1v0unO%2526wd%253D%2526eqid%253D9187917400047e80000000065a94f544; commontopbar_new_city_info=4%7C%E6%B7%B1%E5%9C%B3%7Csz; commontopbar_ipcity=sz%7C%E6%B7%B1%E5%9C%B3%7C0; als=0; commontopbar_myfeet_tooltip=end; new_session=0; wmda_uuid=f658abda0031d6cb3ba7a4777a4c3747; wmda_new_uuid=1; wmda_session_id_2385390625025=1519711568394-0cf7f423-a9b2-f92d; wmda_visited_projects=%3B2385390625025; xxzl_deviceid=E3MvqKhhfbzwRShu%2BCnSdRAiAHXBuE%2BaBzOUfKroWn1Hw%2B1alcaU4qJT445EhThM'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 筛选条件为深圳罗湖，单间整租，2000元</span></span><br><span class="line">urls = [<span class="string">'http://sz.58.com/luohu/zufang/0/b11j1/pn%d/?PGTID=0d300008-0071-2fa6-21e1-ee16576effd8&amp;ClickID=4'</span> % i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">4</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义多页爬取的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_housenews</span><span class="params">(url, data=None)</span>:</span></span><br><span class="line">    wd_data = requests.get(url, headers=headers)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    wd_data.encoding = <span class="string">'utf-8'</span></span><br><span class="line">    soup = BeautifulSoup(wd_data.text, <span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line">    titles = soup.select(<span class="string">'div.des &gt; h2 &gt; a[target="_blank"]'</span>)</span><br><span class="line">    sizes = soup.select(<span class="string">'div.des &gt; p.room'</span>)</span><br><span class="line">    descriptions = soup.find_all(onclick=re.compile(<span class="string">"from=fcpc_list_sz_biaoti_shangquan"</span>))</span><br><span class="line">    prices = soup.select(<span class="string">'div.money &gt; b'</span>)</span><br><span class="line">    urls = soup.select(<span class="string">'div.des &gt; h2 &gt; a[target="_blank"]'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> data == <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">for</span> title, size, price, description, url <span class="keyword">in</span> zip(titles, sizes, prices, descriptions, urls):</span><br><span class="line">            data = &#123;</span><br><span class="line">                <span class="string">'title'</span>: title.get_text().strip(),</span><br><span class="line">                <span class="string">'size'</span>: size.get_text().replace(<span class="string">'                    '</span>, <span class="string">','</span>),</span><br><span class="line">                <span class="string">'price'</span>: price.get_text(),</span><br><span class="line">                <span class="string">'description'</span>: description.get_text().strip(),</span><br><span class="line">                <span class="string">'url'</span>: url.get(<span class="string">'href'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment"># print data</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment"># --------------------------------------- 存储到mongodb中去 ----------------------------------------------</span></span><br><span class="line"></span><br><span class="line">            client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line">            renting = client[<span class="string">'renting'</span>]</span><br><span class="line">            sheet_tab = renting[<span class="string">'sheet_tab'</span>]</span><br><span class="line">            <span class="comment"># 插入爬取到的数据</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                sheet_tab.insert_one(data)</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"爬取数据插入MongoDB成功！"</span></span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"数据插入MongoDB数据库失败！"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------------------------------------- 主体程序 -----------------------------------------------------</span></span><br><span class="line"><span class="comment"># 调用函数进行数据爬取和数据库的插入</span></span><br><span class="line"><span class="comment"># for url in urls:</span></span><br><span class="line"><span class="comment">#     get_housenews(url)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对数据库已有数据进行筛选操作</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line">renting = client[<span class="string">'renting'</span>]</span><br><span class="line">sheet_tab = renting[<span class="string">'sheet_tab'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> news <span class="keyword">in</span> sheet_tab.find(&#123;<span class="string">'price'</span>: &#123;<span class="string">'$gt'</span>: <span class="string">'1800'</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>&#125;):</span><br><span class="line">    <span class="keyword">print</span> news</span><br></pre></td></tr></table></figure>
+<p>·  </p>
+<font size="+1" color="red"><strong>特别注意：爬取网站之前一定要配置Headers（Cookie/User-Agent）以及设置time.sleep，这样才能伪造用户访问的状态，不中反爬取机制！！！</strong></font>
+
+<p>·  </p>
+<p>如上代码中，使用了soup.find_all的新方法，具体的soup方法，另起日志进行记录<br>.strip()和.replace()方法均另起日志进行学习记录<br>以及使用re库进行了正则表达式匹配，正则表达式后期进行学习  </p>
+<p>在网页的爬取过程中，有时候会出现爬取到的内容出现乱码，解决这种问题要先确认该网页的编码，右击查看网页的源代码，可以看到HEAD中的<meta charset="">，在对应在解析页面前进行编码，如上代码中应用的：<br><code>wd_data.encoding = &#39;utf-8&#39;</code></p>
+<hr>
+<h1 id="爬取大规模数据的工作流分析"><a href="#爬取大规模数据的工作流分析" class="headerlink" title="爬取大规模数据的工作流分析"></a><font color="blue">爬取大规模数据的工作流分析</font></h1><p>（步骤如下）</p>
+<p><strong>第1步：观察页面特征</strong></p>
+<p><strong>第2步：设计工作流程</strong>  </p>
+<p>以爬取58同城为例：爬取大规模数据，为了程序运行的稳定性，最好是一个爬虫程序制作一件事情，所以设立两个爬虫程序，避免过程中出现的异常而再次进行爬取    </p>
+<p>1.从列表页爬取信息的url，设定一个爬虫程序，将其存储到表格中去<br>2.从url数据库中取出url依次去访问详情页，然后爬取详情页中的数据   </p>
+<p>对爬取大规模数据的工作流需要掌握的知识点进行列明：  </p>
+<p>1.插入MongoDB数据库的数据需为<strong>字典</strong>的方式，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种</span></span><br><span class="line">title = soup.title.text.strip()</span><br><span class="line">price = soup.select(<span class="string">'span.price_now &gt; i'</span>)[<span class="number">0</span>].text <span class="keyword">if</span> soup.find_all(<span class="string">'span'</span>, <span class="string">'price_now'</span>) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">item_info.insert_one(&#123;<span class="string">'title'</span>: title, <span class="string">'price'</span>: price&#125;)</span><br><span class="line"><span class="comment"># 第二种</span></span><br><span class="line">data = &#123;</span><br><span class="line">	<span class="string">'title'</span>: title.get_text().strip(),</span><br><span class="line">	<span class="string">'size'</span>: size.get_text().replace(<span class="string">'                    '</span>, <span class="string">','</span>),</span><br><span class="line">	<span class="string">'description'</span>: description.get_text().strip(),</span><br><span class="line">	<span class="string">'price'</span>: price.get_text()</span><br><span class="line">&#125;</span><br><span class="line">iten_info.insert_one(data)</span><br></pre></td></tr></table></figure>
+<p>2.爬取所需页面字段的时候，要考虑该页面该字段是不是一定存在，为了保证程序爬取的流畅性，所以需要加上对应的字段判断，没有爬取成功以None作为代替  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">price = soup.select(<span class="string">'span.price_now &gt; i'</span>)[<span class="number">0</span>].text <span class="keyword">if</span> soup.find_all(<span class="string">'span'</span>, <span class="string">'price_now'</span>) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">area = soup.select(<span class="string">'div.palce_li &gt; span &gt; i'</span>)[<span class="number">0</span>].text <span class="keyword">if</span> soup.find_all(<span class="string">'div'</span>, <span class="string">'palce_li'</span>) <span class="keyword">else</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p>3.爬取整个网站的所有页面信息，因为不清楚多分类的具体页码，所以根据链接的形式，再判断页面是否正确出现某些类型，某些固定的css样式，作为判断这个页面是否存在的依据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 判断是否到最后页面</span></span><br><span class="line"><span class="keyword">if</span> soup.find(<span class="string">'td'</span>, <span class="string">'t'</span>):</span><br><span class="line">	<span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">		link = link.get(<span class="string">'href'</span>).split(<span class="string">'?'</span>)[<span class="number">0</span>]</span><br><span class="line">		<span class="comment"># print link</span></span><br><span class="line">		url_list.insert_one(&#123;<span class="string">'link'</span>: link&#125;)</span><br><span class="line">		<span class="keyword">print</span> <span class="string">'插入数据成功'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="keyword">pass</span></span><br><span class="line">	<span class="comment"># Nothing!</span></span><br></pre></td></tr></table></figure>
+<p>4.针对爬取到的一些链接，存在用户删帖或者商品下线的情况，对应这种情况以及出现的404页面情况，需要做一定的判断处理，仍然是通过<code>soup.find_all()</code>检索页面的一些特定元素，但出现这些元素后直接跳过   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">no_longer_exist = soup.find_all(<span class="string">'span'</span>, <span class="string">'soldout_btn'</span>)</span><br><span class="line"><span class="keyword">if</span> no_longer_exist:</span><br><span class="line">	<span class="keyword">print</span> <span class="string">'无效数据'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	title = soup.title.text.strip()</span><br><span class="line">	<span class="keyword">print</span> title</span><br></pre></td></tr></table></figure>
+<p>如下是本次爬取的channel频道列表和url及详情的脚本：  </p>
+<p>1.channel_extract.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.找到所有频道的连接</span></span><br><span class="line">start_url = <span class="string">'http://sz.58.com/sale.shtml'</span></span><br><span class="line">url_host = <span class="string">'http://sz.58.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 反爬取机制预防</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'id58=c5/njVqP6H5S78e6AwMFAg==; 58home=sz; city=sz; 58tj_uuid=ac4d317f-6a49-49bc-bbc0-7f4fab091f4a; als=0; commontopbar_myfeet_tooltip=end; wmda_uuid=f658abda0031d6cb3ba7a4777a4c3747; wmda_new_uuid=1; wmda_visited_projects=%3B2385390625025; xxzl_deviceid=E3MvqKhhfbzwRShu%2BCnSdRAiAHXBuE%2BaBzOUfKroWn1Hw%2B1alcaU4qJT445EhThM; ppStore_fingerprint=68D5AD35AB399AAA2659F248FF1B8D12B1E6236E7CA85E47%EF%BC%BF1519784233552; f=n; commontopbar_new_city_info=4%7C%E6%B7%B1%E5%9C%B3%7Csz; new_uv=3; utm_source=; spm=; init_refer=https%253A%252F%252Fwww.baidu.com%252Flink%253Furl%253Dm0LFygybcur2tdczm5kukJX8Xn0jWKlNHexmykfjmT7%2526wd%253D%2526eqid%253Df1e881b500001004000000065a97666b; commontopbar_ipcity=sz%7C%E6%B7%B1%E5%9C%B3%7C0; new_session=0; sessionid=319858e7-497f-49f2-962e-6d21c2603ac7; myfeet_tooltip=end'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_channel_urls</span><span class="params">(url)</span>:</span></span><br><span class="line">    wb_data = requests.get(start_url, headers=headers)</span><br><span class="line">    soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    links = soup.select(<span class="string">'ul.ym-submnu &gt; li &gt; b &gt; a'</span>)</span><br><span class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">        link = url_host + link.get(<span class="string">'href'</span>)</span><br><span class="line">        <span class="keyword">print</span> link</span><br><span class="line"></span><br><span class="line"><span class="comment"># get_channel_urls(start_url)</span></span><br><span class="line"></span><br><span class="line">channel_list = <span class="string">'''</span></span><br><span class="line"><span class="string">    http://sz.58.com/shouji/</span></span><br><span class="line"><span class="string">    http://sz.58.com/tongxunyw/</span></span><br><span class="line"><span class="string">    http://sz.58.com/danche/</span></span><br><span class="line"><span class="string">	...</span></span><br><span class="line"><span class="string">    http://sz.58.com/tiaozao/</span></span><br><span class="line"><span class="string">    http://sz.58.com/tiaozao/</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>2.page_parsing.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pymongo</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.设置数据库</span></span><br><span class="line">client = pymongo.MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</span><br><span class="line">ceshi = client[<span class="string">'ceshi'</span>]</span><br><span class="line">url_list = ceshi[<span class="string">'url_list'</span>]</span><br><span class="line">item_info = ceshi[<span class="string">'item_info'</span>]</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Cookie'</span>: <span class="string">'id58=c5/njVqP6H5S78e6AwMFAg==; 58home=sz; city=sz; 58tj_uuid=ac4d317f-6a49-49bc-bbc0-7f4fab091f4a; als=0; commontopbar_myfeet_tooltip=end; wmda_uuid=f658abda0031d6cb3ba7a4777a4c3747; wmda_new_uuid=1; wmda_visited_projects=%3B2385390625025; xxzl_deviceid=E3MvqKhhfbzwRShu%2BCnSdRAiAHXBuE%2BaBzOUfKroWn1Hw%2B1alcaU4qJT445EhThM; ppStore_fingerprint=68D5AD35AB399AAA2659F248FF1B8D12B1E6236E7CA85E47%EF%BC%BF1519784233552; f=n; commontopbar_new_city_info=4%7C%E6%B7%B1%E5%9C%B3%7Csz; new_uv=3; utm_source=; spm=; init_refer=https%253A%252F%252Fwww.baidu.com%252Flink%253Furl%253Dm0LFygybcur2tdczm5kukJX8Xn0jWKlNHexmykfjmT7%2526wd%253D%2526eqid%253Df1e881b500001004000000065a97666b; commontopbar_ipcity=sz%7C%E6%B7%B1%E5%9C%B3%7C0; new_session=0; sessionid=319858e7-497f-49f2-962e-6d21c2603ac7; myfeet_tooltip=end'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.用spider1 爬取商品链接</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_links_from</span><span class="params">(channel, pages, who_sells=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="comment"># 根据个人/商家以及页面设计模块链接样式http://sz.58.com/shouji/0/pn1/</span></span><br><span class="line">    list_view = <span class="string">'&#123;&#125;&#123;&#125;/pn&#123;&#125;'</span> .format(channel, str(who_sells), str(pages))</span><br><span class="line">    wb_data = requests.get(list_view, headers=headers)</span><br><span class="line">    soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 查找要找的链接将其存到数据库</span></span><br><span class="line">    links = soup.select(<span class="string">'tr.zzinfo &gt; td.t &gt; a '</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 判断是否到最后页面</span></span><br><span class="line">    <span class="keyword">if</span> soup.find(<span class="string">'td'</span>, <span class="string">'t'</span>):</span><br><span class="line">        <span class="keyword">for</span> link <span class="keyword">in</span> links:</span><br><span class="line">            link = link.get(<span class="string">'href'</span>).split(<span class="string">'?'</span>)[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">print</span> link</span><br><span class="line">            url_list.insert_one(&#123;<span class="string">'link'</span>: link&#125;)</span><br><span class="line">            <span class="comment"># print '插入数据成功'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">        <span class="comment"># Nothing!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.用spider2 爬取商品详情信息</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_item_info</span><span class="params">(url)</span>:</span></span><br><span class="line">    wb_data = requests.get(url, headers=headers)</span><br><span class="line">    soup = BeautifulSoup(wb_data.text, <span class="string">'lxml'</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 针对爬取不到的页面如商品下架页面进行处理</span></span><br><span class="line">    no_longer_exist = soup.find_all(<span class="string">'span'</span>, <span class="string">'soldout_btn'</span>)</span><br><span class="line">    <span class="keyword">if</span> no_longer_exist:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'无效数据'</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 爬取所要的信息，条件语句判断（如果该字段没有用None表示）</span></span><br><span class="line">        title = soup.title.text.strip()</span><br><span class="line">        price = soup.select(<span class="string">'span.price_now &gt; i'</span>)[<span class="number">0</span>].text <span class="keyword">if</span> soup.find_all(<span class="string">'span'</span>, <span class="string">'price_now'</span>) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">        area = soup.select(<span class="string">'div.palce_li &gt; span &gt; i'</span>)[<span class="number">0</span>].text <span class="keyword">if</span> soup.find_all(<span class="string">'div'</span>, <span class="string">'palce_li'</span>) <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># print title, price, area</span></span><br><span class="line">        item_info.insert_one(&#123;<span class="string">'title'</span>: title, <span class="string">'price'</span>: price, <span class="string">'area'</span>: area&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://sz.58.com/shouji/'</span></span><br><span class="line"><span class="comment"># get_links_]from(url, 1, 0)</span></span><br><span class="line">get_item_info(<span class="string">'http://zhuanzhuan.58.com/detail/969080699825094663z.shtml?fullCate=5%2C36&amp;fullLocal=4&amp;from=pc&amp;metric=null&amp;PGTID=0d300024-0000-447c-b396-16f1471ea40d&amp;ClickID=13'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="多进程爬虫的数据抓取"><a href="#多进程爬虫的数据抓取" class="headerlink" title="多进程爬虫的数据抓取"></a><font color="blue">多进程爬虫的数据抓取</font></h1><p>进程 &amp; 线程 （类比）<br>一个桌上一个人在吃饭 -&gt; 单进程单线程<br>一个桌上多个人在吃饭 -&gt; 单进程多线程<br>多个桌每桌各一人吃饭 -&gt; 多进程单线程<br>多个卓每桌多个人吃饭 -&gt; 多进程多线程   </p>
+<font size="+1" color="orange"><strong>多进程爬取</strong></font>
+
+<p>为了多进程进行运行爬取，将上面两个文件依次运行，需要借助multiprocessing库的Pool类，帮助python程序调用电脑主机的多个内核完成任务  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.为实现多进程，导入所需新库，可以帮助python程序调用电脑主机的多个内核完成任务</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="comment"># 引用自己所写的小程序库</span></span><br><span class="line"><span class="keyword">from</span> channel_extract <span class="keyword">import</span> channel_list</span><br><span class="line"><span class="keyword">from</span> page_parsing <span class="keyword">import</span> get_links_from</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.根据get_links_from，设计用函数填入页码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_all_links_from</span><span class="params">(channel)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">101</span>):</span><br><span class="line">        get_links_from(channel, num)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实际作用是区分上方的代码，所以用如下的格式</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment"># 3.创建进程池，电脑上所有的CPU，程序都是需要从进程池中取应被分配到任务</span></span><br><span class="line">    pool = Pool()</span><br><span class="line">    <span class="comment"># map函数指的是将后面的集合/列表一个一个的放进第一个函数中，并且运行</span></span><br><span class="line">    pool.map(get_all_links_from, channel_list.split())</span><br></pre></td></tr></table></figure>
+<p>解释如上代码所用到的函数  </p>
+<p><strong>map()函数</strong>  </p>
+<p>map() 会根据提供的函数对指定序列做映射<br>语法： <code>map(function, iterable, ...)</code>   </p>
+<ul>
+<li>function  函数，有两个参数</li>
+<li>iterable  一个或多个序列</li>
+</ul>
+<p>第一个参数function以参数序列中的每一个元素调用function函数，返回包含每次function函数返回值的新列表    </p>
+<p>举例：  </p>
+<blockquote>
+<p>def square(x) :            # 计算平方数<br>…   return x ** 2<br>…<br>map(square, [1,2,3,4,5])   # 计算列表各个元素的平方<br>…   [1, 4, 9, 16, 25]<br>map(lambda x: x ** 2, [1, 2, 3, 4, 5])  # 使用 lambda 匿名函数<br>…   [1, 4, 9, 16, 25]</p>
+<p>#提供了两个列表，对相同位置的列表数据进行相加<br>map(lambda x, y: x + y, [1, 3, 5, 7, 9], [2, 4, 6, 8, 10])<br>…   [3, 7, 11, 15, 19]</p>
+</blockquote>
+<font size="+1" color="orange"><strong>监控爬取量</strong></font>
+
+<p>为了方便知道数据爬取的进度以及数量，可以相应的另起python程序，查询对应表格的数据量<br>代码如下：   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.创建用来计数的监控程序，目的在于监控目前抓了多少数据</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> page_parsing <span class="keyword">import</span> url_list</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    <span class="keyword">print</span> url_list.find().count()</span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="过程爬取加强抵御及优化"><a href="#过程爬取加强抵御及优化" class="headerlink" title="过程爬取加强抵御及优化"></a><font color="blue">过程爬取加强抵御及优化</font></h1><p>主要以爬取赶集为学习，整体内容与前面无太大差异，下面列举优化加强的知识点  </p>
+<font size="+1" color="orange"><strong>增加HTTP代理防IP被封</strong></font>
+
+<p>大数据长时间的爬取，可能存在该网对我们的IP进行的封锁，所以可以在request请求中，增加访问过程的HTTP代理，达到从代理池中以不同IP访问的效果   </p>
+<p>方法如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需事先引入random模块</span></span><br><span class="line"><span class="keyword">import</span> random   </span><br><span class="line"><span class="comment"># 列明代理池</span></span><br><span class="line">proxy_list = [</span><br><span class="line">    <span class="string">'http://210.5.149.43:8090'</span>,</span><br><span class="line">    <span class="string">'http://210.5.149.33:8090'</span>,</span><br><span class="line">    <span class="string">'http://210.5.149.32:8090'</span>,</span><br><span class="line">]</span><br><span class="line"><span class="comment"># 引用random方法</span></span><br><span class="line">proxy_ip = random.choice(proxy_list)</span><br><span class="line">proxies = &#123;<span class="string">'http'</span>: proxy_ip&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在解析过程中使用代理参数</span></span><br><span class="line">wd_data = requests.get(list_view, headers=headers, proxies=proxies)</span><br></pre></td></tr></table></figure>
+<p>如上使用了random模块的choice函数<br>代理库原来可使用porxy中国网，但已经被封，现在使用的是xici，质量不高，凑合使用<br><a href="http://www.xicidaili.com/nt" target="_blank" rel="noopener">http://www.xicidaili.com/nt</a>   </p>
+<font size="+1" color="orange"><strong>爬取效率的提升</strong></font>
+
+<p><strong>1.多进程 </strong><br>PC为单核的话不奏效，单核则使用多线程，只有PC多核才有用<br><strong>2.页面解析方法 </strong><br>BeautifulSoup的解析是比较慢的，如果直接使用lxml库的话，解析速度会提升10倍，需另外学习<br><strong>3.网络请求的速度</strong><br>使用异步非阻塞的方式进行请求，即过程中同时发起多个请求    </p>
+<font size="+1" color="orange"><strong>解决爬取过程中断</strong></font>  
+
+<p>爬取过程如果中断，增加断点续传的功能，及在爬取的过程中，也相应需把url保留下来，然后再后面main脚本中进行对比，代码如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">from</span> channel_extract <span class="keyword">import</span> channel_list</span><br><span class="line"><span class="keyword">from</span> page_parsing <span class="keyword">import</span> get_links_from, item_info, url_list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用列表解析式 mongodb的查询方法，查询所有的爬取的url</span></span><br><span class="line">db_urls = [item[<span class="string">'url'</span>] <span class="keyword">for</span> item <span class="keyword">in</span> url_list.find()]</span><br><span class="line"><span class="comment"># 查找已经查询的url</span></span><br><span class="line">index_urls = [item[<span class="string">'url'</span>] <span class="keyword">for</span> item <span class="keyword">in</span> item_info.find()]</span><br><span class="line"><span class="comment"># 使用集合方式set</span></span><br><span class="line">x = set(db_urls)</span><br><span class="line">y = set(index_urls)</span><br><span class="line">rest_of_urls = x - y</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_all_links_from</span><span class="params">(channel)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">        get_links_from(channel, num)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pool = Pool()</span><br><span class="line">    pool.map(get_all_links_from, rest_of_urls)</span><br></pre></td></tr></table></figure>
+<p>如上使用了set方法，不用引入模块，直接调用  </p>
+<p><strong>set方法简要介绍</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># 集合的交集/并集/差补/对称差分</span></span><br><span class="line"></span><br><span class="line">a = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">"a"</span>, <span class="string">"b"</span>])</span><br><span class="line">b = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="string">"a"</span>, <span class="string">"c"</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交集：等同于a.interseciton(b)</span></span><br><span class="line"><span class="keyword">print</span> a &amp; b</span><br><span class="line"><span class="comment"># 补集：等同于a.union(b)</span></span><br><span class="line"><span class="keyword">print</span> a | b</span><br><span class="line"><span class="comment"># 差补：d等同于a.diffrence(b)在a集合中去掉所有与b集合中相同的元素，只在a中保留b中没有的结合元素</span></span><br><span class="line"><span class="keyword">print</span> a - b</span><br><span class="line"><span class="comment"># 对称差分：找出两个结合中，只属于集合a或者集合b的元素</span></span><br><span class="line"><span class="keyword">print</span> a ^ b</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set([<span class="string">'a'</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line">set([<span class="string">'a'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line">set([<span class="number">3</span>, <span class="string">'b'</span>])</span><br><span class="line">set([<span class="string">'c'</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="string">'b'</span>])</span><br></pre></td></tr></table></figure>
+<hr>
+<center><font size="+2" color="orange"><strong>如上为Second学习的整体内容</strong></font></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/BeautifulSoup用法简列/" rel="next" title="BeautifulSoup用法简列">
+                <i class="fa fa-chevron-left"></i> BeautifulSoup用法简列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/08/Python&HTTP模拟用户注册/" rel="prev" title="Python通过HTTP接口模拟用户注册">
+                Python通过HTTP接口模拟用户注册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB环境准备"><span class="nav-number">1.</span> <span class="nav-text">MongoDB环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用MongoDB（建写表-查表-筛选表）"><span class="nav-number">2.</span> <span class="nav-text">使用MongoDB（建写表/查表/筛选表）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取58同城租房信息并存表查表"><span class="nav-number">3.</span> <span class="nav-text">爬取58同城租房信息并存表查表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爬取大规模数据的工作流分析"><span class="nav-number">4.</span> <span class="nav-text">爬取大规模数据的工作流分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多进程爬虫的数据抓取"><span class="nav-number">5.</span> <span class="nav-text">多进程爬虫的数据抓取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过程爬取加强抵御及优化"><span class="nav-number">6.</span> <span class="nav-text">过程爬取加强抵御及优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

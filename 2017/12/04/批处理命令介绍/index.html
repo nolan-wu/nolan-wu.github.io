@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="bat," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="批处理介绍批处理（Batch）是一种简化的脚本语言，它应用于DOS和Windows系统中，它是由DOS或者Windows系统内嵌的命令解释器（通常是COMMAND.COM或者CMD.EXE）解释运行。类似于Unix中的Shell脚本。批处理文件具有.bat或者.cmd的扩展名，其最简单的例子，是逐行书写在命令行中会用到">
+<meta name="keywords" content="bat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="批处理命令介绍">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/批处理命令介绍/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="批处理介绍批处理（Batch）是一种简化的脚本语言，它应用于DOS和Windows系统中，它是由DOS或者Windows系统内嵌的命令解释器（通常是COMMAND.COM或者CMD.EXE）解释运行。类似于Unix中的Shell脚本。批处理文件具有.bat或者.cmd的扩展名，其最简单的例子，是逐行书写在命令行中会用到的各种命令。更复杂的情况，需要使用if，for，goto等命令控制程序的运行过程">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/FesPZGK.png">
+<meta property="og:image" content="https://i.imgur.com/uVzdBvg.png">
+<meta property="og:image" content="https://i.imgur.com/R2Evrbd.png">
+<meta property="og:image" content="https://i.imgur.com/lgOt5Tt.png">
+<meta property="og:image" content="https://i.imgur.com/zOGDK4H.png">
+<meta property="og:image" content="https://i.imgur.com/5O0W4jc.png">
+<meta property="og:image" content="https://i.imgur.com/ydqskTK.png">
+<meta property="og:image" content="https://i.imgur.com/Hp9FPCV.png">
+<meta property="og:image" content="https://i.imgur.com/uEvEBtd.png">
+<meta property="og:image" content="https://i.imgur.com/1Aaa5Ti.png">
+<meta property="og:image" content="https://i.imgur.com/5AEMoem.png">
+<meta property="og:image" content="https://i.imgur.com/E0w6CP2.png">
+<meta property="og:updated_time" content="2017-12-20T07:07:37.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="批处理命令介绍">
+<meta name="twitter:description" content="批处理介绍批处理（Batch）是一种简化的脚本语言，它应用于DOS和Windows系统中，它是由DOS或者Windows系统内嵌的命令解释器（通常是COMMAND.COM或者CMD.EXE）解释运行。类似于Unix中的Shell脚本。批处理文件具有.bat或者.cmd的扩展名，其最简单的例子，是逐行书写在命令行中会用到的各种命令。更复杂的情况，需要使用if，for，goto等命令控制程序的运行过程">
+<meta name="twitter:image" content="https://i.imgur.com/FesPZGK.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/04/批处理命令介绍/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>批处理命令介绍 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/批处理命令介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">批处理命令介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T00:00:00+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="批处理介绍"><a href="#批处理介绍" class="headerlink" title="批处理介绍"></a>批处理介绍</h2><p><strong>批处理（Batch）</strong>是一种简化的脚本语言，它应用于DOS和Windows系统中，它是由DOS或者Windows系统内嵌的命令解释器（通常是COMMAND.COM或者CMD.EXE）解释运行。类似于Unix中的Shell脚本。批处理文件具有.bat或者.cmd的扩展名，其最简单的例子，是逐行书写在命令行中会用到的各种命令。更复杂的情况，需要使用if，for，goto等命令控制程序的运行过程，如同C，Basic等高级语言一样。如果需要实现更复杂的应用，利用外部程序是必要的，这包括系统本身提供的外部命令和第三方提供的工具或者软件。批处理程序虽然是在命令行环境中运行，但不仅仅能使用命令行软件，任何32位的Windows程序都可以放在批处理文件中运行。   </p>
+<h2 id="windows下主要的批处理命令"><a href="#windows下主要的批处理命令" class="headerlink" title="windows下主要的批处理命令"></a>windows下主要的批处理命令</h2><h3 id="echo：用于在屏幕显示文字信息"><a href="#echo：用于在屏幕显示文字信息" class="headerlink" title="echo：用于在屏幕显示文字信息"></a>echo：用于在屏幕显示文字信息</h3><p><strong>命令格式：</strong>   </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> [&#123;on|off&#125;][message]</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>   </p>
+<p>on：允许批处理文件在执行的过程中显示命令。<br>off：禁止…………………………………………。<br>message：表示需要显示在屏幕上的信息。</p>
+<p><strong>实例：</strong>   </p>
+<p>我把前面创建的1.bat修改为如下几条指令，先打开echo，然后ver显示系统版本，然后path一下显示环境变量，然后关闭echo，再做一遍。我们来看看有什么区别。     </p>
+<p><img src="https://i.imgur.com/FesPZGK.png" alt=""></p>
+<p>我们清楚得看到，echo<br>off之后的ver和path就没有显示在屏幕上了，而他们的执行结果就顺序连接在一起了。    </p>
+<p><img src="https://i.imgur.com/uVzdBvg.png" alt=""></p>
+<hr>
+<h3 id="：用于屏蔽执行的命令显示在屏幕上"><a href="#：用于屏蔽执行的命令显示在屏幕上" class="headerlink" title="@：用于屏蔽执行的命令显示在屏幕上"></a>@：用于屏蔽执行的命令显示在屏幕上</h3><p><br></p>
+<p><strong>命令格式：</strong>@[command]</p>
+<p><strong>参数说明：</strong></p>
+<p>command：要屏蔽的显示命令。</p>
+<hr>
+<h3 id="goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令"><a href="#goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令" class="headerlink" title="goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令"></a>goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令</h3><p><strong>命令格式：</strong>goto label  </p>
+<p><strong>参数说明：</strong>   </p>
+<p>label：一个标记罢了。   </p>
+<p><strong>实例：</strong>  </p>
+<p>继续上面的例子，我在ver和path之间放了一个label，然后在echo on后面增加语句goto<br>label，这样我希望的是跳过ver语句。（这里需要注意，label以:开头并紧跟标识符，其实也可以不以:开头，但为了下面的call语句统一，建议标签都以:开头。标识符不能有逗号、冒号等，但可以有空格，有效长度是8位，超过的将忽略8位之后的部分）   </p>
+<p><img src="https://i.imgur.com/R2Evrbd.png" alt="">   </p>
+<p><img src="https://i.imgur.com/lgOt5Tt.png" alt=""></p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off   </span><br><span class="line">:<span class="built_in">start</span>     </span><br><span class="line"><span class="built_in">cls</span>     </span><br><span class="line"><span class="built_in">set</span> /p numis=请输入数字<span class="number">1</span>或<span class="number">2</span>：    </span><br><span class="line"><span class="keyword">if</span> /i "<span class="variable">%numis%</span>"=="<span class="number">1</span>" <span class="keyword">goto</span> <span class="number">1</span>    </span><br><span class="line"><span class="keyword">if</span> /i "<span class="variable">%numis%</span>"=="<span class="number">2</span>" (<span class="keyword">goto</span> <span class="number">2</span>) <span class="keyword">else</span> (<span class="built_in">echo</span> 输入有误!&amp;&amp;<span class="built_in">pause</span>&gt;<span class="built_in">nul</span>&amp;&amp;<span class="keyword">goto</span> <span class="built_in">start</span>)    </span><br><span class="line">:<span class="number">1</span>  </span><br><span class="line"><span class="built_in">echo</span> 你输入的是<span class="number">1</span>  </span><br><span class="line"><span class="built_in">pause</span>&gt;<span class="built_in">nul</span>&amp;&amp;<span class="keyword">goto</span> <span class="built_in">start</span>  </span><br><span class="line">:<span class="number">2</span>  </span><br><span class="line"><span class="built_in">echo</span> 你输入的是<span class="number">2</span>  </span><br><span class="line"><span class="built_in">pause</span>&gt;<span class="built_in">nul</span>&amp;&amp;<span class="keyword">goto</span> <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="pause：用于暂停"><a href="#pause：用于暂停" class="headerlink" title="pause：用于暂停"></a>pause：用于暂停</h3><p><strong>命令格式：</strong>pause  </p>
+<p><strong>参数说明：</strong>   </p>
+<p>没有参数。  </p>
+<p><strong>实例：</strong>   </p>
+<p>还是上面的例子，我在ver之后放置一个pause命令看看会发生什么。  </p>
+<p><img src="https://i.imgur.com/zOGDK4H.png" alt=""></p>
+<p>它在执行了ver命令后，继续执行pause命令，然后就暂停了，按任意键继续，按ctrl+c就直接结束了，不执行之后的命令。   </p>
+<hr>
+<h3 id="call：允许在一个批处理文件中调用另外一个批处理文件"><a href="#call：允许在一个批处理文件中调用另外一个批处理文件" class="headerlink" title="call：允许在一个批处理文件中调用另外一个批处理文件"></a>call：允许在一个批处理文件中调用另外一个批处理文件</h3><p><strong>命令格式：</strong><br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">call</span> [绝对路径]Filename 或者 [:<span class="built_in">label</span>]</span><br></pre></td></tr></table></figure></p>
+<p><strong>参数说明：</strong>   </p>
+<p>[绝对路径]Filename：另一个批处理文件。<br>[:label]：像goto一样，call也可以跳到某个标签之后执行。   </p>
+<p><strong>实例：</strong></p>
+<p>这次我需要两个批处理文件，于是我在目录下又建了一个2.bat，里面就放了两条命令，一个path，一个ver。然后我修改了1.bat，让它先调用2.bat，然后跳到我在1.bat中ver之后放置的cc标识符处执行。     </p>
+<p><img src="https://i.imgur.com/5O0W4jc.png" alt=""></p>
+<p>我们看到，这里的执行大部分都按照我们的想法在做，为什么我说大部分而不是全部呢？因为我们发现call跳到cc之后执行了path后，结果又回到call<br>:cc执行继续执行了一遍，相当于跳到一个地方做完事情后又回到原地方继续往下做，这样，我们的path命令就被执行了两次。   </p>
+<p><img src="https://i.imgur.com/ydqskTK.png" alt=""></p>
+<hr>
+<h3 id="start：用于启动一个单独的命令行窗口"><a href="#start：用于启动一个单独的命令行窗口" class="headerlink" title="start：用于启动一个单独的命令行窗口"></a>start：用于启动一个单独的命令行窗口</h3><p><strong>命令格式：</strong>    </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">START</span> ["<span class="built_in">title</span>"] [/Dpath] [/I] [/MIN] [/MAX] [/SEPARATE | /SHARED]   </span><br><span class="line">      [/LOW | /NORMAL | /HIGH | /REALTIME | /ABOVENORMAL | /BELOWNORMAL]   </span><br><span class="line">      [/WAIT] [/B] [command/program]   </span><br><span class="line">      [parameters]</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>   </p>
+<p>“title”：在窗口标题栏中显示的标题。<br>path：起始目录。<br>B：在不创建新窗口的情况下开始应用程序。 除非启动 ^C 处理，否则该应用程序会忽略 ^C 处理；^Break 是唯一可以中断该应用程序的方式。<br>I：新环境是传递给 cmd.exe 的原始环境，而不是当前环境。<br>MIN：开始时窗口最小化。<br>MAX：开始时窗口最大化。<br>SEPARATE：在分开的空间内开始 16 位 Windows 程序。<br>SHARED：在分共享的空间内开始 16 位 Windows 程序。<br>LOW：在 IDLE 优先级类别开始应用程序。<br>NORMAL：在 NORMAL 优先级类别开始应用程序。<br>HIGH：在 HIGH 优先级类别开始应用程序。<br>REALTIME：在 REALTIME 优先级类别开始应用程序。<br>ABOVENORMAL：在 ABOVENORMAL 优先级类别开始应用程序。<br>BELOWNORMAL：在 BELOWNORMAL 优先级类别开始应用程序。<br>WAIT：启动应用程序并等候它结束。<br>command/program：如果是内部 cmd 命令或批文件，那么该命令处理器是用 /K 命令行开关运行 cmd.exe 的。这表示该窗口在命令运行后仍然存在。如果不是内部 cmd命令或批文件，则是一个程序，并作为窗口应用程序或控制台应用程序运行。<br>parameters  这些为传送到命令/程序的参数。   </p>
+<p><strong>实例：</strong>   </p>
+<p>继续修改上述的第一个批处理文件，让他启动一个新的命令行窗口并执行2.bat文件   </p>
+<p><img src="https://i.imgur.com/Hp9FPCV.png" alt=""></p>
+<p>当然，对于上述的各种参数，你完全可以自己慢慢摸索，这也是一个慢慢熟悉的过程。</p>
+<hr>
+<h3 id="rem：注释"><a href="#rem：注释" class="headerlink" title="rem：注释"></a>rem：注释</h3><p><strong>命令格式：</strong>rem [comment]   </p>
+<p><strong>参数说明：</strong>    </p>
+<p>comment：注释。   </p>
+<p><strong>实例：</strong>   </p>
+<p>修改1.bat，在ver和path中插入一个rem行的注释，可以看到它也显示在命令行窗口了，可以用echo<br>off命令让他不显示出来。   </p>
+<p><img src="https://i.imgur.com/uEvEBtd.png" alt=""></p>
+<hr>
+<h3 id="if：条件判断"><a href="#if：条件判断" class="headerlink" title="if：条件判断"></a>if：条件判断</h3><p><strong>命令格式：</strong>   </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">IF</span> [<span class="keyword">NOT</span>] <span class="keyword">ERRORLEVEL</span> number command   </span><br><span class="line"><span class="keyword">IF</span> [<span class="keyword">NOT</span>] string1==string2 command   </span><br><span class="line"><span class="keyword">IF</span> [<span class="keyword">NOT</span>] <span class="keyword">EXIST</span> filename command</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>   </p>
+<p>NOT：指定只有条件为 false 的情况下， Windows XP 才应该执行该命令。<br>ERRORLEVE<br>number：如果最后运行的程序返回一个等于或大于指定数字的退出编码，指定条件为true。<br>string1==string2：如果指定的文字字符串匹配，指定条件为 true。<br>EXIST filename：如果指定的文件名存在，指定条件为 true。<br>command：如果符合条件，指定要执行的命令。如果指定的条件为FALSE，命令后可跟一个执行 ELSE关键字后的命令的 ELSE 命令。   </p>
+<hr>
+<h3 id="set：定义变量和设置环境"><a href="#set：定义变量和设置环境" class="headerlink" title="set：定义变量和设置环境"></a>set：定义变量和设置环境</h3><p><strong>命令格式：</strong>   </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SET</span> [variable=[string]]</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>   </p>
+<p>variable：指定环境变量名。<br>string：指定要指派给变量的一系列字符串。  </p>
+<p><strong>实例：</strong>   </p>
+<p>修改1.bat，把2.bat作为变量xxx的值，然后在if判断里直接判断是否存在xxx这个变量，如下：    </p>
+<p><img src="https://i.imgur.com/1Aaa5Ti.png" alt=""></p>
+<hr>
+<h3 id="shift：移位"><a href="#shift：移位" class="headerlink" title="shift：移位"></a>shift：移位</h3><p><strong>命令格式：</strong>   </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shift</span> [/n]</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>    </p>
+<p>/n：设置批处理从第n个参数开始移位，n的值为0～8。  </p>
+<p><strong>实例：</strong>   </p>
+<p>修改1.bat文件，设置了两个标签，%0~%9用来获取参数的，如下我输入的命令为：1.bat<br>1.bat<br>2.bat，那么%0就是1.bat，%1是1.bat，%2是2.bat。这个批处理文件的作用是先判断第一个参数是否为空，如果不为空就显示其内容，然后循环移动参数，直到参数为空。shift起到的作用就是移动参数。     </p>
+<p><img src="https://i.imgur.com/5AEMoem.png" alt=""></p>
+<hr>
+<h3 id="for：循环语句"><a href="#for：循环语句" class="headerlink" title="for：循环语句"></a>for：循环语句</h3><p><strong>命令格式：</strong>   </p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FOR</span> %variable <span class="keyword">IN</span> (<span class="built_in">set</span>) <span class="keyword">DO</span> command [command-parameters]</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>  </p>
+<p>%variable：指定一个单一字母可替换的参数。<br>(set)：指定一个或一组文件。可以使用通配符。<br>command：指定对每个文件执行的命令。<br>command-parameters：为特定命令指定参数或命令行开关。   </p>
+<p><strong>实例：</strong>    </p>
+<p>修改1.bat，在当前目录下循环查找.bat结尾的文件，找到一个显示一个，并把变量sum+1   </p>
+<p><img src="https://i.imgur.com/E0w6CP2.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bat/" rel="tag"><i class="fa fa-tag"></i> bat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/04/批处理随电脑开启自动后台运行/" rel="prev" title="批处理随电脑开启自动后台运行">
+                批处理随电脑开启自动后台运行 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#批处理介绍"><span class="nav-number">1.</span> <span class="nav-text">批处理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows下主要的批处理命令"><span class="nav-number">2.</span> <span class="nav-text">windows下主要的批处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#echo：用于在屏幕显示文字信息"><span class="nav-number">2.1.</span> <span class="nav-text">echo：用于在屏幕显示文字信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#：用于屏蔽执行的命令显示在屏幕上"><span class="nav-number">2.2.</span> <span class="nav-text">@：用于屏蔽执行的命令显示在屏幕上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令"><span class="nav-number">2.3.</span> <span class="nav-text">goto：指定跳转到标签，找到标签后，程序将处理从下一行开始的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pause：用于暂停"><span class="nav-number">2.4.</span> <span class="nav-text">pause：用于暂停</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call：允许在一个批处理文件中调用另外一个批处理文件"><span class="nav-number">2.5.</span> <span class="nav-text">call：允许在一个批处理文件中调用另外一个批处理文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#start：用于启动一个单独的命令行窗口"><span class="nav-number">2.6.</span> <span class="nav-text">start：用于启动一个单独的命令行窗口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem：注释"><span class="nav-number">2.7.</span> <span class="nav-text">rem：注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if：条件判断"><span class="nav-number">2.8.</span> <span class="nav-text">if：条件判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set：定义变量和设置环境"><span class="nav-number">2.9.</span> <span class="nav-text">set：定义变量和设置环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shift：移位"><span class="nav-number">2.10.</span> <span class="nav-text">shift：移位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for：循环语句"><span class="nav-number">2.11.</span> <span class="nav-text">for：循环语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

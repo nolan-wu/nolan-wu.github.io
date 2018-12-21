@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RobotFramework," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="AppiumLibrary常用关键字    一、实用函数   二、校验函数三、等待函数四、其他函数   1.条件判断函数  关键字：Run Keyword If    用法：Run Keyword If…ELSE IF…ELSE   实例：1）用Run Keyword If执行单条语句   2）用Run Keyword">
+<meta name="keywords" content="RobotFramework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RobotFramework-AppiumLibrary关键字">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/RobotFramework-AppiumLibrary关键字/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="AppiumLibrary常用关键字    一、实用函数   二、校验函数三、等待函数四、其他函数   1.条件判断函数  关键字：Run Keyword If    用法：Run Keyword If…ELSE IF…ELSE   实例：1）用Run Keyword If执行单条语句   2）用Run Keyword If执行多条语句时，在需要执行多条语句的if或else if或else后，增加">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/gTjYoJL.png">
+<meta property="og:image" content="https://i.imgur.com/T5ca2bh.png">
+<meta property="og:image" content="https://i.imgur.com/KPvlDdz.png">
+<meta property="og:image" content="https://i.imgur.com/dpdLcur.png">
+<meta property="og:image" content="https://i.imgur.com/2M5g8G8.png">
+<meta property="og:image" content="https://i.imgur.com/fPzka7x.png">
+<meta property="og:image" content="https://i.imgur.com/8UdT0Ei.png">
+<meta property="og:image" content="https://i.imgur.com/6Zhdlsi.png">
+<meta property="og:image" content="https://i.imgur.com/m2zWLwu.png">
+<meta property="og:image" content="https://i.imgur.com/GBkbP6E.png">
+<meta property="og:image" content="https://i.imgur.com/wxyTQUs.png">
+<meta property="og:updated_time" content="2017-12-21T02:04:16.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RobotFramework-AppiumLibrary关键字">
+<meta name="twitter:description" content="AppiumLibrary常用关键字    一、实用函数   二、校验函数三、等待函数四、其他函数   1.条件判断函数  关键字：Run Keyword If    用法：Run Keyword If…ELSE IF…ELSE   实例：1）用Run Keyword If执行单条语句   2）用Run Keyword If执行多条语句时，在需要执行多条语句的if或else if或else后，增加">
+<meta name="twitter:image" content="https://i.imgur.com/gTjYoJL.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/RobotFramework-AppiumLibrary关键字/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>RobotFramework-AppiumLibrary关键字 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/RobotFramework-AppiumLibrary关键字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RobotFramework-AppiumLibrary关键字</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T00:00:00+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font size="5px" color="MediumBlue"><strong>AppiumLibrary常用关键字</strong></font>
+
+
+<hr>
+<font size="4px"><strong>一、实用函数</strong></font>
+
+<p><img src="https://i.imgur.com/gTjYoJL.png" alt=""></p>
+<font size="4px"><strong>二、校验函数</strong></font><br><img src="https://i.imgur.com/T5ca2bh.png" alt=""><br><br><font size="4px"><strong>三、等待函数</strong></font><br><img src="https://i.imgur.com/KPvlDdz.png" alt=""><br><br><br><font size="4px"><strong>四、其他函数</strong></font>
+
+<hr>
+<font size="3px" color="red"><strong>1.条件判断函数</strong></font>
+
+<p>关键字：<code>Run Keyword If</code>   </p>
+<p>用法：<br>Run Keyword If<br>…ELSE IF<br>…ELSE  </p>
+<p>实例：<br>1）用Run Keyword If执行单条语句<br><img src="https://i.imgur.com/dpdLcur.png" alt="">  </p>
+<p>2）用Run Keyword If执行多条语句时，在需要执行多条语句的if或else if或else后，增加关键字：Run Keywords<br><img src="https://i.imgur.com/2M5g8G8.png" alt=""></p>
+<font size="3px" color="red"><strong>2.检查某关键字的返回状态</strong></font>  
+
+<p>关键字：Run Keyword And Return Status<br>返回值：布尔值，True False  </p>
+<p>实例：通常和Run Keyword If关键字搭配使用<br><img src="https://i.imgur.com/fPzka7x.png" alt=""><br>含义：判断当前界面中是否存在取消按钮；如果存在，则do something  </p>
+<font size="3px" color="red"><strong>3.For循环</strong></font>
+
+<p>关键字：For  </p>
+<p>实例：<br>1）For循环单独使用时<br><img src="https://i.imgur.com/8UdT0Ei.png" alt="">  </p>
+<p>2）For循环嵌套Run Keyword If语句，退出循环<br><img src="https://i.imgur.com/6Zhdlsi.png" alt="">  </p>
+<font size="3px" color="red">4.自定义关键字</font>
+
+<p>创建方法：测试项目-New Resource-New User Keyword  </p>
+<p>实例：<br><img src="https://i.imgur.com/m2zWLwu.png" alt="">  </p>
+<p>在需要使用自定义关键字的测试套件Edit标签页，Resource导入关键字，导入结果为蓝色，则导入正确<br><img src="https://i.imgur.com/GBkbP6E.png" alt=""></p>
+<p>用法：导入resource后，在测试用例中，直接调用<br><img src="https://i.imgur.com/wxyTQUs.png" alt=""></p>
+<hr>
+<font size="5px" color="MediumBlue">AppiumLibrary关键字</font>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br></pre></td><td class="code"><pre><span class="line">xpath应该匹配次数</span><br><span class="line">    [Arguments]			$&#123;xpath&#125;	$&#123;count&#125;</span><br><span class="line">    Xpath Should Match X Times	$&#123;xpath&#125;	$&#123;count&#125;</span><br><span class="line"></span><br><span class="line">上传文件</span><br><span class="line">    [Arguments]	$&#123;path&#125;	$&#123;data&#125;	$&#123;encode&#125;=base64</span><br><span class="line">    Push File	$&#123;path&#125;	$&#123;data&#125;	$&#123;encode&#125;</span><br><span class="line"></span><br><span class="line">元素不应该包含文本</span><br><span class="line">    [Arguments]				$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;=</span><br><span class="line">    Element Should not Contain Text	$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;</span><br><span class="line"></span><br><span class="line">元素值应该是</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;expected&#125;</span><br><span class="line">    Element Value Should Be	$&#123;locator&#125;	$&#123;expected&#125;</span><br><span class="line"></span><br><span class="line">元素名应该是</span><br><span class="line">    [Arguments]			$&#123;path&#125;	$&#123;name&#125;</span><br><span class="line">    Element Name Should Be	$&#123;path&#125;	$&#123;name&#125;</span><br><span class="line"></span><br><span class="line">元素属性应该匹配</span><br><span class="line">    [Arguments]				$&#123;locator&#125;	$&#123;attr_name&#125;	$&#123;match_pattern&#125;	$&#123;regx&#125;=False</span><br><span class="line">    Element Attribute Should Match	$&#123;locator&#125;	$&#123;attr_name&#125;	$&#123;match_pattern&#125;	$&#123;regx&#125;</span><br><span class="line"></span><br><span class="line">元素应该包含文本</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;=None</span><br><span class="line">    Element Should Contain Text	$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;</span><br><span class="line"></span><br><span class="line">元素应该失效</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;level&#125;=INFO</span><br><span class="line">    Element should be disabled	$&#123;locator&#125;	$&#123;level&#125;</span><br><span class="line"></span><br><span class="line">元素应该有效</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;level&#125;=INFO</span><br><span class="line">    Element should be enabled	$&#123;locator&#125;	$&#123;level&#125;</span><br><span class="line"></span><br><span class="line">元素文本应该是</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;=None</span><br><span class="line">    Element Text Should Be	$&#123;locator&#125;	$&#123;expected&#125;	$&#123;msg&#125;</span><br><span class="line"></span><br><span class="line">关闭当前应用</span><br><span class="line">    Close Application</span><br><span class="line"></span><br><span class="line">关闭所有应用</span><br><span class="line">    Close All Applications</span><br><span class="line"></span><br><span class="line">切换应用</span><br><span class="line">    [Arguments]		$&#123;index_or_alias&#125;</span><br><span class="line">    Switch Application	$&#123;index_or_alias&#125;</span><br><span class="line"></span><br><span class="line">切换页面内容</span><br><span class="line">    [Arguments]		$&#123;webview&#125;</span><br><span class="line">    Switch To Context	$&#123;webview&#125;</span><br><span class="line"></span><br><span class="line">卸载应用</span><br><span class="line">    [Arguments]		$&#123;application_id&#125;</span><br><span class="line">    Remove Application	$&#123;application_id&#125;</span><br><span class="line"></span><br><span class="line">后台运行</span><br><span class="line">    [Arguments]		$&#123;sec&#125;</span><br><span class="line">    Background App	$&#123;sec&#125;</span><br><span class="line"></span><br><span class="line">向上滚动</span><br><span class="line">    [Arguments]	$&#123;locator&#125;</span><br><span class="line">    Scroll Up	$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">向下滚动</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    Scroll Down		$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">失败后运行关键字</span><br><span class="line">    [Arguments]		$&#123;keyword&#125;</span><br><span class="line">    [Documentation]    Example:    # Disables run-on-failure functionality and stores the previous kw name in a variable.    # Restore to the previous keyword.</span><br><span class="line">    ...</span><br><span class="line">    ...    Register Keyword To Run On Failure \ \ \ Log Source</span><br><span class="line">    ...    \ \ \ \ \ \ \ # Run `Log Source` on failure.</span><br><span class="line">    ...</span><br><span class="line">    ...    $&#123;previous kw&#125;=</span><br><span class="line">    ...    Register Keyword To Run On Failure \ \ Nothing</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    ...    Register Keyword To Run On Failure \ \ \ \ $&#123;previous kw&#125; \ \ \     Register Keyword To Run On Failure    $&#123;keyword&#125;</span><br><span class="line"></span><br><span class="line">打印资源</span><br><span class="line">    [Arguments]		$&#123;level&#125;</span><br><span class="line">    Log Source		$&#123;level&#125;</span><br><span class="line"></span><br><span class="line">打开URL</span><br><span class="line">    [Arguments]			$&#123;url&#125;</span><br><span class="line">    [Documentation]		Example:</span><br><span class="line">    ...</span><br><span class="line">    ...    打开应用</span><br><span class="line">    ...    http://localhost:4755/wd/hub \ platformName=iOS \ platformVersion=7.0</span><br><span class="line">    ...    deviceName=‘iPhone Simulator‘</span><br><span class="line">    ...    browserName=Safari</span><br><span class="line">    ...</span><br><span class="line">    ...    打开URL \ http://m.webapp.com</span><br><span class="line">    Go To URL    $&#123;url&#125;</span><br><span class="line"></span><br><span class="line">打开应用</span><br><span class="line">    [Arguments]		$&#123;url&#125;	$&#123;platformName&#125;	$&#123;version&#125;	$&#123;deviceName&#125;	$&#123;app&#125;</span><br><span class="line">    [Documentation]	打开应用 $&#123;url&#125;	$&#123;platformName&#125;	$&#123;version&#125; 	$&#123;devicename&#125;	$&#123;app&#125;	@&#123;args&#125;</span><br><span class="line">    ...</span><br><span class="line">    ...    例如：</span><br><span class="line">    ...</span><br><span class="line">    ...    打开应用 http://localhost:4723/wd/hub Android 5.1.1 5e25d20d $&#123;CURDIR&#125;$&#123;/&#125;app$&#123;/&#125;fft.apk</span><br><span class="line">    ...</span><br><span class="line">    ...    $&#123;url&#125; 是用于访问应用的地址，一般是固定的。 url 和 端口可以根据具体地址修改。</span><br><span class="line">    ...    $&#123;version&#125; \ 是安卓的版本</span><br><span class="line">    ...    $&#123;devicename&#125; 是手机的UDID, 可以打开cmd 然后用 adb devices -l \ 看到设备列表。</span><br><span class="line">    ...    UDID 是看到的第一列的内容，真机是一串字符串，模拟器是 \ ip:port \ 的形式</span><br><span class="line">    ...    $&#123;app&#125; 是apk 存放的路径 $&#123;CURDIR&#125; 系统变量，取得当前脚本路径。 $&#123;/&#125; 系统变量 ‘/‘</span><br><span class="line">    open application	$&#123;url&#125;	platformName=$&#123;platformName&#125;	platformVersion=$&#123;version&#125;	deviceName=$&#123;deviceName&#125;	app=$&#123;app&#125;</span><br><span class="line"></span><br><span class="line">按关键字</span><br><span class="line">    [Arguments]		$&#123;keycode&#125;	$&#123;metastate&#125;=None</span><br><span class="line">    Press Keycode	$&#123;keycode&#125;	$&#123;metastate&#125;</span><br><span class="line"></span><br><span class="line">摇动手机</span><br><span class="line">    Shake</span><br><span class="line"></span><br><span class="line">放大元素</span><br><span class="line">    [Arguments]	$&#123;locator&#125;	$&#123;percent&#125;=200%	$&#123;step&#125;=1</span><br><span class="line">    Zoom	$&#123;locator&#125;	$&#123;percent&#125;	$&#123;step&#125;</span><br><span class="line"></span><br><span class="line">敲击元素</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    Tap			$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">横屏</span><br><span class="line">    [Documentation]	手机设置横屏</span><br><span class="line">    LANDSCAPE</span><br><span class="line"></span><br><span class="line">清除文本</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    Clear Text		$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">滑动</span><br><span class="line">    [Arguments]	$&#123;start_x&#125;	$&#123;start_y&#125;	$&#123;end_x&#125;	$&#123;end_y&#125;</span><br><span class="line">    swipe	$&#123;start_x&#125;	$&#123;start_y&#125;	$&#123;end_x&#125;	$&#123;end_y&#125;</span><br><span class="line"></span><br><span class="line">滚动</span><br><span class="line">    [Arguments]	$&#123;start_locator&#125;	$&#123;end_locator&#125;	[Documentation] 从一个元素滚动到另一个元素</span><br><span class="line">    Scroll	$&#123;start_locator&#125;	$&#123;end_locator&#125;</span><br><span class="line"></span><br><span class="line">点击元素</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    Click Element	$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">点击元素坐标</span><br><span class="line">    [Arguments]				$&#123;coordinate_x&#125;	$&#123;coordinate_y&#125;</span><br><span class="line">    Click Element At Coordinates	$&#123;coordinate_x&#125;	$&#123;coordinate_y&#125;</span><br><span class="line"></span><br><span class="line">点击固定点</span><br><span class="line">    [Arguments]		$&#123;x&#125;	$&#123;y&#125;	@&#123;args&#125;</span><br><span class="line">    Click A Point	$&#123;x&#125;	$&#123;y&#125;	@&#123;args&#125;</span><br><span class="line"></span><br><span class="line">点击按钮</span><br><span class="line">    [Arguments]		$&#123;index_or_name&#125;</span><br><span class="line">    Click Button	$&#123;index_or_name&#125;</span><br><span class="line"></span><br><span class="line">点击文本</span><br><span class="line">    [Arguments]		$&#123;text&#125;	$&#123;exact_match&#125;=false</span><br><span class="line">    [Documentation]    点击匹配到文本的元素：</span><br><span class="line">    ...</span><br><span class="line">    ...    点击文本 &quot;text&quot;</span><br><span class="line">    ...    点击文本 &quot;text&quot; True</span><br><span class="line">    ...</span><br><span class="line">    ...    默认模糊匹配所有元素，可以设置成精确匹配。</span><br><span class="line">    ...    如果可以匹配到两个或两个以上的元素，那么需要用 click Element 元素，去处理。</span><br><span class="line">    Click Text	$&#123;text&#125;	$&#123;exact_match&#125;</span><br><span class="line"></span><br><span class="line">睡眠</span><br><span class="line">    [Arguments]	$&#123;sec&#125;</span><br><span class="line">    sleep	$&#123;sec&#125;</span><br><span class="line"></span><br><span class="line">竖屏</span><br><span class="line">    PORTRAIT</span><br><span class="line"></span><br><span class="line">等待页面元素出现</span><br><span class="line">    [Arguments]				$&#123;locator&#125;	$&#123;timeout&#125;=100	$&#123;err&#125;=None</span><br><span class="line">    Wait Until Page Contains Element	$&#123;locator&#125;	$&#123;timeout&#125;	$&#123;err&#125;</span><br><span class="line"></span><br><span class="line">等待元素出现文本</span><br><span class="line">    [Arguments]			$&#123;text&#125;	$&#123;timeout&#125;=10		$&#123;err&#125;=None</span><br><span class="line">    Wait Until Page Contains	$&#123;text&#125;	$&#123;timeout&#125;		$&#123;err&#125;</span><br><span class="line"></span><br><span class="line">等待页面不包含元素</span><br><span class="line">    [Arguments]					$&#123;locator&#125;	$&#123;timeout&#125;=10	$&#123;err&#125;=None</span><br><span class="line">    Wait Until Page Does Not Contain Element	$&#123;locator&#125;	$&#123;timeout&#125;	$&#123;err&#125;</span><br><span class="line"></span><br><span class="line">等待页面不包含文本</span><br><span class="line">    [Arguments]				$&#123;text&#125;	$&#123;timeout&#125;=10	$&#123;err&#125;=None</span><br><span class="line">    Wait Until Page Does Not Contain	$&#123;text&#125;	$&#123;timeout&#125;	$&#123;err&#125;</span><br><span class="line"></span><br><span class="line">缩小元素</span><br><span class="line">    [Arguments]	$&#123;locator&#125;	$&#123;percent&#125;=200%	$&#123;step&#125;=1</span><br><span class="line">    Pinch	$&#123;locator&#125;	$&#123;percent&#125;	$&#123;step&#125;</span><br><span class="line"></span><br><span class="line">获取Appium超时时间</span><br><span class="line">    $&#123;timeout&#125;	Get Appium Timeout</span><br><span class="line">    [Return]	$&#123;timeout&#125;</span><br><span class="line"></span><br><span class="line">获取Web元素</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    [Documentation]	获取匹配的定位器的第一个元素：</span><br><span class="line">    ...</span><br><span class="line">    ...    $&#123;element&#125; 获取Web元素 id=name</span><br><span class="line">    ...    点击元素 $&#123;element&#125;</span><br><span class="line">    $&#123;element&#125;	Get Webelement	$&#123;locator&#125;</span><br><span class="line">    [Return]	$&#123;element&#125;</span><br><span class="line"></span><br><span class="line">获取元素坐标</span><br><span class="line">    [Arguments]	$&#123;locator&#125;</span><br><span class="line">    $&#123;location&#125;	Get Element Location	$&#123;locator&#125;</span><br><span class="line">    [Return]	$&#123;location&#125;</span><br><span class="line"></span><br><span class="line">获取元素尺寸</span><br><span class="line">    [Arguments]	$&#123;locator&#125;</span><br><span class="line">    $&#123;size&#125;	Get Element Size	$&#123;locator&#125;</span><br><span class="line">    [Return]	$&#123;size&#125;</span><br><span class="line"></span><br><span class="line">获取元素属性</span><br><span class="line">    [Arguments]			$&#123;locator&#125;		$&#123;name_or_value&#125;</span><br><span class="line">    [Documentation		获取元素属性：（name 或者 value)</span><br><span class="line">    ...    $&#123;val&#125; \ 获取元素属性 $&#123;locator&#125; $&#123;name_or_value&#125;</span><br><span class="line">    ...</span><br><span class="line">    ...    例如：</span><br><span class="line">    ...    $&#123;val&#125; 获取元素属性 id=xxxx name</span><br><span class="line">    ...    $&#123;val&#125; 获取元素属性 id=xxxx value</span><br><span class="line">    $&#123;val&#125;    Get Element Attribute    $&#123;locator&#125;    $&#123;name_or_value&#125;</span><br><span class="line">    [Return]    $&#123;val&#125;</span><br><span class="line"></span><br><span class="line">获取匹配xpath数</span><br><span class="line">    [Arguments]		$&#123;xpath&#125;</span><br><span class="line">    [Documentation]    例如：</span><br><span class="line">    ...</span><br><span class="line">    ...    $&#123;count&#125; \ \ \ 获取匹配xpath数 \ \ //android.view.View[@text=‘Test‘]</span><br><span class="line">    $&#123;count&#125;    Get Matching Xpath Count    $&#123;xpath&#125;</span><br><span class="line">    [Return]    $&#123;count&#125;</span><br><span class="line"></span><br><span class="line">获取可见文本</span><br><span class="line">    $&#123;contents&#125;		Get Contexts</span><br><span class="line">    [Return]		$&#123;contents&#125;</span><br><span class="line"></span><br><span class="line">获取当前文本</span><br><span class="line">    $&#123;context&#125;	Get Current Context</span><br><span class="line">    [Return]	$&#123;context&#125;</span><br><span class="line"></span><br><span class="line">获取所有web元素</span><br><span class="line">    [Arguments]    $&#123;locator&#125;</span><br><span class="line">    [Documentation]    @&#123;element&#125; 获取所有web元素 id=my_element</span><br><span class="line">    ...    点击元素 @&#123;element&#125;[2]</span><br><span class="line">    @&#123;element&#125;    Get Webelements    $&#123;locator&#125;</span><br><span class="line">    [Return]    @&#123;element&#125;</span><br><span class="line"></span><br><span class="line">获取文件</span><br><span class="line">    [Arguments]		$&#123;file_path&#125;	$&#123;decode&#125;=False</span><br><span class="line">    pull file			$&#123;file_path	$&#123;decode&#125;</span><br><span class="line"></span><br><span class="line">获取文件夹</span><br><span class="line">    [Arguments]		$&#123;folder_path&#125;	$&#123;decode&#125;=False</span><br><span class="line">    Pull Folder		$&#123;folder_path&#125;	$&#123;decode&#125;</span><br><span class="line"></span><br><span class="line">获取文本</span><br><span class="line">    [Arguments]		$&#123;locator&#125;</span><br><span class="line">    [Documentation]    获取符合元素的文本：</span><br><span class="line">    ...    $&#123;text&#125; \ 获取文本 \ //*[contains(@text,‘foo‘)]</span><br><span class="line">    $&#123;text&#125;		Get Text	$&#123;locator&#125;</span><br><span class="line">    [Return]	$&#123;text&#125;</span><br><span class="line"></span><br><span class="line">获取网络连接情况</span><br><span class="line">    $&#123;stat&#125;		Get Network Connection Status</span><br><span class="line">    [Return]	$&#123;stat&#125;</span><br><span class="line"></span><br><span class="line">获取资源</span><br><span class="line">    $&#123;source&#125;	Get Source</span><br><span class="line">    [Return]	$&#123;source&#125;</span><br><span class="line"></span><br><span class="line">设置Appium超时</span><br><span class="line">    [Arguments]		$&#123;sec&#125;</span><br><span class="line">    Set Appium Timeout	$&#123;sec&#125;</span><br><span class="line"></span><br><span class="line">设置网络连接状态</span><br><span class="line">    [Arguments]				$&#123;sec&#125;</span><br><span class="line">    Set Network Connection Status	$&#123;sec&#125;</span><br><span class="line"></span><br><span class="line">输入值</span><br><span class="line">    [Arguments]	$&#123;locator&#125;	$&#123;val&#125;</span><br><span class="line">    Input Value	$&#123;locator&#125;	$&#123;val&#125;</span><br><span class="line"></span><br><span class="line">输入密码</span><br><span class="line">    [Arguments]	$&#123;path&#125;	$&#123;passwd&#125;</span><br><span class="line">    Input Password	$&#123;path&#125;	$&#123;passwd&#125;</span><br><span class="line"></span><br><span class="line">输入文本</span><br><span class="line">    [Arguments]	$&#123;path&#125;	$&#123;text&#125;</span><br><span class="line">    Input Text	$&#123;path&#125;	$&#123;text&#125;</span><br><span class="line"></span><br><span class="line">返回</span><br><span class="line">    [Documentation]	浏览器返回上一个的页面</span><br><span class="line">    Go Back</span><br><span class="line"></span><br><span class="line">重置应用</span><br><span class="line">    Reset Application</span><br><span class="line"></span><br><span class="line">锁屏</span><br><span class="line">    [Arguments]		$&#123;sec&#125;</span><br><span class="line">    [Documentation]	这个方法只使用于IOS</span><br><span class="line">    Lock		$&#123;sec&#125;</span><br><span class="line"></span><br><span class="line">长按元素</span><br><span class="line">    [Arguments]	$&#123;locator&#125;</span><br><span class="line">    Long Press	$&#123;locator&#125;</span><br><span class="line"></span><br><span class="line">长按关键字</span><br><span class="line">    [Arguments]		$&#123;keycode&#125;    $&#123;metastate&#125;=None</span><br><span class="line">    [Documentation]    keycode 可以在这个网址里面找到：</span><br><span class="line">    ...    http://developer.android.com/reference/android/view/KeyEvent.html.</span><br><span class="line">    ...</span><br><span class="line">    ...    Args:</span><br><span class="line">    ...    \ \ \ \ - keycode - the keycode to be sent to the device</span><br><span class="line">    ...    \ \ - metastate - meta information about the keycode being sent</span><br><span class="line">    Long Press Keycode    $&#123;keycode&#125;    $&#123;metastate&#125;</span><br><span class="line"></span><br><span class="line">隐藏键盘</span><br><span class="line">    Hide Keyboard</span><br><span class="line"></span><br><span class="line">页面不应该包含元素</span><br><span class="line">    [Arguments]				$&#123;locator&#125;	$&#123;lvl&#125;=INFO</span><br><span class="line">    Page Should Not Contain Element	$&#123;locator&#125;	$&#123;lvl&#125;</span><br><span class="line"></span><br><span class="line">页面不应该包含文本</span><br><span class="line">    [Arguments]				$&#123;locator&#125;	$&#123;lvl&#125;=INFO</span><br><span class="line">    Page Should Not Contain Text	$&#123;locator&#125;	$&#123;lvl&#125;</span><br><span class="line"></span><br><span class="line">页面应该包含元素</span><br><span class="line">    [Arguments]					$&#123;locator&#125;	$&#123;lvl&#125;=INFO</span><br><span class="line">    Page Should Contain Element	$&#123;locator&#125;	$&#123;lvl&#125;</span><br><span class="line"></span><br><span class="line">页面应该包含文本</span><br><span class="line">    [Arguments]			$&#123;locator&#125;	$&#123;lvl&#125;=INFO</span><br><span class="line">    Page Should Contain Text	$&#123;locator&#125;	$&#123;lvl&#125;</span><br><span class="line"></span><br><span class="line">页面截图</span><br><span class="line">    [Arguments]			$&#123;filename&#125;=</span><br><span class="line">    Capture Page Screenshot	$&#123;filename&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RobotFramework/" rel="tag"><i class="fa fa-tag"></i> RobotFramework</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/利用JMeter的beanshell进行接口的加密处理/" rel="next" title="利用JMeter的beanshell进行接口的加密处理">
+                <i class="fa fa-chevron-left"></i> 利用JMeter的beanshell进行接口的加密处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/JMeter性能测试报告/" rel="prev" title="JMeter性能测试报告">
+                JMeter性能测试报告 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

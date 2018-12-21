@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JMeter," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是JMeter  Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。它可以用于测试静态和动态资源，例如静态文件、Java 小服务程序、CGI 脚本、Java对象、数据库、FTP 服务器， 等等。JMeter可">
+<meta name="keywords" content="JMeter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JMeter入门介绍">
+<meta property="og:url" content="http://yoursite.com/2017/12/20/JMeter入门介绍/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="什么是JMeter  Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。它可以用于测试静态和动态资源，例如静态文件、Java 小服务程序、CGI 脚本、Java对象、数据库、FTP 服务器， 等等。JMeter可以用于对服务器、网络或对象模拟巨大的负载，来自不同压力类别下测试它们的强度和分析">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/TlzcMJD.png">
+<meta property="og:image" content="https://i.imgur.com/lO2vnpd.png">
+<meta property="og:image" content="https://i.imgur.com/oI9asBr.png">
+<meta property="og:image" content="https://i.imgur.com/tQYMBDV.png">
+<meta property="og:image" content="https://i.imgur.com/WeyMLaa.png">
+<meta property="og:image" content="https://i.imgur.com/ni3JEVs.png">
+<meta property="og:image" content="https://i.imgur.com/niZbvXH.png">
+<meta property="og:image" content="https://i.imgur.com/nlhoF1m.png">
+<meta property="og:image" content="https://i.imgur.com/R9OlsBP.png">
+<meta property="og:image" content="https://i.imgur.com/kwOMiIV.png">
+<meta property="og:image" content="https://i.imgur.com/QqYf3sA.png">
+<meta property="og:image" content="https://i.imgur.com/aakU331.png">
+<meta property="og:image" content="https://i.imgur.com/TLGBAfn.png">
+<meta property="og:image" content="https://i.imgur.com/baAqsFG.png">
+<meta property="og:image" content="https://i.imgur.com/RqQxA1l.png">
+<meta property="og:image" content="https://i.imgur.com/4C5LRQf.png">
+<meta property="og:image" content="https://i.imgur.com/or4g7sD.png">
+<meta property="og:image" content="https://i.imgur.com/ezBzQIa.png">
+<meta property="og:image" content="https://i.imgur.com/2QdoQW7.png">
+<meta property="og:image" content="https://i.imgur.com/9vurE11.png">
+<meta property="og:image" content="https://i.imgur.com/V4LIr8T.png">
+<meta property="og:image" content="https://i.imgur.com/SSwml0U.png">
+<meta property="og:image" content="https://i.imgur.com/3uuZ50m.png">
+<meta property="og:image" content="https://i.imgur.com/wUB7Dj2.png">
+<meta property="og:image" content="https://i.imgur.com/0WQaBfY.png">
+<meta property="og:image" content="https://i.imgur.com/OBPwbJf.png">
+<meta property="og:image" content="https://i.imgur.com/mEQjduu.png">
+<meta property="og:image" content="https://i.imgur.com/MQc06O6.png">
+<meta property="og:image" content="https://i.imgur.com/74CUMRa.png">
+<meta property="og:image" content="https://i.imgur.com/cpiorKM.png">
+<meta property="og:image" content="https://i.imgur.com/iNPF8EH.png">
+<meta property="og:image" content="https://i.imgur.com/R6RySr9.png">
+<meta property="og:image" content="https://i.imgur.com/VanA29O.png">
+<meta property="og:image" content="https://i.imgur.com/u5wMmOe.png">
+<meta property="og:image" content="https://i.imgur.com/E39CX1i.png">
+<meta property="og:image" content="https://i.imgur.com/jcdZZRt.png">
+<meta property="og:image" content="https://i.imgur.com/XpQoaJe.png">
+<meta property="og:image" content="https://i.imgur.com/JR540em.png">
+<meta property="og:image" content="https://i.imgur.com/rdBQjnj.png">
+<meta property="og:updated_time" content="2017-12-29T07:22:25.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JMeter入门介绍">
+<meta name="twitter:description" content="什么是JMeter  Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。它可以用于测试静态和动态资源，例如静态文件、Java 小服务程序、CGI 脚本、Java对象、数据库、FTP 服务器， 等等。JMeter可以用于对服务器、网络或对象模拟巨大的负载，来自不同压力类别下测试它们的强度和分析">
+<meta name="twitter:image" content="https://i.imgur.com/TlzcMJD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/20/JMeter入门介绍/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>JMeter入门介绍 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/JMeter入门介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JMeter入门介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-20T00:00:00+08:00">
+                2017-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font size="5px" color="red"><strong>什么是JMeter</strong></font>
+
+<p>Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。它可以用于测试静态和动态资源，例如静态文件、Java 小服务程序、CGI 脚本、Java对象、数据库、FTP 服务器， 等等。JMeter可以用于对服务器、网络或对象模拟巨大的负载，来自不同压力类别下测试它们的强度和分析整体性能。另外，JMeter能够对应用程序做功能/回归测试，通过创建带有断言的脚本来验证你的程序返回了你期望的结果。为了最大限度的灵活性，JMeter允许使用正则表达式创建断言。   </p>
+<p>Apache jmeter 可以用于对静态的和动态的资源（文件，Servlet，Perl脚本，java对象，数据库和查询，FTP服务器等等）的性能进行测试。它可以用于对服务器、网络或对象模拟繁重的负载来测试它们的强度或分析不同压力类型下的整体性能。你可以使用它做性能的图形分析或在大并发负载测试你的服务器/脚本/对象。</p>
+<font size="5px" color="red"><strong>JMeter的特色</strong></font>
+
+<p>开源许可: Jmeter是完全免费的，并提供了源码可供自定义开发<br>图形界面模式：提供了方便的图形界面来编辑和开发测试脚本<br>平台无关：可以轻易在windows、linux、mac上运行<br>多线程框架：通过线程组，能够轻易的设置不同测试的并发用户。<br>图形测试结果：提供了图表、表格、树、文件等格式的结果显示。<br>易于安装：jmeter不需要安装，下载解压即可用。<br>高扩展性：jmeter支持用户自定义测试脚本，同样还提供了各种插件。<br>多测试类型支持：支持性能测试、分布式测试、功能测试<br>仿真模拟：支持多用户并发测试<br>多协议支持：支持http、jdbc、ldap、soap、jms、ftp等等协议<br>录制&amp;回放：支持用badboy或jmeter录制，不过笔者从来不用该模式，纯手工最佳。<br>脚本测试:jmeter支持beanshell和selenium   </p>
+<font size="5px" color="red"><strong>JMeter基本工作原理</strong></font> 
+
+<p><img src="https://i.imgur.com/TlzcMJD.png" alt=""></p>
+<font size="5px" color="red"><strong>JMeter完整的工作原理</strong></font>
+
+<p><img src="https://i.imgur.com/lO2vnpd.png" alt=""></p>
+<font size="5px" color="red"><strong>详细介绍</strong></font>  
+
+<hr>
+<font size="4px"><strong>前言</strong></font>
+
+<p>学习一种工具，首先得对其关键配置及目录等有一个基本的了解，这样能更方便的深入掌握该工具，下面我们就JMeter的目录及相关关键配置进行分析说明。  </p>
+<font size="4px"><strong>下载安装</strong></font>
+
+<p>1.安装主程序<br>从Apache JMeter官网下最新版本：<br><a href="http://jmeter.apache.org/download_jmeter.cgi" target="_blank" rel="noopener">http://jmeter.apache.org/download_jmeter.cgi</a><br>如图：<br><img src="https://i.imgur.com/oI9asBr.png" alt=""></p>
+<p>下载后直接解压即可<br>1.安装插件管理<br>从<a href="http://www.jmeter-plugins.org/install/Install/" target="_blank" rel="noopener">http://www.jmeter-plugins.org/install/Install/</a> 下载插件管理包，如图：<br>将下载的包放至jmemter解压根目录的lib/ext下即可。<br><img src="https://i.imgur.com/tQYMBDV.png" alt=""></p>
+<font size="4px"><strong>目录说明</strong></font>
+
+<p><img src="https://i.imgur.com/WeyMLaa.png" alt=""></p>
+<ul>
+<li>bin  包含启动、配置等相关命令  </li>
+<li>docs 官方本地文档目录  </li>
+<li>extras 辅助库  </li>
+<li>lib  核心库，包含JMeter用到的各种基础库和插件  </li>
+<li>licenses 包含non-ASF软件的许可证</li>
+<li>printable_docs 可打印版本文档目录</li>
+<li>LICENSE JMeter许可说明</li>
+<li>NOTICE  JMeter简单信息说明</li>
+<li>README.md  JMeter官方基本介绍</li>
+</ul>
+<p>下面我们重点看下bin目录，如图：<br><img src="https://i.imgur.com/ni3JEVs.png" alt=""></p>
+<p>主要介绍bin目录下我们最关注几个文件：  </p>
+<ul>
+<li>jmeter.properties JMeter核心配置文件，各种配置基本在这完成</li>
+<li>log4j.conf  JMeter日志配置管理</li>
+<li>jmeter.log  JMeter运行日志记录，什么输出信息、警告、报错都在这里进行了记录</li>
+<li>jmeter.bat  windows下jmeter启动文件</li>
+<li>shutdown.cmd  windows下jmeter关闭文件</li>
+<li>stoptest.cmd  windows下jmeter测试停止文件</li>
+<li>jmeter-server.bat  windows下jmeter服务器模式启动文件</li>
+</ul>
+<p><strong>注</strong>：每一个.cmd文件都对应一个.sh文件，.sh是linux下的对应功能的文件<br>其他文件的功能就不一一说明了，同时其他目录这里也不再进行阐述，有兴趣的朋友可以自己深入看下。   </p>
+<font size="4px"><strong>关键配置说明</strong></font>
+
+<p>1.jmeter.properties配置说明<br>主要包含以下几个方面的配置：  </p>
+<ul>
+<li>SSL配置：  </li>
+</ul>
+<p>重点关注下面几个配置<br>指定HTTPS协议层ttps.default.protocol=TLS<br>指定SSL版本，实际应用中可能需要修改  https.default.protocol=SSLv3#设置启动的协议https.socket.protocols=SSLv2Hello SSLv3 TLSv1<br>缓存控制，控制SSL是否可以在多个迭代中重用https.use.cached.ssl.context=true</p>
+<ul>
+<li>JMeter界面显示配置  </li>
+</ul>
+<p>这里就不对其界面显示控制进行说明了，一般情况下默认界面能满足大家的应用了。  </p>
+<ul>
+<li>JMeter测试项目自动备份配置  </li>
+</ul>
+<p>设置是否启用自动备份，默认是<br>truejmeter.gui.action.save.backup_on_save=true<br>设置自动备份目录，默认备份至JMeter根目录的backups下<br>jmeter.gui.action.save.backup_directory=<br>设置自动备份项目数，默认为最近10个<br>jmeter.gui.action.save.keep_backup_max_count=10    </p>
+<ul>
+<li>远程主机配置</li>
+</ul>
+<p>配置远程主机的IP，默认为本机。用逗号”,”可以设置多个远程主机remote_hosts=127.0.0.1<br>多个远程主机指定示例如下,其中:后为端口remote_hosts=127.0.0.1:1099,127.0.0.1:1200,127.0.0.1:1300对于RMID的配置请直接看配置文件中的选项说明</p>
+<ul>
+<li>日志管理配置</li>
+</ul>
+<p>设置日志格式log_format_type=default<br>设置日志输出级别log_level.jmeter=INFO<br>设置junit日志输出级别log_level.jmeter.junit=DEBUG<br>设置日志输出目标文件，默认为jmeter.loglog_file=jmeter.log  </p>
+<ul>
+<li><p>等等其他还有10多个配置大项（就不一一列举了）</p>
+</li>
+<li><p>jmeter.bat关键配置修改</p>
+</li>
+</ul>
+<p>为了更优化的使用jmeter，需要对jmeter.bat中的一些配置根据当前机器的配置进行优化，这里进行关键配置项说明，大家根据自己的机器的配置来进行修改。<br>jvm相关配置，大概在80行左右，找到这些配置，对其中的数值根据当前机器的硬件配置来修改。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">set HEAP=-Xms2048m -Xmx2048mset NEW=-XX:NewSize=512m -XX:MaxNewSize=512mset</span><br><span class="line">SURVIVOR=-XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=50%set</span><br><span class="line">TENURING=-XX:MaxTenuringThreshold=2if %current_minor% LEQ &quot;8&quot; (    rem Increase</span><br><span class="line">MaxPermSize if you use a lot of Javascript in your Test Plan :    set PERM=-XXermSize=512m -XX:MaxPermSize=1024m)</span><br></pre></td></tr></table></figure>
+<font size="4px"><strong>启动jmeter</strong></font>
+
+<p>在bin目录下直接双击jmeter.bat即可启动后的界面如下：<br><img src="https://i.imgur.com/niZbvXH.png" alt=""></p>
+<font size="4px"><strong>jmeter的核心组件构成</strong></font><br><img src="https://i.imgur.com/nlhoF1m.png" alt=""><br><br><br><font size="4px"><strong>jmeter必须掌握的入门组件</strong></font>
+
+<ul>
+<li>Thread Group</li>
+<li>Samplers</li>
+<li>Listeners</li>
+<li>Configuration</li>
+</ul>
+<p><strong>Thread Group(线程组)</strong>线程组是一系列线程的集合，每一个线程代表着一个正在使用应用程序的用户。在jmeter中，每个线程意味着模拟一个真实用户向服务器发起请求。<br>在jmeter中，线程组组件运行用户设置线程数量、初始化方式等等配置。<br>例如，如果你设置线程数为100，那么jmeter将创建并模拟测试100个用户请求到服务器端。<br>如下图所示：<br><img src="https://i.imgur.com/R9OlsBP.png" alt=""></p>
+<p><strong>Samplers</strong>我们常用的jmeter测试有HTTP、FTP、JDBC协议，以及其他各种支持的协议。<br>在上节我们已经知道线程组件用于模拟用户请求至服务器端。<br>但还未讲解如何在线程组件中实现某种请求类型（比如如何发起HTTP请求？）。<br>在本节中，我们将演示如何利用Samplers组件的元素来实现各类请求类型。<br>我们先看一下在jmeter中Samplers组件已经实现了哪些协议的支持。如下图所示:<br><img src="https://i.imgur.com/kwOMiIV.png" alt=""></p>
+<font size="4px"><strong>jmeter重要组件</strong></font>
+
+<ul>
+<li><strong>BeanShell Sampler</strong></li>
+</ul>
+<p>这个组件元素允许我们在jmeter中写Bean Shell脚本，写这个脚本有什么作用？意味着你可以完全的控制和实现自己的需要。灵活定制，自然也就有难度，你得有点脚本功底。<br>参见图说明：<br><img src="https://i.imgur.com/QqYf3sA.png" alt="">  </p>
+<p>注：每一个Sampler都有自己独立的beanshell解析器，并且sampler只能在自己的线程中调用（意味着不可跨线程使用）。</p>
+<ul>
+<li><strong>FTP Request</strong></li>
+</ul>
+<p>FTP Request元素提供了测试ftp服务器的能力，这个元素让我们能够去测试ftp的上传、下载功能。<br>下面我们看一下ftp元素的基本配置说明：<br><img src="https://i.imgur.com/aakU331.png" alt=""></p>
+<p>注：我们经常在windows和linux直接通过ftp进行文件传输，建议勾选Use Binary Mode，避免编码问题。</p>
+<ul>
+<li><strong>HTTP Request</strong></li>
+</ul>
+<p>HTTP Request提供了HTTP/HTTPS协议的测试支持能力。<br>下面我们一起看看HTTP Request元素的基本配置说明，了解下基本的功能。<br><img src="https://i.imgur.com/TLGBAfn.png" alt=""></p>
+<ul>
+<li><strong>Java Request</strong></li>
+</ul>
+<p>Java Request提供了测试java API的支持，但要注意要测试的java<br>API需要有对应的测试类，该测试类必须继承AbstractJavaSamplerClient。<br>示例如下：<br>待测类class Sum; -&gt; 生成sum.jar<br>继承至AbstractJavaSamplerClient的测试类Class TestSum(AbstractJavaSamplerClient) -&gt; 生成testSum.jar<br>注：<br>一个java测试应该要实现以下几个方法，以便jmeter java sampler可以正确调用：<br><img src="https://i.imgur.com/baAqsFG.png" alt=""></p>
+<p>注意testSum.jar要能调用sum.jar。<br>将上述sum.jar、testSum.jar拷贝至jmeter安装目录的lib/ext下。  </p>
+<font size="4px"><strong>jmeter配置java测试</strong></font>
+
+<p><img src="https://i.imgur.com/RqQxA1l.png" alt=""></p>
+<font size="4px"><strong>Listeners(监听器)</strong></font>
+
+<p>在jmeter中Listeners提供了执行结果生成和显示能力的支持，提供了树形结构、表、图形和日志方式。     </p>
+<p><strong>图形模式：</strong>  </p>
+<p><img src="https://i.imgur.com/4C5LRQf.png" alt=""></p>
+<p><strong>树模式：</strong>  </p>
+<p><img src="https://i.imgur.com/or4g7sD.png" alt=""></p>
+<p><strong>表模式：</strong>  </p>
+<p><img src="https://i.imgur.com/ezBzQIa.png" alt=""></p>
+<p><strong>日志方式：</strong>  </p>
+<p><img src="https://i.imgur.com/2QdoQW7.png" alt=""></p>
+<p><strong>Configuration Elements(即配置元件)</strong></p>
+<p>配置元件包含了Samplers下各种Sampler的默认配置设置，如果有配置默认配置，在Sampler下对应的sampler就会使用该默认配置。   </p>
+<p><img src="https://i.imgur.com/9vurE11.png" alt=""></p>
+<p>下面进行逐一的说明。</p>
+<ul>
+<li><p><strong>CSV Data Set Config</strong><br>CSV Data Set Config主要用于读取csv格式的文件中数据，实现参数化。<br><img src="https://i.imgur.com/V4LIr8T.png" alt="">  </p>
+</li>
+<li><p><strong>HTTP Cookie Manager</strong><br>HTTP Cookie Manager主要用于默认cookie管理。<br><img src="https://i.imgur.com/SSwml0U.png" alt="">  </p>
+</li>
+<li><p><strong>HTTP Request Defaults</strong><br>HTTP Request Defaults用于配置HTTP<br>request的默认值，例如IP、端口等等都设置好默认值后，在后续HTTP<br>request元素里就不需要重复设置，节省时间。<br><img src="https://i.imgur.com/3uuZ50m.png" alt=""></p>
+</li>
+</ul>
+<font size="5px" color="red"><strong>JMeter性能测试基本过程及示例 </strong></font>
+
+
+<hr>
+<font size="4px"><strong>前言</strong></font>
+
+<p>性能测试是我们日常测试过程中，必须掌握的技能。通过进行性能测试，我们能分析服务端的整体性能、负载等，以便进一步评估我们的业务系统是否能满足当前运营生产及未来业务增长情况下如何进一步调整我们的服务配置方案。  </p>
+<p>jmeter为性能测试提供了一下特色：  </p>
+<ul>
+<li>jmeter可以对测试静态资源（例如js、html等）以及动态资源（例如php、jsp、ajax等等）进行性能测试  </li>
+<li>jmeter可以挖掘出系统最大能处理的并发用户数  </li>
+<li>jmeter提供了一系列各种形式的性能分析报告  </li>
+</ul>
+<p>使用jmeter一般用于以下两种类型的性能测试<br><img src="https://i.imgur.com/wUB7Dj2.png" alt=""></p>
+<p>负载测试：通过测试系统在资源超负荷情况下的表现，以发现设计上的错误或验证系统的负载能力。<br>压力测试：测试系统能承受的最大负载能力。目的在于发挖掘出目标服务系统可以处理的最大负载。   </p>
+<font size="4px"><strong>基本过程</strong></font>
+
+<p><img src="https://i.imgur.com/0WQaBfY.png" alt=""></p>
+<p>对上图进行简要的说明</p>
+<ul>
+<li>新增线程组<br>创建测试线程组，并设置线程数量及线程初始化启动方式。  </li>
+<li>新增JMeter元组<br>创建各种默认元组及测试元组，填入目标测试静态资源请求和动态资源请求参数及数据。  </li>
+<li>新增监听器<br>创建各种形式的结果搜集元组，以便在运行过程及运行结束后搜集监控指标数据。 </li>
+<li>运行&amp;查看结果<br>调试运行，分析指标数据，挖掘性能瓶颈、评估系统性能状态、</li>
+</ul>
+<font size="4px"><strong>示例</strong></font>
+
+<p><strong>下面我们以打开百度演示上述过程</strong>  </p>
+<p>新增线程组<br>在jmeter的bin目录下双击jmeter.bat启动jmeter<br>在左边操作栏中选择“测试计划”，右击新增一个线程组，如图所示：<br><img src="https://i.imgur.com/OBPwbJf.png" alt=""></p>
+<p>初始化线程组相关信息，如图：<br><img src="https://i.imgur.com/mEQjduu.png" alt=""></p>
+<p>新增JMeter元组<br>添加默认配置元素，添加如下默认配置，如图<br><img src="https://i.imgur.com/MQc06O6.png" alt=""></p>
+<p>各默认组件配置如图所示。<br>HTTP Cache Manager<br><img src="https://i.imgur.com/74CUMRa.png" alt=""></p>
+<p>HTTP Cookie管理器<br><img src="https://i.imgur.com/cpiorKM.png" alt=""></p>
+<p>HTTP请求默认值<br><img src="https://i.imgur.com/iNPF8EH.png" alt=""></p>
+<p>添加HTTP Request元组<br>在线程组上右击新增HTTP请求，如图：<br><img src="https://i.imgur.com/R6RySr9.png" alt=""></p>
+<p>HTTP请求设置如图：<br><img src="https://i.imgur.com/VanA29O.png" alt=""></p>
+<p>新增监听器<br>在这里我们添加如下监听器，如图所示<br><img src="https://i.imgur.com/u5wMmOe.png" alt=""></p>
+<p>运行&amp;查看结果<br>如果启动运行jmeter，可以单击添加的监听器查看运行过程中的监控指标数据，也可以等运行结束后，再查看。<br><img src="https://i.imgur.com/E39CX1i.png" alt=""></p>
+<font size="4px"><strong>结果说明</strong></font>
+
+<p>下面我们就监听器所采集的结果图进行简要的说明：<br>图形结果<br><img src="https://i.imgur.com/jcdZZRt.png" alt=""></p>
+<p>察看结果树<br><img src="https://i.imgur.com/XpQoaJe.png" alt=""></p>
+<p>用表格查看结果<br><img src="https://i.imgur.com/JR540em.png" alt=""></p>
+<p>聚合报告<br><img src="https://i.imgur.com/rdBQjnj.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JMeter/" rel="tag"><i class="fa fa-tag"></i> JMeter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/解决JMeter运行一段时间卡死的问题/" rel="next" title="解决JMeter运行一段时间卡死的问题">
+                <i class="fa fa-chevron-left"></i> 解决JMeter运行一段时间卡死的问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/20/JMeter使用插件进行服务器性能监控/" rel="prev" title="JMeter使用插件进行服务器性能监控">
+                JMeter使用插件进行服务器性能监控 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RobotFramework," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="浏览器驱动   通过不同的浏览器执行脚本Open Browser | Htpp://www.xxx.com | chrome     浏览器对应的关键字：FireFox： firefox / ffInternet Explorer： internetexplorer / ieGoogle Chrome： googlec">
+<meta name="keywords" content="RobotFramework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium2Library库详细用法">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/Selenium2Library库详细用法/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="浏览器驱动   通过不同的浏览器执行脚本Open Browser | Htpp://www.xxx.com | chrome     浏览器对应的关键字：FireFox： firefox / ffInternet Explorer： internetexplorer / ieGoogle Chrome： googlechrome / gc / chromeOpera： operaPhantomJS">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/QLS8yKB.png">
+<meta property="og:image" content="https://i.imgur.com/HDzcltg.png">
+<meta property="og:image" content="https://i.imgur.com/EytHKtO.png">
+<meta property="og:image" content="https://i.imgur.com/jHgjnF8.png">
+<meta property="og:image" content="https://i.imgur.com/MtdiDuV.png">
+<meta property="og:image" content="https://i.imgur.com/QC9wCYt.png">
+<meta property="og:image" content="https://i.imgur.com/Cgptv4B.png">
+<meta property="og:image" content="https://i.imgur.com/jblMPeV.png">
+<meta property="og:image" content="https://i.imgur.com/TVjIfSR.png">
+<meta property="og:image" content="https://i.imgur.com/5XbfidG.png">
+<meta property="og:image" content="https://i.imgur.com/HRnE39t.png">
+<meta property="og:image" content="https://i.imgur.com/KpcYd6k.png">
+<meta property="og:updated_time" content="2018-04-08T10:30:02.651Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Selenium2Library库详细用法">
+<meta name="twitter:description" content="浏览器驱动   通过不同的浏览器执行脚本Open Browser | Htpp://www.xxx.com | chrome     浏览器对应的关键字：FireFox： firefox / ffInternet Explorer： internetexplorer / ieGoogle Chrome： googlechrome / gc / chromeOpera： operaPhantomJS">
+<meta name="twitter:image" content="https://i.imgur.com/QLS8yKB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/08/Selenium2Library库详细用法/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入访问密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Selenium2Library库详细用法 | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/Selenium2Library库详细用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Selenium2Library库详细用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T00:00:00+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <font color="blue" size="+2"><strong>浏览器驱动</strong></font>
+
+
+<p>通过不同的浏览器执行脚本<br>Open Browser | Htpp://www.xxx.com | chrome    </p>
+<p>浏览器对应的关键字：<br>FireFox： firefox / ff<br>Internet Explorer： internetexplorer / ie<br>Google Chrome： googlechrome / gc / chrome<br>Opera： opera<br>PhantomJS： phantomjs<br>HTMLUnit： htmlunit<br>HTMLUnit with Javascipt support： htmlunitwithjs<br>Android： android<br>Iphone： iphone<br>Safari： safari   </p>
+<p><strong>备注：</strong></p>
+<p>要想通过不同的浏览打开URL地址，一定要安装浏览器相对应的驱动<br>浏览器默认为空时启动FireFox<br>下载好的驱动要copy放置于Python的主目录下   </p>
+<p>chromedriver官网下载地址：<br><a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a>   </p>
+<p>chromedriver与chrome的对应关系表：   </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">chromedriver版本</th>
+<th style="text-align:center">支持的Chrome版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">v2.37</td>
+<td style="text-align:center">v64-66</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.36</td>
+<td style="text-align:center">v63-65</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.35</td>
+<td style="text-align:center">v62-64</td>
+</tr>
+<tr>
+<td style="text-align:center">v2.34</td>
+<td style="text-align:center">v61-63</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<font color="blue" size="+2"><strong>关键字</strong></font>
+
+<p>官方对所有关键字的解释（翻译）：<br><a href="https://pan.baidu.com/s/1kTPkpCEE_jnG5yeIH5dxlA" target="_blank" rel="noopener">https://pan.baidu.com/s/1kTPkpCEE_jnG5yeIH5dxlA</a>   </p>
+<p>如下对主要常使用的关键字进行列述：  </p>
+<font color="red" size="+1"><strong>关闭浏览器</strong></font>
+
+<p>| Close Browser | #关闭当前的浏览器 |<br>| Close All Browsers | #关闭所有浏览器和浏览器缓存重置 |     </p>
+<font color="red" size="+1"><strong>浏览器最大化</strong></font>
+
+<p>| Maximize Browser Window |      </p>
+<font color="red" size="+1"><strong>设置浏览器宽、高</strong></font>
+
+<p>| Get Window Size | 800 | 600 |<br>以像素为单位，参数800表示宽度，参数600表示高度   </p>
+<font color="red" size="+1"><strong>文本输入</strong></font>
+
+<p>| Input Text | Xpath=//*[@] | 输入信息 |<br>Xpath=//*[@]定位文本输入框  </p>
+<font color="red" size="+1"><strong>点击元素</strong></font>
+
+<p>| Click Element | Xpath=//*[@] |   </p>
+<font color="red" size="+1"><strong>点击按钮</strong></font>
+
+<p>| Click Button | Xpath=//*[@] |   </p>
+<font color="red" size="+1"><strong>固定时间休眠</strong></font>
+
+<p>| Sleep | 42 |<br>| Sleep | 2 minutes 10 seconds |<br>Sleep表示执行到当前行固定休眠多长时间，以“秒”为单位<br>2 minutes 10 seconds 表示2分10秒   </p>
+<font color="red" size="+1"><strong>等待元素出现在当前页面</strong></font>
+
+<p>| Wait Until Page Contains Element | Xpath=//*[@] | 4 | error |<br>4： 表示最长等待时间<br>Error： 自定义错误提示   </p>
+<font color="red" size="+1"><strong>获取title</strong></font>
+
+<p>| Get Text | Xpath=//*[@] |   </p>
+<font color="red" size="+1"><strong>获取文本信息</strong></font>
+
+<p>| Get Text | Xpath=//*[@] |   </p>
+<font color="red" size="+1"><strong>获取元素属性值</strong></font>
+
+<p>| Get Element Attribute | id=kw@name |<br>id=kw@name： id=kw表示定位的元素；@name获取这个元素的name属性值    </p>
+<font color="red" size="+1"><strong>cookie处理</strong></font>
+
+<p>| get cookies | #获得当前浏览器的所有cookie |<br>| get cookie value | Key_name | #获得cookie值 |<br>| delete cookie | Key_name | #删除cookie |<br>| delete all cookies | #删除当前浏览器的所有cookie |<br>| add cookie | Key_name | Value_name | #添加cookie |   </p>
+<font color="red" size="+1"><strong>声明变量</strong></font>
+
+<p>| ${a} | Set Variable | hello |<br>定义变量a为hello<br>| ${a} | ${b} | Set Variable | hello | world |<br>定义变量a为hello，b为world    </p>
+<font color="red" size="+1"><strong>日志（输出）</strong></font>
+
+<p>| ${a} | Set Variable | Hello World |<br>| log  | ${a}         |     </p>
+<font color="red" size="+1"><strong>获得浏览器窗口宽、高</strong></font>
+
+<p>| ${width} | ${height} | get window size |<br>| log | ${width} |<br>| log | ${height} |    </p>
+<font color="red" size="+1"><strong>校验页面必须包含元素</strong></font>   
+
+<p>| Page Should Contain | 校验文案 |<br>| Page Should Contain Element | 校验元素xpath |   </p>
+<font color="red" size="+1"><strong>等待页面加载完成</strong></font>
+
+<p>| Wait Until Page Contains Element | xpath=//*[@] | 8 | Error |<br>等待页面出现特定元素后继续执行下方用例<br>8：指的是等待时长，Error：指失败后的返回文案   </p>
+<font color="red" size="+1"><strong>执行关键字后忽略错误</strong></font>  
+
+<p>| ${result} | ${returnvalue} | Run Keyword And Ignore Error | 关键字 |<br>| log | ${result} ， ${returnvalue} |<br>${result}：指执行结果（PASS/FAIL），${returnvalue}：返回错误原因，无错误返回None</p>
+<font color="red" size="+1"><strong>验证对比</strong></font>
+
+<p>| open browser | <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a> | chrome |<br>| ${title} | Get Title |<br>| should contain | ${title} | 百度一下，你就知道 |<br>Should Contain比较${title}是否等于“百度一下，你就知道”    </p>
+<font color="red" size="+1"><strong>表单嵌套</strong></font>
+
+<p>| Select Frame | Xpath=//*[@] | #选择表单 |<br>| Unselect Frame | #退出表单 |   </p>
+<font color="red" size="+1"><strong>下拉框选择</strong></font>
+
+<p>| Unselect From List By Value | Xpath=//*[@] | vlaue |<br>Vlaue 选择下拉框里的属性值     </p>
+<font color="red" size="+1"><strong>If分支语句</strong></font>
+
+<p>| ${a} | Set variable | 2 |<br>| ${b} | Set variable | 5 |<br>| run keyword if | ${a}&gt;=1 | log | a大于1 |<br>| … | ELSE IF | ${b}&lt;=5 | log | b小于等于5 |<br>| … | ELSE | log | 上面两个条件都不满足 |   </p>
+<font color="red" size="+1"><strong>For循环语句</strong></font>
+
+<p>循环1：<br>| :FOR | ${i} | in range | 10 |<br>| log | ${i} |   </p>
+<p>循环2：<br>| @{a} | create list | aaa | bbb |<br>| :FOR | ${i} | in | @{a} |<br>| log | ${i} |<br>通过in可遍历非整型（in range）  </p>
+<hr>
+<font color="blue" size="+2"><strong>元素定位</strong></font>
+
+<p>Web自动化测试其实就是找到元素（定位元素）并操作元素<br>Selenium2Library提供了非常丰富的定位器：   </p>
+<p><img src="https://i.imgur.com/QLS8yKB.png" alt=""></p>
+<font color="red" size="+1"><strong>id和name定位</strong></font>
+
+<p>以百度为例。我们可看到输入框input元素有id和name属性，百度一下按钮有id属性  </p>
+<p><img src="https://i.imgur.com/HDzcltg.png" alt=""></p>
+<p>输入框：id=kw name=wd，在Robotframework中就是这样写的：   </p>
+<p><img src="https://i.imgur.com/EytHKtO.png" alt=""></p>
+<p>Input text用于输入框的关键字，后面两个参数，一个是元素的定位，一个是输入框输入的值<br>百度一下按钮：id=su，在Robotframework中就是这样写的：   </p>
+<p><img src="https://i.imgur.com/jHgjnF8.png" alt=""></p>
+<p>click button用户点击按钮的关键字，后面跟着一个必填参数   </p>
+<font color="red" size="+1"><strong>XPath定位</strong></font>
+
+<p>XPath是一种在XML文档中定位元素的语言。因为HTML可以看做XML的一种实现，所以selenium用户可是使用这种强大语言在web应用中定位元素。如果一个元素没有id和name或没有唯一标识可以使用xpath通过层级关系找到元素     </p>
+<p><strong>（1）xpath绝对路径</strong></p>
+<p>比如百度页面的搜索输入框：<br><code>xpath=/html/body/div[2]/div[1]/div/div[1]/div/form/span[1]/input</code><br>绝对路径的用法往往是在我们迫不得已的时候才用的。大多时候用相对路径更简便    </p>
+<p><strong>（2）xpath的相对路径</strong></p>
+<p>使用元素本身定位：比如百度页面的搜索输入框<code>xpath=//*[@id=&quot;kw&quot;]</code>，可以利用元素自身的属性。//表示某个层级下，*表示某个标签名。@id=kw表示这个元素有个id等于kw</p>
+<p>当然，一般也可以制定标签名：<code>xpath=//input[@id=&quot;kw&quot;]</code>元素本身，可以利用的属性就不只局限为于id和name，如：<code>Xpath=//input[@autocomplete=’off’]</code>，但要保证这些元素可以唯一的识别一个元素     </p>
+<p>找上级：如果一个元素找不到可以先找到他的上级。比如：<code>xpath=//span[@class=&#39;bg s_btn_wr’]/input</code>，如果父级没有唯一标识，还可以继续往上找：<br><code>xpath=//form[@id=’form1’]/span/input</code>     </p>
+<p>布尔值写法：<br><code>Xpath=//input[@id=’kw1’ and @name=’wd’]</code></p>
+<p><img src="https://i.imgur.com/MtdiDuV.png" alt=""></p>
+<font color="red" size="+1"><strong>css定位</strong></font>
+
+<p>CSS(Cascading Style Sheets)是一种语言，它被用来描述HTML和XML文档的表现。CSS使用选择器来为页面元素绑定属性。这些选择器可以被 selenium 用作另外的定位策略。CSS可以比较灵活选择控件的任意属性，一般情况下定位速度要比XPath快   </p>
+<p>CSS 选择器的常见语法：  </p>
+<p><img src="https://i.imgur.com/QC9wCYt.png" alt=""></p>
+<p><img src="https://i.imgur.com/Cgptv4B.png" alt=""></p>
+<hr>
+<font color="blue" size="+2"><strong>分层思想进行参数化配置</strong></font>   
+
+<p>在程序设计的讲究设计模式，设计模式其实就是根据需求使用抽象与封装，其实就是分层思想。把一个实现过程分成不同多层。提高的灵活性，从而达到可扩展性和可维护性   </p>
+<p>再回到自动化的话题上，我们可以把操作步骤封装一个一个的方法（关键字），通过调用关键字来实现测试用例以及参数化  </p>
+<p><strong>方法：</strong>新增关键字，编辑关键字的Arguments输入框，创建变量<br>定义变量，多个变量从用“|”隔开   </p>
+<p><img src="https://i.imgur.com/jblMPeV.png" alt=""></p>
+<p>编写完关键字的参数后，直接在用例中调用   </p>
+<p><img src="https://i.imgur.com/TVjIfSR.png" alt=""></p>
+<p>参考文献：<br><a href="https://www.cnblogs.com/fnng/p/3969978.html" target="_blank" rel="noopener">https://www.cnblogs.com/fnng/p/3969978.html</a></p>
+<hr>
+<font color="blue" size="+2"><strong>模态窗口的处理</strong></font>
+
+<p>所谓模态窗口，就是指除非采取有效的关闭手段，用户的鼠标焦点或者输入光标将一直停留在其上的对话框。（说白了，就是弹出了模态窗口之后，后面的窗口无法被点击）    </p>
+<p>在web自动化测试，可能时常会碰到，但是如果普通的操作（click button）来打开模态窗口    </p>
+<p>会导致RF卡住，运行不下去。所以必须使用异步的js来打开模态窗口    </p>
+<p>核心的代码就是：   </p>
+<blockquote>
+<p>setTimeout(function(){document.getElementById(“aa”).click()},100)</p>
+</blockquote>
+<p>具体的demo如下图：   </p>
+<p><img src="https://i.imgur.com/5XbfidG.png" alt=""></p>
+<p>实际以如下模态窗口作为实例：<br><a href="http://www.runoob.com/try/demo_source/bootstrap-modal.htm" target="_blank" rel="noopener">http://www.runoob.com/try/demo_source/bootstrap-modal.htm</a>     </p>
+<p>用例如下：  </p>
+<p><img src="https://i.imgur.com/HRnE39t.png" alt=""></p>
+<p>其他文献（涉及弹窗以及复选框）：<br><a href="https://www.jianshu.com/p/87e7ec22045d" target="_blank" rel="noopener">Selenium2Lib库之界面元素交互常用关键字实战</a></p>
+<hr>
+<font color="blue" size="+2"><strong>结束driverserver的方法</strong></font>
+
+<p>case运行时，使用IE或chrome浏览器，运行一次后IEDriverServer.exe或chromedriver.exe进程仍在运行中，所以会出现<code>log窗口未实时进行打印日志</code>的现象，解决方法如下：    </p>
+<p><strong>方法一：</strong> 新建批处理，执行批处理即可  </p>
+<p><code>taskkill /f /im  chromedriver.exe</code></p>
+<p><strong>方法二：</strong> 以关键字形式进行调用</p>
+<p>1.RFT引入<strong>OperatingSystem</strong>类库<br>2.新建一个关键字，例“CloseDriverserver”<br>3.在“CloseDriverserver”输入内容：    </p>
+<blockquote>
+<p>${RunOutput}  |  OperatingSystem.Run  |  taskkill /IM “chromedriver.exe” /T /F  </p>
+</blockquote>
+<p>4.在Case的<code>TearDown</code>中填写“CloseDriverserver”关键字   </p>
+<p>每次Case步骤执行完成后，会执行该关键字结束IEdriverserver或者Chromedriverserver   </p>
+<p><img src="https://i.imgur.com/KpcYd6k.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RobotFramework/" rel="tag"><i class="fa fa-tag"></i> RobotFramework</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/01/平安云官网自动化校验/" rel="next" title="平安云官网自动化校验">
+                <i class="fa fa-chevron-left"></i> 平安云官网自动化校验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/10/Fiddler抓包工具/" rel="prev" title="Fiddler抓包工具">
+                Fiddler抓包工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="情况：想实现Python脚本的可视化，原来是打算学习Tkinter，但是后来发现Python有一个简易的GUI库，EsayGUI，虽然该库已淘汰，但是对应简单的功能需要已满足，所以暂时学习使用该模块。 EasyGUI是运行在Tkinter上并拥有自身的时间循环，所以本身安装该模块后也可以根据Tkinter的模式对该脚本">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python简易GUI界面模块EasyGUI">
+<meta property="og:url" content="http://yoursite.com/2018/01/09/Python简易GUI界面实现模块EasyGUI/index.html">
+<meta property="og:site_name" content="NolanWu&#39;s Blog">
+<meta property="og:description" content="情况：想实现Python脚本的可视化，原来是打算学习Tkinter，但是后来发现Python有一个简易的GUI库，EsayGUI，虽然该库已淘汰，但是对应简单的功能需要已满足，所以暂时学习使用该模块。 EasyGUI是运行在Tkinter上并拥有自身的时间循环，所以本身安装该模块后也可以根据Tkinter的模式对该脚本进行优化，后面也对该easygui脚本进行了优化。   安装EasyGUI： 官">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/V9l0PGC.png">
+<meta property="og:image" content="https://i.imgur.com/NmXj0d7.png">
+<meta property="og:image" content="https://i.imgur.com/AgEtzHJ.png">
+<meta property="og:image" content="https://i.imgur.com/MLHU8Bu.png">
+<meta property="og:image" content="https://i.imgur.com/TQcWg8J.jpg">
+<meta property="og:image" content="https://i.imgur.com/lGZr3ph.png">
+<meta property="og:image" content="https://i.imgur.com/XivsQcy.png">
+<meta property="og:image" content="https://i.imgur.com/bOvAFRF.png">
+<meta property="og:image" content="https://i.imgur.com/UCpWN3a.png">
+<meta property="og:image" content="https://i.imgur.com/S2QCCyV.png">
+<meta property="og:image" content="https://i.imgur.com/AaWNHs4.png">
+<meta property="og:updated_time" content="2018-01-09T08:31:20.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python简易GUI界面模块EasyGUI">
+<meta name="twitter:description" content="情况：想实现Python脚本的可视化，原来是打算学习Tkinter，但是后来发现Python有一个简易的GUI库，EsayGUI，虽然该库已淘汰，但是对应简单的功能需要已满足，所以暂时学习使用该模块。 EasyGUI是运行在Tkinter上并拥有自身的时间循环，所以本身安装该模块后也可以根据Tkinter的模式对该脚本进行优化，后面也对该easygui脚本进行了优化。   安装EasyGUI： 官">
+<meta name="twitter:image" content="https://i.imgur.com/V9l0PGC.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/09/Python简易GUI界面实现模块EasyGUI/"/>
+
+
+
+
+
+<script>
+	(function(){
+		if('7'){
+			if (prompt('请输入访问密码','') !== '7'){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #B4CDCD; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #B4CDCD, 0 0 5px #ADFF2F; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #B4CDCD;    /*上边框颜色*/
+        border-left-color: #B4CDCD;    /*左边框颜色*/
+    }
+</style>
+  <title>Python简易GUI界面模块EasyGUI | NolanWu's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">NolanWu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tool">
+          <a href="/tool/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/Python简易GUI界面实现模块EasyGUI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nolan Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NolanWu's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python简易GUI界面模块EasyGUI</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T00:00:00+08:00">
+                2018-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">学习随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>情况：想实现Python脚本的可视化，原来是打算学习Tkinter，但是后来发现Python有一个简易的GUI库，EsayGUI，虽然该库已淘汰，但是对应简单的功能需要已满足，所以暂时学习使用该模块。</p>
+<p>EasyGUI是运行在Tkinter上并拥有自身的时间循环，所以本身安装该模块后也可以根据Tkinter的模式对该脚本进行优化，后面也对该easygui脚本进行了优化。  </p>
+<p><strong>安装EasyGUI：</strong></p>
+<p>官网：<a href="http://easygui.sourceforge.net/" target="_blank" rel="noopener">http://easygui.sourceforge.net/</a><br>软件包：<a href="https://pan.baidu.com/s/1htn1Gw8" target="_blank" rel="noopener">https://pan.baidu.com/s/1htn1Gw8</a> 密码: rryy  </p>
+<p>方法：<br>1.进入到下载包的目录下<br>2.执行命令<code>python setup.py install</code></p>
+<p><strong>导入EasyGUI：</strong></p>
+<ul>
+<li>最简单的导入语句： <code>import easygui</code><br>使用这种方式的话导入函数的模式： <code>easygui.msgbox()</code></li>
+<li>导入整个EasyGUI包： <code>from easygui import *</code><br>使用这种方式的话导入函数的模式： <code>msgbox()</code></li>
+<li>在使用的导入方法： <code>import easygui as g</code><br>使用这种方式的话导入函数的模式： <code>g.msgbox()</code></li>
+</ul>
+<hr>
+<font size="+2" color="blue"><strong>EasyGUI所包含的函数</strong></font>
+
+<p>如下列明所包含的函数，案例直接摘自官网<br><a href="http://easygui.sourceforge.net/tutorial.html" target="_blank" rel="noopener">http://easygui.sourceforge.net/tutorial.html</a><br>EasyGui函数的默认参数，EasyGui函数的大多数参数都有默认值。几乎所有的框都显示一个消息和一个标题。标题默认为空字符串，并且消息通常具有简单的默认值。后面可以直接编写源文件修改默认值。  </p>
+<font size="+1" color="red"><strong>msgbox</strong></font>
+
+<p>msgbox显示一条消息并提供一个OK按钮。可以发送任何你想要的信息，以及任何你想要的标题。可以覆盖按钮上的“确定”的默认文本。<br>msgbox函数的使用：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgbox （msg = “（Your message goes here）” ， title = “” ， ok_button = “OK” ）：</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/V9l0PGC.png" alt=""></p>
+<font size="+1" color="red"><strong>ccbox</strong></font>
+
+<p>ccbox提供了“继续”和“取消”选项，并返回True（继续）或False（取消）。</p>
+<p><img src="https://i.imgur.com/NmXj0d7.png" alt=""></p>
+<font size="+1" color="red"><strong>ynbox</strong></font> 
+
+<p>ynbox提供了“Yes”和“No”的选择，并返回“True”为“False”。</p>
+<font size="+1" color="red"><strong>buttonbox</strong></font>
+
+<p>要在buttonbox中指定您自己的一组按钮，请使用buttonbox（）函数。<br>buttonbox可以用来显示你选择的一组按钮。当用户点击一个按钮时，buttonbox（）返回选择的文本。如果用户取消或关闭了buttonbox，则返回默认选项（第一个选项）。<br>buttonbox显示一条消息，一个标题和一组按钮。返回用户选择的按钮的文本。  </p>
+<font size="+1" color="red"><strong>indexbox</strong></font>
+
+<p>indexbox显示一条消息，一个标题和一组按钮。返回用户选择的索引。<br>例如，如果您调用带有三个选项（A，B，C）的索引框，则如果用户选择A，indexbox将返回0；如果选择B，indexbox将返回1；如果选择C，indexbox将返回2。</p>
+<font size="+1" color="red"><strong>boolbox</strong></font>
+
+<p>boolbox显示消息，标题和一组按钮。如果选择了第一个按钮，则返回1。否则返回0。<br>这里是一个boolbox（）的简单例子：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">"What does she say?"</span></span><br><span class="line">title = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> boolbox(message, title, [<span class="string">"She loves me"</span>, <span class="string">"She loves me not"</span>]):</span><br><span class="line">    sendher(<span class="string">"Flowers"</span>) <span class="comment"># This is just a sample function that you might write.</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<font size="+1" color="red"><strong>buttonbox添加图片</strong></font>
+
+<p>当您调用buttonbox函数（或显示按钮框的其他函数，如msgbox，indexbox，ynbox等）时，您可以指定关键字参数image = xxx，其中xxx是图像的文件名。该文件可以是.gif。通常，您可以使用其他图像，如.png。   </p>
+<blockquote>
+<p>注意 支持的文件类型取决于你如何安装python。如果其他格式不起作用，则可能需要安装PIL库。</p>
+</blockquote>
+<p>如果指定了图像参数，图像文件将在消息之后显示。<br>以下是EasyGui演示程序的一些示例代码：    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">image = <span class="string">"python_and_check_logo.gif"</span></span><br><span class="line">msg = <span class="string">"Do you like this picture?"</span></span><br><span class="line">choices = [<span class="string">"Yes"</span>,<span class="string">"No"</span>,<span class="string">"No opinion"</span>]</span><br><span class="line">reply = buttonbox(msg, image=image, choices=choices)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/AgEtzHJ.png" alt=""></p>
+<font size="+1" color="red"><strong>choicebox</strong></font>
+
+<p>Buttonboxes很适合为用户提供一小段选择。但是如果有很多选择，或者选择的文本很长，那么更好的策略就是把它们作为一个列表。<br>choicebox为用户提供了一种从选择列表中进行选择的方法。选择是按顺序（元组或列表）指定的。在呈现之前，这些选择将被区分大小写。<br>键盘可以用来选择列表的一个元素。<br>例如，按键盘上的“g”会将选择跳转到以“g”开头的第一个元素。再次按下“g”，将光标跳到以“g”开头的下一个元素。在以“g”开始的元素的末尾，再次按下“g”将导致选择环绕到列表的开头，并跳转到以“g”开头的第一个元素。<br>如果没有以“g”开始的元素，则选择在发生“g”的位置之前出现的最后一个元素。如果“g”之前没有元素，则选择列表中的第一个元素。     </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msg =<span class="string">"What is your favorite flavor?"</span></span><br><span class="line">title = <span class="string">"Ice Cream Survey"</span></span><br><span class="line">choices = [<span class="string">"Vanilla"</span>, <span class="string">"Chocolate"</span>, <span class="string">"Strawberry"</span>, <span class="string">"Rocky Road"</span>]</span><br><span class="line">choice = choicebox(msg, title, choices)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/MLHU8Bu.png" alt=""></p>
+<font size="+1" color="red"><strong>multchoicebox</strong></font>
+
+<p>multchoicebox()函数为用户提供了一种从选项列表中进行选择的方法。界面看起来就像选择框，但是用户可以选择零个，一个或多个选择。<br>选择是按顺序（元组或列表）指定的。在呈现之前，这些选择将被区分大小写。  </p>
+<p><img src="https://i.imgur.com/TQcWg8J.jpg" alt=""></p>
+<font size="+1" color="red"><strong>enterbox</strong></font>
+
+<p>enterbox是从用户获取字符串的简单方法  </p>
+<font size="+1" color="red"><strong>integerbox</strong></font>
+
+<p>integerbox是从用户获取整数的简单方法  </p>
+<font size="+1" color="red"><strong>multenterbox</strong></font>
+
+<p>multenterbox是在单个屏幕上显示多个输入框的简单方法  </p>
+<p>在multenterbox中：  </p>
+<ul>
+<li>如果值比名称更少，则值的列表将填充空字符串，直到值的数量与名称的数量相同</li>
+<li>如果有比名称更多的值，值的列表将被截断，以便有与名称一样多的值</li>
+<li>返回字段值的列表，如果用户取消操作，则返回None</li>
+</ul>
+<p>下面是一些示例代码，它显示了从multenterbox返回的值在接受之前可以检查其有效性：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="string">"Enter your personal information"</span></span><br><span class="line">title = <span class="string">"Credit Card Application"</span></span><br><span class="line">fieldNames = [<span class="string">"Name"</span>,<span class="string">"Street Address"</span>,<span class="string">"City"</span>,<span class="string">"State"</span>,<span class="string">"ZipCode"</span>]</span><br><span class="line">fieldValues = []  <span class="comment"># we start with blanks for the values</span></span><br><span class="line">fieldValues = multenterbox(msg,title, fieldNames)</span><br><span class="line"></span><br><span class="line"><span class="comment"># make sure that none of the fields was left blank</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">if</span> fieldValues == <span class="keyword">None</span>: <span class="keyword">break</span></span><br><span class="line">    errmsg = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(fieldNames)):</span><br><span class="line">      <span class="keyword">if</span> fieldValues[i].strip() == <span class="string">""</span>:</span><br><span class="line">        errmsg = errmsg + (<span class="string">'"%s" is a required field.\n\n'</span> % fieldNames[i])</span><br><span class="line">    <span class="keyword">if</span> errmsg == <span class="string">""</span>: <span class="keyword">break</span> <span class="comment"># no problems found</span></span><br><span class="line">    fieldValues = multenterbox(errmsg, title, fieldNames, fieldValues)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Reply was:"</span>, fieldValues</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/lGZr3ph.png" alt=""></p>
+<font size="+1" color="red"><strong>multpasswordbox</strong></font>
+
+<p>multpasswordbox与multenterbox具有相同的界面，但在显示时，最后一个字段被假定为密码，并用星号标记。  </p>
+<p>以下是一些示例代码，它显示了如何在接受之前检查从multpasswordbox返回的值的有效性：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">msg = <span class="string">"Enter logon information"</span></span><br><span class="line">title = <span class="string">"Demo of multpasswordbox"</span></span><br><span class="line">fieldNames = [<span class="string">"Server ID"</span>, <span class="string">"User ID"</span>, <span class="string">"Password"</span>]</span><br><span class="line">fieldValues = []  <span class="comment"># we start with blanks for the values</span></span><br><span class="line">fieldValues = multpasswordbox(msg,title, fieldNames)</span><br><span class="line"></span><br><span class="line"><span class="comment"># make sure that none of the fields was left blank</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">  <span class="keyword">if</span> fieldValues == <span class="keyword">None</span>: <span class="keyword">break</span></span><br><span class="line">  errmsg = <span class="string">""</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(len(fieldNames)):</span><br><span class="line">    <span class="keyword">if</span> fieldValues[i].strip() == <span class="string">""</span>:</span><br><span class="line">      errmsg = errmsg + (<span class="string">'"%s" is a required field.\n\n'</span> % fieldNames[i])</span><br><span class="line">  <span class="keyword">if</span> errmsg == <span class="string">""</span>: <span class="keyword">break</span> <span class="comment"># no problems found</span></span><br><span class="line">  fieldValues = multpasswordbox(errmsg, title, fieldNames, fieldValues)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"Reply was:"</span>, fieldValues</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/XivsQcy.png" alt=""></p>
+<font size="+1" color="red"><strong>textbox</strong></font>
+
+<p>textbox()函数以比例字体显示文本。文本将自动换行。   </p>
+<font size="+1" color="red"><strong>codebox</strong></font>
+
+<p>codebox()函数以等宽字体显示文本，不包装。</p>
+<p><img src="https://i.imgur.com/bOvAFRF.png" alt=""></p>
+<p>请注意，您可以传递codebox()和textbox()一个字符串或一个字符串列表。在显示之前，字符串列表将被转换为文本。这意味着您可以使用这些函数以这种方式显示文件的内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">filename = os.path.normcase(<span class="string">"c:/autoexec.bat"</span>)</span><br><span class="line">f = open(filename, <span class="string">"r"</span>)</span><br><span class="line">text = f.readlines()</span><br><span class="line">f.close()</span><br><span class="line">codebox(<span class="string">"Contents of file "</span> + filename, <span class="string">"Show File Contents"</span>, text)</span><br></pre></td></tr></table></figure>
+<font size="+1" color="red"><strong>diropenbox</strong></font>
+
+<p>diropenbox返回一个目录的名称  </p>
+<font size="+1" color="red"><strong>fileopenbox</strong></font>
+
+<p>fileopenbox返回文件的名称  </p>
+<p><img src="https://i.imgur.com/UCpWN3a.png" alt=""></p>
+<font size="+1" color="red"><strong>filesavebox</strong></font>
+
+<p>filesavebox返回文件的名称  </p>
+<font size="+1" color="red"><strong>EgStore</strong></font>
+
+<p>为了使存储和恢复用户设置的过程，EasyGui提供了一个名为EgStore的类。为了记住一些设置，你的应用程序必须定义一个从EgStore继承的类（我们称之为Settings，尽管你可以调用它）。<br>您的应用程序还必须创建该类的对象（让我们调用对象设置）。  </p>
+<p>Settings类的构造函数（<code>__init__</code>方法）必须初始化所有你想记住的值。  </p>
+<p>完成此操作后，只需将值分配给设置对象中的实例变量即可记住设置，并使用settings.store()方法将设置对象保存到磁盘。  </p>
+<p>以下是创建Settings类的代码示例：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-----------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># define a class named Settings as a subclass of EgStore</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Settings</span><span class="params">(EgStore)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, filename)</span>:</span>  <span class="comment"># filename is required</span></span><br><span class="line">        <span class="comment">#-------------------------------------------------</span></span><br><span class="line">        <span class="comment"># Specify default/initial values for variables that</span></span><br><span class="line">        <span class="comment"># this particular application wants to remember.</span></span><br><span class="line">        <span class="comment">#-------------------------------------------------</span></span><br><span class="line">        self.userId = <span class="string">""</span></span><br><span class="line">        self.targetServer = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#-------------------------------------------------</span></span><br><span class="line">        <span class="comment"># For subclasses of EgStore, these must be</span></span><br><span class="line">        <span class="comment"># the last two statements in  __init__</span></span><br><span class="line">        <span class="comment">#-------------------------------------------------</span></span><br><span class="line">        self.filename = filename  <span class="comment"># this is required</span></span><br><span class="line">        self.restore()            <span class="comment"># restore values from the storage file if possible</span></span><br></pre></td></tr></table></figure>
+<p>以下是创建设置对象的代码示例：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-----------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># create "settings", a persistent Settings object</span></span><br><span class="line"><span class="comment"># Note that the "filename" argument is required.</span></span><br><span class="line"><span class="comment"># The directory for the persistent file must already exist.</span></span><br><span class="line"><span class="comment">#-----------------------------------------------------------------------</span></span><br><span class="line">settingsFilename = os.path.join(<span class="string">"C:"</span>, <span class="string">"myApp"</span>, <span class="string">"settings.txt"</span>)  <span class="comment"># Windows example</span></span><br><span class="line">settings = Settings(settingsFilename)</span><br></pre></td></tr></table></figure>
+<p>使用设置对象的示例代码：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># we initialize the "user" and "server" variables</span></span><br><span class="line"><span class="comment"># In a real application, we'd probably have the user enter them via enterbox</span></span><br><span class="line">user    = <span class="string">"obama_barak"</span></span><br><span class="line">server  = <span class="string">"whitehouse1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we save the variables as attributes of the "settings" object</span></span><br><span class="line">settings.userId = user</span><br><span class="line">settings.targetServer = server</span><br><span class="line">settings.store()    <span class="comment"># persist the settings</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># run code that gets a new value for userId</span></span><br><span class="line"><span class="comment"># then persist the settings with the new value</span></span><br><span class="line">user    = <span class="string">"biden_joe"</span></span><br><span class="line">settings.userId = user</span><br><span class="line">settings.store()</span><br></pre></td></tr></table></figure>
+<font size="+1" color="red"><strong>exceptionbox</strong></font>
+
+<p>EasyGui提供了一个通过exceptionbox处理异常的方法。Exceptionbox在代码框中显示堆栈跟踪，并可能允许您继续处理。<br>代码示例：   </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    someFunction()  <span class="comment"># this may raise an exception</span></span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    exceptionbox()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/S2QCCyV.png" alt=""> </p>
+<hr>
+<font size="+2" color="blue"><strong>EasyGUI优化</strong></font>
+
+<p>对模块easygui的脚本文件直接进行编辑优化  </p>
+<font size="+1" color="red"><strong>优化程序的字体显示</strong></font>
+
+<p>文字的大小和字体通过配置如下可实现：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PROPORTIONAL_FONT_FAMILY = (<span class="string">"微软雅黑"</span>)</span><br><span class="line">MONOSPACE_FONT_FAMILY    = (<span class="string">"Courier"</span>)</span><br><span class="line"></span><br><span class="line">PROPORTIONAL_FONT_SIZE  = <span class="number">10</span></span><br><span class="line">MONOSPACE_FONT_SIZE     =  <span class="number">9</span>  <span class="comment">#a little smaller, because it it more legible at a smaller size</span></span><br><span class="line">TEXT_ENTRY_FONT_SIZE    = <span class="number">12</span>  <span class="comment"># a little larger makes it easier to see</span></span><br></pre></td></tr></table></figure>
+<font size="+1" color="red"><strong>优化程序的默认按钮文案</strong></font>
+
+<p>默认按钮的文案为OK和Cancel，修改为中文文案，记得修改中文需要加对应的utf-8的调用解释  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------ ok button -------------------------------</span></span><br><span class="line">buttonsFrame = Frame(master=boxRoot)</span><br><span class="line">buttonsFrame.pack(side=BOTTOM, fill=BOTH)</span><br><span class="line"></span><br><span class="line">okButton = Button(buttonsFrame, takefocus=<span class="number">1</span>, text=<span class="string">"确定"</span>)</span><br><span class="line">bindArrows(okButton)</span><br><span class="line">okButton.pack(expand=<span class="number">1</span>, side=LEFT, padx=<span class="string">'3m'</span>, pady=<span class="string">'3m'</span>, ipadx=<span class="string">'2m'</span>, ipady=<span class="string">'1m'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for the commandButton, bind activation events to the activation event handler</span></span><br><span class="line">commandButton  = okButton</span><br><span class="line">handler = __multenterboxGetText</span><br><span class="line"><span class="keyword">for</span> selectionEvent <span class="keyword">in</span> STANDARD_SELECTION_EVENTS:</span><br><span class="line">    commandButton.bind(<span class="string">"&lt;%s&gt;"</span> % selectionEvent, handler)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ------------------ cancel button -------------------------------</span></span><br><span class="line">cancelButton = Button(buttonsFrame, takefocus=<span class="number">1</span>, text=<span class="string">"退出"</span>)</span><br><span class="line">bindArrows(cancelButton)</span><br><span class="line">cancelButton.pack(expand=<span class="number">1</span>, side=RIGHT, padx=<span class="string">'3m'</span>, pady=<span class="string">'3m'</span>, ipadx=<span class="string">'2m'</span>, ipady=<span class="string">'1m'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for the commandButton, bind activation events to the activation event handler</span></span><br><span class="line">commandButton  = cancelButton</span><br><span class="line">handler = __multenterboxCancel</span><br><span class="line"><span class="keyword">for</span> selectionEvent <span class="keyword">in</span> STANDARD_SELECTION_EVENTS:</span><br><span class="line">    commandButton.bind(<span class="string">"&lt;%s&gt;"</span> % selectionEvent, handler)</span><br></pre></td></tr></table></figure>
+<font size="+1" color="red"><strong>优化程序的窗口显示位置</strong></font>
+
+<p>默认程序的显示位置比较杂乱，所以需要对各自的函数进行编辑，如对buttonbox函数的窗口进行定义，主要是根据TKinter的方式，对<code>.geometry</code>这个参数进行修改，实现如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># buttonbox</span></span><br><span class="line"><span class="comment">#-------------------------------------------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buttonbox</span><span class="params">(msg=<span class="string">""</span>,title=<span class="string">" "</span></span></span></span><br><span class="line"><span class="function"><span class="params">    ,choices=<span class="params">(<span class="string">"Button1"</span>, <span class="string">"Button2"</span>, <span class="string">"Button3"</span>)</span></span></span></span><br><span class="line"><span class="function"><span class="params">    , image=None</span></span></span><br><span class="line"><span class="function"><span class="params">    , root=None</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Display a msg, a title, and a set of buttons.</span></span><br><span class="line"><span class="string">    The buttons are defined by the members of the choices list.</span></span><br><span class="line"><span class="string">    Return the text of the button that the user selected.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    @arg msg: the msg to be displayed.</span></span><br><span class="line"><span class="string">    @arg title: the window title</span></span><br><span class="line"><span class="string">    @arg choices: a list or tuple of the choices to be displayed</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">global</span> boxRoot, __replyButtonText, __widgetTexts, buttonsFrame</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Initialize __replyButtonText to the first choice.</span></span><br><span class="line">    <span class="comment"># This is what will be used if the window is closed by the close button.</span></span><br><span class="line">    __replyButtonText = choices[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root:</span><br><span class="line">        root.withdraw()</span><br><span class="line">        boxRoot = Toplevel(master=root)</span><br><span class="line">        boxRoot.withdraw()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        boxRoot = Tk()</span><br><span class="line">        boxRoot.withdraw()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 修改窗口，使其居中显示，获取屏幕 宽、高</span></span><br><span class="line">    w = <span class="number">400</span> <span class="comment">#定义窗口的宽</span></span><br><span class="line">    h = <span class="number">100</span> <span class="comment">#定义窗口的高</span></span><br><span class="line">    ws = boxRoot.winfo_screenwidth()</span><br><span class="line">    hs = boxRoot.winfo_screenheight()</span><br><span class="line">    <span class="comment"># 计算 x, y 位置</span></span><br><span class="line">    x = (ws / <span class="number">2</span>) - (w / <span class="number">2</span>)</span><br><span class="line">    y = (hs / <span class="number">2</span>) - (h / <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    boxRoot.geometry(<span class="string">'%dx%d+%d+%d'</span> % (w, h, x, y) )<span class="comment">#center window on desktop</span></span><br><span class="line">    </span><br><span class="line">    boxRoot.protocol(<span class="string">'WM_DELETE_WINDOW'</span>, denyWindowManagerClose )</span><br><span class="line">    boxRoot.title(title)</span><br><span class="line">    boxRoot.iconname(<span class="string">'Dialog'</span>)</span><br><span class="line"></span><br><span class="line">    boxRoot.minsize(<span class="number">400</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/AaWNHs4.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/08/Python&MySQL/" rel="next" title="Python&MySQL">
+                <i class="fa fa-chevron-left"></i> Python&MySQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/09/将python文件打包为exe文件/" rel="prev" title="将python文件打包为exe文件">
+                将python文件打包为exe文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+
+  <div class="wechat">
+    <a title="微信与我联系" href="https://nolan-wu.github.io/contact/contact.html" >
+      <i class="fa fa-weixin" aria-hidden="true" style="color:#FFFFFF; font-size:13px;">
+      </i>
+    </a>
+  </div>
+
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://wx1.sinaimg.cn/mw690/006SSMRbgy1fm1rok82qyj30qo0qon2r.jpg"
+                alt="Nolan Wu" />
+            
+              <p class="site-author-name" itemprop="name">Nolan Wu</p>
+              <p class="site-description motion-element" itemprop="description">可不可以给我一首歌的时间</br>让我再把三个代表背一遍</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+    
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nolan Wu</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+-->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_uv">
+  本站访客数 <span id="busuanzi_value_site_uv"></span> 人次
+</span>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
